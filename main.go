@@ -3,10 +3,16 @@ package main
 import "fmt"
 
 func main() {
-	array := [...]string{"hello", "world", "Hi!!"}
-	fmt.Println(array)
 
-	for i, item := range array {
-		fmt.Printf("Index:%v\tValue:%v \n", i, item)
-	}
+	fmt.Println("multi return")
+
+	i, result := multiReturn()
+
+	fmt.Println(i)
+	fmt.Println(result)
+
+}
+
+func multiReturn() (int, string) {
+	return 1, "shoaib"
 }
