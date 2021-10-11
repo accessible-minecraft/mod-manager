@@ -2,29 +2,22 @@ package main
 
 import (
 	"fmt"
-	"io"
-	"net/http"
 	"os"
+	"strings"
 )
 
 func main() {
-	fmt.Println("JSON")
-
-	url := "https://github.com/accessible-minecraft/accessibility-plus-extended/raw/master/accessibility-plus-extended-1.16-curseforge-v1.6.4.jar"
-
-	// Get the data
-	resp, err := http.Get(url)
+	homedir, err := os.UserHomeDir()
 	check(err)
-	defer resp.Body.Close()
 
-	// Create the file
-	out, err := os.Create("./ape.jar")
+	out, err := os.ReadDir(homedir + "/.minecraft/mods")
 	check(err)
-	defer out.Close()
 
-	// Write the body to file
-	_, err = io.Copy(out, resp.Body)
-	check(err)
+	for _, v := range out {
+		if strings.Contains(v.Name(), "accessibility-plus-extended") {
+			fmt.Println("A P Extended present")
+		}
+	}
 
 }
 
