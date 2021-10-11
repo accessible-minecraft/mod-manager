@@ -1,7 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/widget"
+)
 
 func main() {
-	fmt.Println("This is main file!")
+	app := app.New()
+	window := app.NewWindow("Hello :)")
+
+	label := widget.NewLabel("Hello World")
+
+	window.SetContent(container.NewVBox(
+		label,
+	))
+
+	window.ShowAndRun()
 }
