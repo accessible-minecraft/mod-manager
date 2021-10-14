@@ -1,8 +1,9 @@
+//go:build linux || darwin || windows
+// +build linux darwin windows
+
 package main
 
 import (
-	"fmt"
-
 	"fyne.io/fyne/v2"
 )
 
@@ -20,11 +21,9 @@ func (d *customLayout) MinSize(objects []fyne.CanvasObject) fyne.Size {
 
 		padding := 8
 		h += childSize.Height + float32(padding)
-		fmt.Println(h)
 	}
 	w += 20 // Padding
 	h += 20 // Padding
-	fmt.Println("final", h)
 	return fyne.NewSize(w, h)
 }
 
