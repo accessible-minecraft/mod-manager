@@ -1,16 +1,13 @@
-//go:build linux || darwin || windows
-// +build linux darwin windows
-
-package main
+package gui
 
 import (
 	"fyne.io/fyne/v2"
 )
 
-type customLayout struct {
+type CustomLayout struct {
 }
 
-func (d *customLayout) MinSize(objects []fyne.CanvasObject) fyne.Size {
+func (d *CustomLayout) MinSize(objects []fyne.CanvasObject) fyne.Size {
 	w, h := float32(0), float32(0)
 	for _, o := range objects {
 		childSize := o.Size()
@@ -27,7 +24,7 @@ func (d *customLayout) MinSize(objects []fyne.CanvasObject) fyne.Size {
 	return fyne.NewSize(w, h)
 }
 
-func (d *customLayout) Layout(objects []fyne.CanvasObject, containerSize fyne.Size) {
+func (d *CustomLayout) Layout(objects []fyne.CanvasObject, containerSize fyne.Size) {
 	heightIndex := 0
 	for _, o := range objects {
 

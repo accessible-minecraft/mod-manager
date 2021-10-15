@@ -2,9 +2,10 @@ module github.com/accessible-minecraft/mod-manager
 
 go 1.17
 
-require fyne.io/fyne/v2 v2.1.0
-
-require github.com/hegedustibor/htgo-tts v0.0.0-20210901072303-b76f41971260
+require (
+	fyne.io/fyne/v2 v2.1.0
+	github.com/hegedustibor/htgo-tts v0.0.0-20210901072303-b76f41971260
+)
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
