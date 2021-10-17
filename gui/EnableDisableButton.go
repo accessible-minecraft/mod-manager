@@ -2,37 +2,58 @@ package gui
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"os"
 
+	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/widget"
 	htgotts "github.com/hegedustibor/htgo-tts"
 )
 
-type myButton struct {
-	widget.Button
-	JsonKey string
-	Label   string
-}
-
-func (m *myButton) FocusGained() {
-	name := m.Text
-	speech := htgotts.Speech{Folder: "audio", Language: "en"}
-	speech.Speak(name)
-}
-
-func EnableDisableButton(label string, key string) *myButton {
-	ret := &myButton{}
+func GetEnableDisableButton(app fyne.App, label string, key string) *EDButton {
+	ret := &EDButton{}
 	ret.ExtendBaseWidget(ret)
 	ret.JsonKey = key
 	ret.Label = label
 	ret.RefreshText()
 	ret.OnTapped = func() { changeState(ret) }
+	ret.ListeningToKeys = make(chan bool)
 
 	return ret
 }
 
-func changeState(m *myButton) {
+type EDButton struct {
+	app fyne.App
+	widget.Button
+	JsonKey         string
+	Label           string
+	ListeningToKeys chan bool
+}
+
+func (m *EDButton) FocusGained() {
+	// go EventListner(m.ListeningToKeys, m.Label)
+	name := m.Text
+	fmt.Println(name)
+	speech := htgotts.Speech{Folder: "audio", Language: "en"}
+	speech.Speak(name)
+}
+
+func (m *EDButton) FocusLost() {
+}
+
+func EventListner(quit chan bool, label string) {
+	for {
+		select {
+		case <-quit:
+			return
+		default:
+			// Add stuff here
+		}
+	}
+}
+
+func changeState(m *EDButton) {
 	file, err := os.Open("test.json")
 	checkError(err)
 	defer file.Close()
@@ -88,6 +109,6 @@ func checkError(err error) {
 	}
 }
 
-func (m *myButton) RefreshText() {
+func (m *EDButton) RefreshText() {
 	m.Text = m.Label + ": " + getState(m.JsonKey)
 }
