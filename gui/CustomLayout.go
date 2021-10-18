@@ -21,6 +21,13 @@ func (d *CustomLayout) MinSize(objects []fyne.CanvasObject) fyne.Size {
 	}
 	w += 20 // Padding
 	h += 20 // Padding
+
+	if w < 700 {
+		w = 700
+	}
+	if h < 700 {
+		h = 700
+	}
 	return fyne.NewSize(w, h)
 }
 

@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	fyne.io/fyne/v2 v2.1.0
-	github.com/hegedustibor/htgo-tts v0.0.0-20210901072303-b76f41971260
+	github.com/stretchr/testify v1.7.0
 )
 
 require (
@@ -18,7 +18,6 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/srwiley/oksvg v0.0.0-20210519022825-9fc0c575d5fe // indirect
 	github.com/srwiley/rasterx v0.0.0-20210519020934-456a8d69b780 // indirect
-	github.com/stretchr/testify v1.7.0 // indirect
 	github.com/yuin/goldmark v1.4.1 // indirect
 	golang.org/x/image v0.0.0-20210628002857-a66eb6448b8d // indirect
 	golang.org/x/net v0.0.0-20211015174653-db2dff38ab41 // indirect
