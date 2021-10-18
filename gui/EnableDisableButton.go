@@ -2,13 +2,11 @@ package gui
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"os"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/widget"
-	htgotts "github.com/hegedustibor/htgo-tts"
 )
 
 func GetEnableDisableButton(app fyne.App, label string, key string) *EDButton {
@@ -29,28 +27,6 @@ type EDButton struct {
 	JsonKey         string
 	Label           string
 	ListeningToKeys chan bool
-}
-
-func (m *EDButton) FocusGained() {
-	// go EventListner(m.ListeningToKeys, m.Label)
-	name := m.Text
-	fmt.Println(name)
-	speech := htgotts.Speech{Folder: "audio", Language: "en"}
-	speech.Speak(name)
-}
-
-func (m *EDButton) FocusLost() {
-}
-
-func EventListner(quit chan bool, label string) {
-	for {
-		select {
-		case <-quit:
-			return
-		default:
-			// Add stuff here
-		}
-	}
 }
 
 func changeState(m *EDButton) {
