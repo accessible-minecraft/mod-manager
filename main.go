@@ -2,8 +2,12 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"runtime"
+
+	"github.com/asticode/go-astikit"
+	"github.com/asticode/go-astilectron"
 )
 
 const (
@@ -14,11 +18,44 @@ type mainApplication struct {
 }
 
 func main() {
-	mainApplication := &mainApplication{}
+	// Set logger
+	l := log.New(log.Writer(), log.Prefix(), log.Flags())
 
-	mainApplication.setMinecraftDirectory()
+	// Create astilectron
+	a, err := astilectron.New(l, astilectron.Options{
+		AppName:           "Mod Manager",
+		BaseDirectoryPath: "main",
+	})
+	if err != nil {
+		l.Fatal(fmt.Errorf("main: creating astilectron failed: %w", err))
+	}
+	defer a.Close()
 
-	fmt.Println("Removed fyne")
+	// Handle signals
+	a.HandleSignals()
+
+	// Start
+	if err = a.Start(); err != nil {
+		l.Fatal(fmt.Errorf("main: starting astilectron failed: %w", err))
+	}
+
+	// New window
+	var w *astilectron.Window
+	if w, err = a.NewWindow("resources/app/index.html", &astilectron.WindowOptions{
+		Center: astikit.BoolPtr(true),
+		Height: astikit.IntPtr(250),
+		Width:  astikit.IntPtr(200),
+	}); err != nil {
+		l.Fatal(fmt.Errorf("main: new window failed: %w", err))
+	}
+
+	// Create windows
+	if err = w.Create(); err != nil {
+		l.Fatal(fmt.Errorf("main: creating window failed: %w", err))
+	}
+
+	// Blocking pattern
+	a.Wait()
 }
 
 func (m *mainApplication) setMinecraftDirectory() {
@@ -33,7 +70,7 @@ func (m *mainApplication) setMinecraftDirectory() {
 
 	minecraftDirectory := getMinecraftDirectory()
 
-	isValid, err := checkIfValidOrNot(minecraftDirectory)
+	isValid, err := checkDirValidity(minecraftDirectory)
 
 	if isValid && err == nil {
 		// TODO save directory here
@@ -66,7 +103,8 @@ func getMinecraftDirectory() string {
 	return minecraftDir
 }
 
-func checkIfValidOrNot(directory string) (bool, error) {
+// Checks if the given directory is a valid minecraft directory or not.
+func checkDirValidity(directory string) (bool, error) {
 	dirEntries, err := os.ReadDir(directory)
 
 	isOptionsTXTPresent, isSavesFolderPresent, isResourceFolderPresent := false, false, false
