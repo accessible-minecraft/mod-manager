@@ -1,0 +1,23 @@
+{
+  "name": "mod-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/accessible-minecraft/mod-manager.git"
+  },
+  "author": "Shoaib Khan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/accessible-minecraft/mod-manager/issues"
+  },
+  "homepage": "https://github.com/accessible-minecraft/mod-manager#readme",
+  "dependencies": {
+    "electron": "^15.3.0"
+  }
+}
