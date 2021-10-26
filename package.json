@@ -3,9 +3,53 @@
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
+  "dependencies": {
+    "buffer-crc32": "^0.2.13",
+    "buffer-from": "^1.1.2",
+    "concat-stream": "^1.6.2",
+    "config-chain": "^1.1.13",
+    "copyfiles": "^2.4.1",
+    "decompress-response": "^3.3.0",
+    "detect-node": "^2.1.0",
+    "duplexer3": "^0.1.4",
+    "electron": "^15.3.0",
+    "encodeurl": "^1.0.2",
+    "end-of-stream": "^1.4.4",
+    "env-paths": "^2.2.1",
+    "escape-string-regexp": "^4.0.0",
+    "get-stream": "^4.1.0",
+    "graceful-fs": "^4.2.8",
+    "http-cache-semantics": "^4.1.0",
+    "inherits": "^2.0.4",
+    "ini": "^1.3.8",
+    "isarray": "^1.0.0",
+    "jsonfile": "^4.0.0",
+    "lowercase-keys": "^1.0.1",
+    "lru-cache": "^6.0.0",
+    "matcher": "^3.0.0",
+    "mimic-response": "^1.0.1",
+    "ms": "^2.1.2",
+    "normalize-url": "^4.5.1",
+    "once": "^1.4.0",
+    "p-cancelable": "^1.1.0",
+    "pend": "^1.2.0",
+    "pify": "^3.0.0",
+    "prepend-http": "^2.0.0",
+    "process-nextick-args": "^2.0.1",
+    "pump": "^3.0.0",
+    "safe-buffer": "^5.1.2",
+    "serialize-error": "^7.0.1",
+    "to-readable-stream": "^1.0.0",
+    "typescript": "^4.4.4",
+    "universalify": "^0.1.2",
+    "url-parse-lax": "^3.0.0",
+    "util-deprecate": "^1.0.2",
+    "wrappy": "^1.0.2",
+    "yallist": "^4.0.0",
+    "yauzl": "^2.10.0"
+  },
   "scripts": {
-    "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -16,8 +60,5 @@
   "bugs": {
     "url": "https://github.com/accessible-minecraft/mod-manager/issues"
   },
-  "homepage": "https://github.com/accessible-minecraft/mod-manager#readme",
-  "dependencies": {
-    "electron": "^15.3.0"
-  }
+  "homepage": "https://github.com/accessible-minecraft/mod-manager#readme"
 }
