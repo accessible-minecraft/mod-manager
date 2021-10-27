@@ -8,7 +8,7 @@ import javax.swing.JFrame;
  *
  */
 
-public class App {
+public class Main {
     public static void main(String[] args) {
         JFrame f = new JFrame("Mod Manager");// creating instance of JFrame
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
