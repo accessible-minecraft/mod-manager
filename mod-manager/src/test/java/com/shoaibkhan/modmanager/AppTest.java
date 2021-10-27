@@ -17,4 +17,9 @@ public class AppTest
     {
         assertTrue( true );
     }
+
+    @Test
+    public void testGetMinecraftDirectory() {
+        System.out.print(profileManager.getMinecraftDirectory());
+    }
 }
