@@ -18,8 +18,10 @@ public class MainTest
         assertTrue( true );
     }
 
+
     @Test
-    public void testGetMinecraftDirectory() {
-        System.out.print(profileManager.getMinecraftDirectory());
+    public void testLoadData() {
+        // System.out.println(Config.loadData());
     }
+
 }
