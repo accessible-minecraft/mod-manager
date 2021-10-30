@@ -4,6 +4,7 @@ import com.shoaibkhan.modmanager.Config.Config;
 import com.shoaibkhan.modmanager.profiles.AddNewProfile;
 import com.shoaibkhan.modmanager.profiles.CurrentProfile;
 import com.shoaibkhan.modmanager.profiles.RemoveCurrentProfile;
+import com.shoaibkhan.modmanager.profiles.SelectNextProfile;
 import com.shoaibkhan.modmanager.profiles.utils;
 
 import org.junit.Test;
@@ -33,7 +34,13 @@ public class profilesTest {
 
     @Test
     public void testRemoveCurrentProfile() {
-        new RemoveCurrentProfile();
+        RemoveCurrentProfile.removeCurrentProfile();
+        System.out.println(Config.getData());
+    }
+
+    @Test
+    public void testSelectNextProfile() {
+        SelectNextProfile.selectNextProfiResult();
         System.out.println(Config.getData());
     }
 }

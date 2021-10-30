@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import com.shoaibkhan.modmanager.profiles.AddNewProfile;
 import com.shoaibkhan.modmanager.profiles.CurrentProfile;
+import com.shoaibkhan.modmanager.profiles.SelectNextProfile;
 import com.shoaibkhan.modmanager.profiles.utils;
 import com.shoaibkhan.modmanager.utils.ActionResult;
 
@@ -26,6 +27,12 @@ public class Main {
 
         JButton nextProfileButton = new JButton("Next Profile");
         nextProfileButton.addActionListener(e -> {
+            ActionResult response = SelectNextProfile.selectNextProfiResult();
+            if (response != ActionResult.PASS) {
+                JOptionPane.showMessageDialog(nextProfileButton, response.getDescription());
+            }
+
+            curProfile.setText("Selected Profile: " + CurrentProfile.getCurrentProfileName());
         });
         nextProfileButton.setBounds(220, 10, 150, 50);
         f.add(nextProfileButton);
@@ -36,7 +43,7 @@ public class Main {
             String directory = JOptionPane.showInputDialog("Enter directory path", utils.getMinecraftDirectory());
 
             ActionResult response = AddNewProfile.addNewProfile(name, directory);
-            if(response!=ActionResult.PASS){
+            if (response != ActionResult.PASS) {
                 JOptionPane.showMessageDialog(addProfileButton, response.getDescription());
             }
         });
