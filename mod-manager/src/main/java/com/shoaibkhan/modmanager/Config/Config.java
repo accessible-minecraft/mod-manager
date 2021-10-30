@@ -1,4 +1,4 @@
-package com.shoaibkhan.modmanager;
+package com.shoaibkhan.modmanager.Config;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.shoaibkhan.modmanager.profiles.utils;
 
 public class Config {
     private static JsonNode data = null;
@@ -59,7 +60,7 @@ public class Config {
         ObjectNode defaultProfileNode = mapper.createObjectNode();
 
         defaultProfileNode.put("name", "default");
-        defaultProfileNode.put("location", new profileManager().getMinecraftDirectory());
+        defaultProfileNode.put("location", utils.getMinecraftDirectory());
 
         profileNode.put("current", "0");
         profileNode.put("total", "0");

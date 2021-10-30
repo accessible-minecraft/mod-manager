@@ -3,6 +3,8 @@ package com.shoaibkhan.modmanager;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import com.shoaibkhan.modmanager.profiles.currentProfile;
+
 /**
  * Hello world!
  *
@@ -13,7 +15,7 @@ public class Main {
         JFrame f = new JFrame("Mod Manager");// creating instance of JFrame
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JButton b1 = new JButton(new profileManager().getCurrentProfileName());// creating instance of JButton
+        JButton b1 = new JButton(currentProfile.getCurrentProfileName());// creating instance of JButton
         b1.setBounds(10, 10, 100, 50);// x axis, y axis, width, height
         f.add(b1);// adding button in JFrame
 
