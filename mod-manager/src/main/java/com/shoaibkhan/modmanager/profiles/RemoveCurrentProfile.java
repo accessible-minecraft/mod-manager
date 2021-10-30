@@ -5,10 +5,11 @@ import java.util.Iterator;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.shoaibkhan.modmanager.Config.Config;
+import com.shoaibkhan.modmanager.utils.ActionResult;
 
-public class removeCurrentProfile {
-    
-    public removeCurrentProfile() {
+public class RemoveCurrentProfile {
+
+    public static ActionResult removeCurrentProfile() {
         ObjectNode data = (ObjectNode) Config.getData();
 
         // check if the config.json is valid
@@ -18,7 +19,7 @@ public class removeCurrentProfile {
                 // Reset and return if not valid
                 Config.setDataToDefault();
                 data = (ObjectNode) Config.getData();
-                return;
+                return ActionResult.FAILED;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -32,7 +33,7 @@ public class removeCurrentProfile {
             e.printStackTrace();
         }
         if (current == 0) {
-            return;
+            return ActionResult.FAILED;
         }
 
         // get the name of all nodes in profiles node and iterate over them
@@ -66,6 +67,6 @@ public class removeCurrentProfile {
 
         // Reset the data
         Config.setData(data);
-
+        return ActionResult.PASS;
     }
 }

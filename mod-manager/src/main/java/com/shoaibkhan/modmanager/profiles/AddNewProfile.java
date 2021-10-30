@@ -6,13 +6,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.shoaibkhan.modmanager.Config.Config;
+import com.shoaibkhan.modmanager.utils.ActionResult;
 
-public class addNewProfile {
+public class AddNewProfile {
     
-    public addNewProfile(String name, String directory) {
+    public static ActionResult addNewProfile(String name, String directory) {
 
         if (!utils.checkValidity(directory)) {
-            return;
+            return ActionResult.INVALID_DIRECORY;
         }
 
         ObjectNode data = (ObjectNode) Config.getData();
@@ -32,9 +33,9 @@ public class addNewProfile {
         List<JsonNode> allProfileList = data.findParents("name");
         for (JsonNode profile : allProfileList) {
             if (profile.findValue("name").asText().equalsIgnoreCase(name))
-                return;
+                return ActionResult.NAME_ALREADY_PRESENT;
             if (profile.findValue("location").asText().equalsIgnoreCase(directory))
-                return;
+                return ActionResult.DIRECTORY_ALREADY_PRESENT;
         }
 
         // Get current selected profile index and total profile
@@ -56,5 +57,6 @@ public class addNewProfile {
         ((ObjectNode) data.path("profiles")).set(Integer.toString(total), newProfileNode);
         ((ObjectNode) data.path("profiles")).put("total", Integer.toString(total));
         Config.setData(data);
+        return ActionResult.PASS;
     }
 }

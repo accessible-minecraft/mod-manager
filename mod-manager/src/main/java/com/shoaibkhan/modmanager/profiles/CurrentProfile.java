@@ -3,7 +3,7 @@ package com.shoaibkhan.modmanager.profiles;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.shoaibkhan.modmanager.Config.Config;
 
-public class currentProfile {
+public class CurrentProfile {
 
     public static String getCurrentProfileName() {
         try {
