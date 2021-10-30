@@ -39,6 +39,7 @@ public class RemoveCurrentProfile {
         // get the name of all nodes in profiles node and iterate over them
         Iterator<String> profiles = data.path("profiles").fieldNames();
 
+        // FIXME use different method
         while (profiles.hasNext()) {
             String profileNode = profiles.next();
 
@@ -50,8 +51,9 @@ public class RemoveCurrentProfile {
                 continue;
 
             int profileIndex = Integer.parseInt(profileNode);
-
-            if (profileIndex > current) {
+            if (profileIndex == current) {
+                ((ObjectNode) data.path("profiles")).remove(profileNode);
+            } else if (profileIndex > current) {
                 JsonNode nodeToMove = data.path("profiles").get(profileNode);
                 ((ObjectNode) data.path("profiles")).set(Integer.toString(profileIndex - 1), nodeToMove);
             }

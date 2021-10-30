@@ -33,7 +33,7 @@ public class CurrentProfile {
                 if (!directory.equalsIgnoreCase("0")) {
                     if (!utils.checkValidity(directory)) {
                         // Invalid Directory
-                        // TODO set current directory to default
+                        RemoveCurrentProfile.removeCurrentProfile();
                     }
                 }
                 return directory;

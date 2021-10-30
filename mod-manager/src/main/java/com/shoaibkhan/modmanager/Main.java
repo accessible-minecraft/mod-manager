@@ -67,11 +67,6 @@ public class Main {
                 JOptionPane.showMessageDialog(nextProfileButton, removeCurrentProfileResponse.getDescription());
             }
 
-            ActionResult increaseCurrentProfileResponse = SelectNextProfile.selectNextProfiResult();
-            if (increaseCurrentProfileResponse != ActionResult.PASS) {
-                JOptionPane.showMessageDialog(nextProfileButton, increaseCurrentProfileResponse.getDescription());
-            }
-
             curProfile.setText("Selected Profile: " + CurrentProfile.getCurrentProfileName());
             curProfile.setToolTipText("Selected Profile: " + CurrentProfile.getCurrentProfileName());
         });
