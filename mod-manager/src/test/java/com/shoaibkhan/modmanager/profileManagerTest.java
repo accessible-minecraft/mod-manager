@@ -13,4 +13,15 @@ public class profileManagerTest {
     public void testGetCurrentProfileName() {
         System.out.println(new profileManager().getCurrentProfileName());
     }
+
+    @Test
+    public void testGetCurrentProfileDirectory() {
+        System.out.println(new profileManager().getCurrentProfileDirectory());
+    }
+
+    @Test
+    public void testAddNewProfile() {
+        new profileManager().addNewProfile("asdawa", new profileManager().getMinecraftDirectory()+"/hello");
+        System.out.println(Config.getData());
+    }
 }
