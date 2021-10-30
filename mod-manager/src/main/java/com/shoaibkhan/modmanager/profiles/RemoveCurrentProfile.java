@@ -19,7 +19,7 @@ public class RemoveCurrentProfile {
                 // Reset and return if not valid
                 Config.setDataToDefault();
                 data = (ObjectNode) Config.getData();
-                return ActionResult.FAILED;
+                return ActionResult.CORRUPTED_JSON_RESETTED_TO_DEFAULT;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -33,11 +33,12 @@ public class RemoveCurrentProfile {
             e.printStackTrace();
         }
         if (current == 0) {
-            return ActionResult.FAILED;
+            return ActionResult.CANNOT_REMOVE_DEFAULT_PROFILE;
         }
 
         // get the name of all nodes in profiles node and iterate over them
         Iterator<String> profiles = data.path("profiles").fieldNames();
+
         while (profiles.hasNext()) {
             String profileNode = profiles.next();
 
@@ -49,10 +50,7 @@ public class RemoveCurrentProfile {
                 continue;
 
             int profileIndex = Integer.parseInt(profileNode);
-            if (profileIndex == current) {
-                // Delete the node
-                ((ObjectNode) data.path("profiles")).remove(profileNode);
-            }
+
             if (profileIndex > current) {
                 JsonNode nodeToMove = data.path("profiles").get(profileNode);
                 ((ObjectNode) data.path("profiles")).set(Integer.toString(profileIndex - 1), nodeToMove);
