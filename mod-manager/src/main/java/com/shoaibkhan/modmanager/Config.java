@@ -16,9 +16,7 @@ public class Config {
     private static String CONFIG_PATH = Paths.get("config", "config.json").toString();
 
     public static JsonNode getData() {
-        if (data == null) {
-            loadDataFromFile();
-        }
+        loadDataFromFile();
         return data;
     }
 

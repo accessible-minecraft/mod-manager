@@ -21,7 +21,14 @@ public class profileManagerTest {
 
     @Test
     public void testAddNewProfile() {
-        new profileManager().addNewProfile("asdawa", new profileManager().getMinecraftDirectory()+"/hello");
+        new profileManager().addNewProfile("asdawa", new profileManager().getMinecraftDirectory() + "/hello");
+        System.out.println(Config.getData());
+    }
+
+    @Test
+    public void testRemoveCurrentProfile() {
+        profileManager.removeCurentProfile();
+        System.out.println("IN config");
         System.out.println(Config.getData());
     }
 }
