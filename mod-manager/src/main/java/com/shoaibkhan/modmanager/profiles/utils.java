@@ -15,20 +15,23 @@ public class utils {
         StringBuilder minecraftDirectory = new StringBuilder("");
 
         switch (currentOs) {
-        case WINDOWS -> {
+        case WINDOWS: {
             homeDirectory = System.getenv("APPDATA");
             minecraftDirectory = new StringBuilder(homeDirectory);
             minecraftDirectory.append("\\.minecraft");
+            break;
         }
-        case LINUX -> {
+        case LINUX: {
             homeDirectory = System.getProperty("user.home");
             minecraftDirectory = new StringBuilder(homeDirectory);
             minecraftDirectory.append("/.minecraft");
+            break;
         }
-        case MACOS -> {
+        case MACOS: {
             homeDirectory = System.getProperty("user.home");
             minecraftDirectory = new StringBuilder(homeDirectory);
             minecraftDirectory.append("/Library/Application Support/minecraft");
+            break;
         }
         }
 

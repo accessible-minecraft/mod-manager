@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "Maven Root",
+			"path": "./mod-manager"
+		},{
+			"name": "Project Root",
+			"path": "."
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic",
+		"maven.view": "hierarchical"
+	}
+}

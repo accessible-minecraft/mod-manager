@@ -76,8 +76,6 @@ public class Main {
         f.setSize(700, 100);
         f.setLayout(null);
         f.setVisible(true);
-
-        // TODO add check for total profiles on startup
     }
 
 }
