@@ -1,7 +1,5 @@
 package com.shoaibkhan.modmanager.profiles;
 
-import java.util.Iterator;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.shoaibkhan.modmanager.Config.Config;
@@ -36,27 +34,16 @@ public class RemoveCurrentProfile {
             return ActionResult.CANNOT_REMOVE_DEFAULT_PROFILE;
         }
 
-        // get the name of all nodes in profiles node and iterate over them
-        Iterator<String> profiles = data.path("profiles").fieldNames();
-
-        // FIXME use different method
-        while (profiles.hasNext()) {
-            String profileNode = profiles.next();
-
-            if (profileNode.equalsIgnoreCase("current"))
-                continue;
-            if (profileNode.equalsIgnoreCase("total"))
-                continue;
-            if (profileNode.equalsIgnoreCase("0"))
-                continue;
-
-            int profileIndex = Integer.parseInt(profileNode);
-            if (profileIndex == current) {
-                ((ObjectNode) data.path("profiles")).remove(profileNode);
-            } else if (profileIndex > current) {
-                JsonNode nodeToMove = data.path("profiles").get(profileNode);
-                ((ObjectNode) data.path("profiles")).set(Integer.toString(profileIndex - 1), nodeToMove);
+        // Remove the current profile and move the rest profiles
+        for (int i = current; i <= total; i++) {
+            if (i > current) {
+                // Move the profile one place below
+                JsonNode toMove = ((ObjectNode) data.path("profiles")).get(Integer.toString(i));
+                ((ObjectNode) data.path("profiles")).set(Integer.toString(i - 1), toMove);
             }
+
+            // Remove the profile
+            ((ObjectNode) data.path("profiles")).remove(Integer.toString(i));
         }
 
         // Decrease total and current by 1
