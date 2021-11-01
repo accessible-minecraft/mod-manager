@@ -3,8 +3,8 @@
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
   <jar>/home/shoaib/Projects/mod-manager/mod-manager/target/mod-manager-1.1-beta.jar</jar>
-  <outfile>/home/shoaib/Projects/mod-manager-1.0-beta.exe</outfile>
-  <errTitle></errTitle>
+  <outfile>/home/shoaib/Projects/mod-manager-1.1-beta.exe</outfile>
+  <errTitle>Java is required.</errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
   <priority>normal</priority>
@@ -25,7 +25,7 @@
     <path></path>
     <bundledJre64Bit>false</bundledJre64Bit>
     <bundledJreAsFallback>false</bundledJreAsFallback>
-    <minVersion>16</minVersion>
+    <minVersion>1.8</minVersion>
     <maxVersion></maxVersion>
     <jdkPreference>preferJre</jdkPreference>
     <runtimeBits>64/32</runtimeBits>
