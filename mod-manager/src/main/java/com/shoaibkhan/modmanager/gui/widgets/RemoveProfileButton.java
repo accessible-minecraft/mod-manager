@@ -3,12 +3,13 @@ package com.shoaibkhan.modmanager.gui.widgets;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import com.shoaibkhan.modmanager.gui.panels.ModsListPanel;
 import com.shoaibkhan.modmanager.profiles.CurrentProfile;
 import com.shoaibkhan.modmanager.profiles.RemoveCurrentProfile;
 import com.shoaibkhan.modmanager.utils.ActionResult;
 
 public class RemoveProfileButton extends JButton {
-    public RemoveProfileButton(String text, FocusableLabel forLabel){
+    public RemoveProfileButton(String text, FocusableLabel forLabel) {
         super(text);
         this.setToolTipText("Remoce Current Profile Button");
         this.addActionListener(e -> {
@@ -19,6 +20,10 @@ public class RemoveProfileButton extends JButton {
 
             forLabel.setText("Selected Profile: " + CurrentProfile.getCurrentProfileName());
             forLabel.setToolTipText("Selected Profile: " + CurrentProfile.getCurrentProfileName());
+
+            // Update modsList panel
+            ModsListPanel modsListPanel = new ModsListPanel();
+            modsListPanel.start();
         });
     }
 }

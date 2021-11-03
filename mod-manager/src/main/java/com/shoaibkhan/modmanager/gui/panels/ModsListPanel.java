@@ -18,6 +18,9 @@ public class ModsListPanel extends Thread {
 
         Gui.modsListPanel.setLayout(layout);
         SupportedMods.loadIfNotPresent();
+        
+        // Remove all components in modsListPanel
+        Gui.modsListPanel.removeAll();
 
         // Get supported mods list and panels for each mod
         List<String> modsList = SupportedMods.getSupportedModsList();
