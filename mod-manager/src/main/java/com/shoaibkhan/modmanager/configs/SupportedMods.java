@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -22,34 +23,84 @@ public class SupportedMods {
         try {
             // Check if present
             File temp = new File(FILE_NAME);
-            if(temp.exists()) return;
-            
+            if (temp.exists())
+                return;
+
             // Store the file
             FileUtils.copyURLToFile(new URL(FILE_URL), temp);
-            System.out.println("herer\n\n");
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public static List<String> getSupportedModsList() {
+    public static List<String> getSupportedModsListFor1_17() {
         try {
             // Load the file
             File temp = new File(FILE_NAME);
+
+            if (!temp.exists())
+                loadIfNotPresent();
 
             // Get json data
             JsonNode root = null;
             mapper.enable(DeserializationFeature.FAIL_ON_TRAILING_TOKENS);
             root = mapper.readTree(temp);
 
-            // Get supported mod names
-            Iterator<String> mods = root.fieldNames();
+            // Get supported mod
+            Iterator<Entry<String, JsonNode>> mods = root.fields();
             List<String> modsList = new ArrayList<>();
 
             // Save mod names in modsList and return it
             while (mods.hasNext()) {
-                modsList.add(mods.next());
+                Entry<String, JsonNode> entry = mods.next();
+
+                // Get supported versions
+                JsonNode versions = entry.getValue().get("supported-versions");
+                if (versions.isArray()) {
+                    for (final JsonNode objNode : versions) {
+                        if (Double.compare(objNode.asDouble(), 1.17) == 0)
+                            modsList.add(entry.getKey());
+                    }
+                }
+            }
+
+            return modsList;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static List<String> getSupportedModsListFor1_16() {
+        try {
+            // Load the file
+            File temp = new File(FILE_NAME);
+
+            if (!temp.exists())
+                loadIfNotPresent();
+
+            // Get json data
+            JsonNode root = null;
+            mapper.enable(DeserializationFeature.FAIL_ON_TRAILING_TOKENS);
+            root = mapper.readTree(temp);
+
+            // Get supported mod
+            Iterator<Entry<String, JsonNode>> mods = root.fields();
+            List<String> modsList = new ArrayList<>();
+
+            // Save mod names in modsList and return it
+            while (mods.hasNext()) {
+                Entry<String, JsonNode> entry = mods.next();
+
+                // Get supported versions
+                JsonNode versions = entry.getValue().get("supported-versions");
+                if (versions.isArray()) {
+                    for (final JsonNode objNode : versions) {
+                        if (Double.compare(objNode.asDouble(), 1.16) == 0)
+                            modsList.add(entry.getKey());
+                    }
+                }
             }
 
             return modsList;

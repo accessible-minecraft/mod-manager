@@ -34,6 +34,7 @@ public class CurrentProfile {
                     if (!utils.checkValidity(directory)) {
                         // Invalid Directory
                         RemoveCurrentProfile.removeCurrentProfile();
+                        getCurrentProfileDirectory();
                     }
                 }
                 return directory;
@@ -44,7 +45,25 @@ public class CurrentProfile {
 
         // Currupted json file | Reset the json to default
         Config.setDataToDefault();
-        return "default";
+        return utils.getMinecraftDirectory();
+    }
+
+    public static double getCurrentProfileVersion(){
+        try {
+            JsonNode profiles = Config.getData().path("profiles");
+
+            if (!profiles.isMissingNode()) {
+                String current = profiles.get("current").asText();
+                double version = profiles.path(current).get("version").asDouble();
+                return version;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Currupted json file | Reset the json to default
+        Config.setDataToDefault();
+        return 1.17;
     }
 
 }

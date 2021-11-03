@@ -27,10 +27,15 @@ public class profilesTest {
     }
 
     @Test
+    public void testGetCurrentProfileVersion() {
+        System.out.println(CurrentProfile.getCurrentProfileVersion());
+    }
+
+    @Test
     public void testAddNewProfile() {
-        AddNewProfile.addNewProfile("1.17", utils.getMinecraftDirectory() + "/home/1.17");
-        AddNewProfile.addNewProfile("Fabric-1.16", utils.getMinecraftDirectory() + "/home/Fabric-1.16");
-        AddNewProfile.addNewProfile("Fabric-1.17", utils.getMinecraftDirectory() + "/home/Fabric-1.17");
+        AddNewProfile.addNewProfile("1.17", utils.getMinecraftDirectory() + "/home/1.17", 1.17);
+        AddNewProfile.addNewProfile("Fabric-1.16", utils.getMinecraftDirectory() + "/home/Fabric-1.16", 1.16);
+        AddNewProfile.addNewProfile("Fabric-1.17", utils.getMinecraftDirectory() + "/home/Fabric-1.17", 1.17);
         System.out.println(Config.getData());
     }
 

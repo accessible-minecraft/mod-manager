@@ -61,6 +61,7 @@ public class Config {
 
         defaultProfileNode.put("name", "default");
         defaultProfileNode.put("location", utils.getMinecraftDirectory());
+        defaultProfileNode.put("version", 1.17);
 
         profileNode.put("current", "0");
         profileNode.put("total", "0");

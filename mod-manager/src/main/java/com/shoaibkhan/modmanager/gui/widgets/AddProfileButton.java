@@ -7,19 +7,28 @@ import com.shoaibkhan.modmanager.profiles.AddNewProfile;
 import com.shoaibkhan.modmanager.profiles.utils;
 import com.shoaibkhan.modmanager.utils.ActionResult;
 
-public class AddProfileButton extends JButton{
-    public AddProfileButton(String text){
+public class AddProfileButton extends JButton {
+    public AddProfileButton(String text) {
         super(text);
         this.setToolTipText("Add Profile Button");
         this.addActionListener(e -> {
             String name = JOptionPane.showInputDialog("Enter name of the profile");
             if (name == null)
                 return;
+            double version = 0.0;
+            try {
+                version = Float.parseFloat(JOptionPane.showInputDialog("Enter name of the profile"));
+                if (version != 1.6 || version != 1.17)
+                    JOptionPane.showMessageDialog(this, "Please enter current version.");
+            } catch (Exception exception) {
+                exception.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Please enter current version.");
+            }
             String directory = JOptionPane.showInputDialog("Enter directory path", utils.getMinecraftDirectory());
             if (directory == null)
                 return;
 
-            ActionResult response = AddNewProfile.addNewProfile(name, directory);
+            ActionResult response = AddNewProfile.addNewProfile(name, directory, version);
             if (response != ActionResult.PASS) {
                 JOptionPane.showMessageDialog(this, response.getDescription());
             }
