@@ -11,5 +11,22 @@
 	"settings": {
 		"java.configuration.updateBuildConfiguration": "automatic",
 		"maven.view": "hierarchical"
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Run",
+				"type": "shell",
+				"command": "mvn compile exec:java",
+				"group": "build"
+			},
+			{
+				"label": "Package",
+				"type": "shell",
+				"command": "mvn package shade:shade",
+				"group": "build"
+			}
+		]
 	}
 }
