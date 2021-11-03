@@ -18,12 +18,6 @@ public class ProfilesPanel extends JPanel {
         this.setLayout(layout);
 
         FocusableLabel curProfile = new FocusableLabel("Selected Profile: " + CurrentProfile.getCurrentProfileName());
-
-        // To get the width of the text  to make the panel's width dynamic
-        DimensionUIResource curProfileDimensions = new DimensionUIResource(
-                curProfile.getFontMetrics(curProfile.getFont()).stringWidth(curProfile.getText()), 50);
-        curProfile.setPreferredSize(new DimensionUIResource(curProfileDimensions.width + 20, 50));
-        
         this.add(curProfile);
 
         NextProfileButton nextProfileButton = new NextProfileButton("Next Profile", curProfile);

@@ -7,8 +7,22 @@ import java.nio.file.Paths;
 import com.shoaibkhan.modmanager.profiles.CurrentProfile;
 import com.shoaibkhan.modmanager.profiles.utils;
 
-public class CheckIfInstalled {
-    public static boolean checkIfInstalled(String modName) {
+import org.junit.Test;
+
+public class UninstallModTest {
+    @Test
+    public void testUninstallMod() {
+        System.out.println("Before:");
+        printMods();
+
+        UninstallMod.uninstallMod("controls-menu-bug-fix");
+
+        System.out.println("Before:");
+        printMods();
+    }
+
+    @Test
+    public void printMods() {
         try {
             // Check mods folder is present
             String modFolderPath = CurrentProfile.getCurrentProfileDirectory() + "/mods";
@@ -21,23 +35,14 @@ public class CheckIfInstalled {
 
             // get mods list
             File modsFolder = new File(modFolderPath);
-            try {
-                String[] modsList = modsFolder.list();
+            String[] modsList = modsFolder.list();
 
-                for (String name : modsList) {
-                    name = name.toLowerCase();
-                    if (name.contains(modName))
-                        return true;
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
+            for (String name : modsList) {
+                System.out.println(name);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return false;
-
     }
 }

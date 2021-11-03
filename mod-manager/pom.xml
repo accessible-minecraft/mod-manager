@@ -5,7 +5,7 @@
 
   <groupId>com.shoaibkhan.modmanager</groupId>
   <artifactId>mod-manager</artifactId>
-  <version>1.1-beta</version>
+  <version>1.2-beta</version>
 
   <name>mod-manager</name>
   <url>https://github.com/accessible-minecraft/mod-manager</url>

@@ -74,8 +74,8 @@ public class Config {
 
     private static void resetData(JsonNode newData) {
         try {
-            String jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(newData); // Return string
-                                                                                                     // with indentation
+            // Return string with indentation
+            String jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(newData);
             File configFile = new File(CONFIG_PATH);
             configFile.getParentFile().mkdirs(); // create the parent folder
 

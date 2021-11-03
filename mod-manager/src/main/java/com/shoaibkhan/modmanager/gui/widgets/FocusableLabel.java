@@ -6,6 +6,7 @@ import java.awt.event.FocusListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.plaf.DimensionUIResource;
 
 public class FocusableLabel extends JLabel {
     public FocusableLabel(String text) {
@@ -13,6 +14,7 @@ public class FocusableLabel extends JLabel {
         this.setFocusable(true);
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.setToolTipText(text);
+        refreshSize();
 
         this.addFocusListener(new FocusListener() {
 
@@ -28,6 +30,18 @@ public class FocusableLabel extends JLabel {
 
         });
 
-                
     }
+
+    @Override
+    public void setText(String text) {
+        super.setText(text);
+        this.setToolTipText(text);
+    }
+
+    public void refreshSize() {
+        DimensionUIResource dimensionUIResource = new DimensionUIResource(
+                this.getFontMetrics(this.getFont()).stringWidth(this.getText()), 50);
+        this.setPreferredSize(new DimensionUIResource(dimensionUIResource.width + 20, 50));
+    }
+
 }

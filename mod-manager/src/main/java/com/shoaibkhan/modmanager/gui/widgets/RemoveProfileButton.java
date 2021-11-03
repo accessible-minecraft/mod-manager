@@ -19,7 +19,7 @@ public class RemoveProfileButton extends JButton {
             }
 
             forLabel.setText("Selected Profile: " + CurrentProfile.getCurrentProfileName());
-            forLabel.setToolTipText("Selected Profile: " + CurrentProfile.getCurrentProfileName());
+            forLabel.refreshSize();
 
             // Update modsList panel
             ModsListPanel modsListPanel = new ModsListPanel();
