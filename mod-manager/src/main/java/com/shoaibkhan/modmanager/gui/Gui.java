@@ -1,6 +1,5 @@
 package com.shoaibkhan.modmanager.gui;
 
-import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -33,7 +32,6 @@ public class Gui {
         mainPanel.add(profilesPanel);
 
         modsListPanel = new JPanel();
-        modsListPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
         mainPanel.add(modsListPanel);
 
         // Load mods list panel

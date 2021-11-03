@@ -13,7 +13,7 @@ import com.shoaibkhan.modmanager.profiles.CurrentProfile;
 
 public class ProfilesPanel extends JPanel {
     public ProfilesPanel() {
-        FlowLayout layout = new FlowLayout(FlowLayout.RIGHT);
+        FlowLayout layout = new FlowLayout(FlowLayout.LEFT);
 
         this.setLayout(layout);
 
@@ -38,7 +38,6 @@ public class ProfilesPanel extends JPanel {
         removeProfileButton.setPreferredSize(new DimensionUIResource(150, 50));
         this.add(removeProfileButton);
 
-        this.setPreferredSize(new DimensionUIResource(curProfileDimensions.width + 500, 60));
         layout.minimumLayoutSize(this);
     }
 }
