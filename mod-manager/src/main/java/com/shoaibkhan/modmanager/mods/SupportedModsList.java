@@ -13,16 +13,30 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.apache.commons.io.FileUtils;
 
-public class GetSupportedModsList {
+public class SupportedModsList {
     private static final String FILE_NAME = "config/temp/mods.json";
     private static final String FILE_URL = "https://raw.githubusercontent.com/accessible-minecraft/mod-manager-configs/main/mods.json";
     private static final ObjectMapper mapper = new ObjectMapper();
 
+    public static void loadIfNotPresent() {
+        try {
+            // Check if present
+            File temp = new File(FILE_NAME);
+            if(temp.exists()) return;
+            
+            // Store the file
+            FileUtils.copyURLToFile(new URL(FILE_URL), temp);
+            System.out.println("herer\n\n");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static List<String> getSupportedModsList() {
         try {
-            // Store the file temporarily
+            // Load the file
             File temp = new File(FILE_NAME);
-            FileUtils.copyURLToFile(new URL(FILE_URL), temp);
 
             // Get json data
             JsonNode root = null;
@@ -38,13 +52,15 @@ public class GetSupportedModsList {
                 modsList.add(mods.next());
             }
 
-            // Remove the temporary file
-            temp.delete();
-
             return modsList;
         } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static void DeleteTemporaryFile() {
+        File temp = new File(FILE_NAME);
+        temp.delete();
     }
 }

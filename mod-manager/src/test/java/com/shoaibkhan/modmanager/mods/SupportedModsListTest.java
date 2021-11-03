@@ -2,9 +2,9 @@ package com.shoaibkhan.modmanager.mods;
 
 import org.junit.Test;
 
-public class GetSupportedModsListTest {
+public class SupportedModsListTest {
     @Test
     public void testGetSupportedModsList() {
-        System.out.println(GetSupportedModsList.getSupportedModsList());
+        System.out.println(SupportedModsList.getSupportedModsList());
     }
 }
