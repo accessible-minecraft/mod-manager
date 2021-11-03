@@ -1,6 +1,6 @@
 package com.shoaibkhan.modmanager.mods;
 
-import com.shoaibkhan.modmanager.config.SupportedMods;
+import com.shoaibkhan.modmanager.configs.SupportedMods;
 
 import org.junit.Test;
 

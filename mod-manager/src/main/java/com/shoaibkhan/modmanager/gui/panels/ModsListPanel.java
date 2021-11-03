@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.shoaibkhan.modmanager.config.SupportedMods;
+import com.shoaibkhan.modmanager.configs.SupportedMods;
 import com.shoaibkhan.modmanager.gui.Gui;
 import com.shoaibkhan.modmanager.mods.CheckIfInstalled;
 

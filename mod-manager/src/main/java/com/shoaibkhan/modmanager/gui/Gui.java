@@ -5,7 +5,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.shoaibkhan.modmanager.config.SupportedMods;
+import com.shoaibkhan.modmanager.configs.SupportedMods;
 import com.shoaibkhan.modmanager.gui.panels.ModsListPanel;
 import com.shoaibkhan.modmanager.gui.panels.ProfilesPanel;
 
