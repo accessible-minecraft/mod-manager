@@ -1,6 +1,6 @@
 package com.shoaibkhan.modmanager;
 
-import com.shoaibkhan.modmanager.Config.Config;
+import com.shoaibkhan.modmanager.config.Config;
 import com.shoaibkhan.modmanager.profiles.AddNewProfile;
 import com.shoaibkhan.modmanager.profiles.CurrentProfile;
 import com.shoaibkhan.modmanager.profiles.RemoveCurrentProfile;

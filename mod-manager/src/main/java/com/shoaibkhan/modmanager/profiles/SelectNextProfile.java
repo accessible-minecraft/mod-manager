@@ -2,7 +2,7 @@ package com.shoaibkhan.modmanager.profiles;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.shoaibkhan.modmanager.Config.Config;
+import com.shoaibkhan.modmanager.config.Config;
 import com.shoaibkhan.modmanager.utils.ActionResult;
 
 public class SelectNextProfile {
