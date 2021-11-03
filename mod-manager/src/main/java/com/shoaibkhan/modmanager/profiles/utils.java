@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class utils {
-    private enum OS {
+    public static enum OS {
         WINDOWS, MACOS, LINUX;
     }
 
@@ -41,7 +41,7 @@ public class utils {
             return homeDirectory;
     }
 
-    private static OS getOS() {
+    public static OS getOS() {
         String osName = System.getProperty("os.name").toLowerCase();
 
         if (osName.contains("win")) {

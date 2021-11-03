@@ -5,23 +5,23 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import com.shoaibkhan.modmanager.config.SupportedMods;
 import com.shoaibkhan.modmanager.gui.panels.ModsListPanel;
 import com.shoaibkhan.modmanager.gui.panels.ProfilesPanel;
-import com.shoaibkhan.modmanager.mods.SupportedModsList;
 
 public class Gui {
     public static JPanel modsListPanel;
-    public static JFrame f;
+    public static JFrame mainFrame;
 
     public static void init() {
 
-        f = new JFrame("Mod Manager");
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setResizable(false);
-        f.addWindowListener(new java.awt.event.WindowAdapter() {
+        mainFrame = new JFrame("Mod Manager");
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setResizable(false);
+        mainFrame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                SupportedModsList.DeleteTemporaryFile();
+                SupportedMods.DeleteTemporaryFile();
             }
         });
 
@@ -40,8 +40,8 @@ public class Gui {
         ModsListPanel modsListPanel = new ModsListPanel();
         modsListPanel.start();
 
-        f.add(mainPanel);
-        f.pack();
-        f.setVisible(true);
+        mainFrame.add(mainPanel);
+        mainFrame.pack();
+        mainFrame.setVisible(true);
     }
 }
