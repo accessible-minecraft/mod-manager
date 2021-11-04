@@ -23,10 +23,20 @@ public class InstallMod {
 
             // Get version to install from user
             int response = JOptionPane.showOptionDialog(null, "Choose a version to install", "Version selection",
-                    JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, versions, versions[0]);
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, versions, null);
+
+            if (response < 0) {
+                // Didn't chose anything, closed the option dialogue
+                return ActionResult.CLOSE;
+            }
 
             String fileNameToInstall = (String) fileNames[response];
             String downloadUrlToInstall = (String) downloadUrls[response];
+
+            // Confirm again
+            int res = JOptionPane.showConfirmDialog(null, "Are you sure you want to install this mod??");
+            if (res != 0)
+                return ActionResult.CLOSE;
 
             // Download mod
             String filePath = Paths.get(CurrentProfile.getCurrentProfileDirectory(), "mods", fileNameToInstall)

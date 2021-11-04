@@ -31,7 +31,10 @@ public class InstallOrUninstallButton extends JButton {
             } else {
                 ActionResult response = InstallMod.installMod(forMod, minecraftVersion);
                 if (response != ActionResult.PASS) {
-                    JOptionPane.showMessageDialog(this, response.getDescription());
+                    if (response != ActionResult.CLOSE)
+                        // Skip if user closed the option dialogue
+                        JOptionPane.showMessageDialog(this, response.getDescription());
+                    return;
                 }
 
                 JOptionPane.showMessageDialog(this, forMod + " installed", "Mod Installed Successfully",

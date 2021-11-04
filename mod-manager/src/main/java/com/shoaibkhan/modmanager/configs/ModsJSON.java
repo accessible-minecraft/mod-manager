@@ -66,15 +66,13 @@ public class ModsJSON {
                             modsList.add(entry.getKey());
 
                             // Download mod's config.json if not present
-                            if (entry.getKey().equals("controls-menu-bug-fix")) {
-                                String url = entry.getValue().get("url").asText();
-                                String fileName = entry.getValue().get("file-name").asText();
-                                String filePath = Paths.get(MOD_CONFIG_PATH, fileName).toString();
+                            String url = entry.getValue().get("url").asText();
+                            String fileName = entry.getValue().get("file-name").asText();
+                            String filePath = Paths.get(MOD_CONFIG_PATH, fileName).toString();
 
-                                File modFile = new File(filePath);
-                                if (!modFile.exists())
-                                    FileUtils.copyURLToFile(new URL(url), modFile);
-                            }
+                            File modFile = new File(filePath);
+                            if (!modFile.exists())
+                                FileUtils.copyURLToFile(new URL(url), modFile);
                         }
                     }
                 }
