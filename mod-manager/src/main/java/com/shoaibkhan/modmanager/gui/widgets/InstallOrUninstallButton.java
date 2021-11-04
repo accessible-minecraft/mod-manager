@@ -17,18 +17,30 @@ public class InstallOrUninstallButton extends JButton {
 
         this.addActionListener(e -> {
             if (isInstalled) {
+                // Confirm again
+                int res = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this mod??");
+                if (res != 0)
+                    return;
+
                 // Remove mod file
                 ActionResult response = UninstallMod.uninstallMod(forMod);
                 if (response != ActionResult.PASS) {
                     JOptionPane.showMessageDialog(this, response.getDescription());
                 }
 
-                // Refresh mods list panel
-                ModsListPanel modsListPanel = new ModsListPanel();
-                modsListPanel.start();
             } else {
-                InstallMod.installMod(forMod, minecraftVersion);
+                ActionResult response = InstallMod.installMod(forMod, minecraftVersion);
+                if (response != ActionResult.PASS) {
+                    JOptionPane.showMessageDialog(this, response.getDescription());
+                }
+
+                JOptionPane.showMessageDialog(this, forMod + " installed", "Mod Installed Successfully",
+                        JOptionPane.INFORMATION_MESSAGE);
             }
+
+            // Refresh mods list panel
+            ModsListPanel modsListPanel = new ModsListPanel();
+            modsListPanel.start();
         });
     }
 }

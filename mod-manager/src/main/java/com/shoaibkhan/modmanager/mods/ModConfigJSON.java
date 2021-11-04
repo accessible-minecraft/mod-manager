@@ -22,7 +22,6 @@ public class ModConfigJSON {
 
         try {
             File configFile = new File(filePath);
-            // TODO Check if exist and download if not
 
             JsonNode root = null;
             mapper.enable(DeserializationFeature.FAIL_ON_TRAILING_TOKENS);

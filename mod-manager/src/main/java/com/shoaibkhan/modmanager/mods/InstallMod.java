@@ -1,8 +1,15 @@
 package com.shoaibkhan.modmanager.mods;
 
+import java.io.File;
+import java.net.URL;
+import java.nio.file.Paths;
+
 import javax.swing.JOptionPane;
 
+import com.shoaibkhan.modmanager.profiles.CurrentProfile;
 import com.shoaibkhan.modmanager.utils.ActionResult;
+
+import org.apache.commons.io.FileUtils;
 
 public class InstallMod {
     public static ActionResult installMod(String modName, double minecraftVersion) {
@@ -22,6 +29,12 @@ public class InstallMod {
             String downloadUrlToInstall = (String) downloadUrls[response];
 
             // Download mod
+            String filePath = Paths.get(CurrentProfile.getCurrentProfileDirectory(), "mods", fileNameToInstall)
+                    .toString();
+            File modFile = new File(filePath);
+            FileUtils.copyURLToFile(new URL(downloadUrlToInstall), modFile);
+
+            return ActionResult.PASS;
 
         } catch (Exception e) {
             e.printStackTrace();
