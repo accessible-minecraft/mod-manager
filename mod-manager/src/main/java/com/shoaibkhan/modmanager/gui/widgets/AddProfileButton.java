@@ -17,12 +17,17 @@ public class AddProfileButton extends JButton {
                 return;
             double version = 0.0;
             try {
-                version = Float.parseFloat(JOptionPane.showInputDialog("Enter minecraft version of the profile"));
-                if (version != 1.6 || version != 1.17)
-                    JOptionPane.showMessageDialog(this, "Please enter currect version(only 1.16 and 1.17 are supported).");
+                version = Double.parseDouble(JOptionPane.showInputDialog("Enter minecraft version of the profile"));
+                if (!(version == 1.16 || version == 1.17)) {
+                    JOptionPane.showMessageDialog(this,
+                            "Please enter correct version(only 1.16 and 1.17 are supported).");
+                    return;
+                }
+
             } catch (Exception exception) {
                 exception.printStackTrace();
-                JOptionPane.showMessageDialog(this, "Please enter currect version(only 1.16 and 1.17 are supported).");
+                JOptionPane.showMessageDialog(this, "Please enter correct version(only 1.16 and 1.17 are supported).");
+                return;
             }
             String directory = JOptionPane.showInputDialog("Enter directory path", utils.getMinecraftDirectory());
             if (directory == null)

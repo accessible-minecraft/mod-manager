@@ -13,7 +13,7 @@ public class InstallOrUninstallButton extends JButton {
     public InstallOrUninstallButton(String text, boolean isInstalled, String forMod, double minecraftVersion) {
         super(text);
         this.setPreferredSize(new DimensionUIResource(150, 50));
-        this.setToolTipText("Add Profile Button");
+        this.setToolTipText(text + " Button");
 
         this.addActionListener(e -> {
             if (isInstalled) {
