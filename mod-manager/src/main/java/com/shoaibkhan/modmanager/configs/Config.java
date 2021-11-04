@@ -36,7 +36,7 @@ public class Config {
             JsonNode root = null;
             try {
                 mapper.enable(DeserializationFeature.FAIL_ON_TRAILING_TOKENS);
-                root = mapper.readTree(new File(CONFIG_PATH));
+                root = mapper.readTree(configFile);
                 setData(root);
             } catch (IOException e) {
                 // Curropted Data | reset to default

@@ -5,11 +5,12 @@ import javax.swing.JOptionPane;
 import javax.swing.plaf.DimensionUIResource;
 
 import com.shoaibkhan.modmanager.gui.panels.ModsListPanel;
+import com.shoaibkhan.modmanager.mods.InstallMod;
 import com.shoaibkhan.modmanager.mods.UninstallMod;
 import com.shoaibkhan.modmanager.utils.ActionResult;
 
 public class InstallOrUninstallButton extends JButton {
-    public InstallOrUninstallButton(String text, boolean isInstalled, String forMod) {
+    public InstallOrUninstallButton(String text, boolean isInstalled, String forMod, double minecraftVersion) {
         super(text);
         this.setPreferredSize(new DimensionUIResource(150, 50));
         this.setToolTipText("Add Profile Button");
@@ -26,7 +27,7 @@ public class InstallOrUninstallButton extends JButton {
                 ModsListPanel modsListPanel = new ModsListPanel();
                 modsListPanel.start();
             } else {
-
+                InstallMod.installMod(forMod, minecraftVersion);
             }
         });
     }

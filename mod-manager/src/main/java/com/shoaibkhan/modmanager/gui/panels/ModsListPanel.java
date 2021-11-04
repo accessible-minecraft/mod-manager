@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-import com.shoaibkhan.modmanager.configs.SupportedMods;
+import com.shoaibkhan.modmanager.configs.ModsJSON;
 import com.shoaibkhan.modmanager.gui.Gui;
 import com.shoaibkhan.modmanager.gui.widgets.FocusableLabel;
 import com.shoaibkhan.modmanager.gui.widgets.InstallOrUninstallButton;
@@ -19,19 +19,14 @@ public class ModsListPanel extends Thread {
         BoxLayout layout = new BoxLayout(Gui.modsListPanel, BoxLayout.Y_AXIS);
 
         Gui.modsListPanel.setLayout(layout);
-        SupportedMods.loadIfNotPresent();
+        ModsJSON.loadIfNotPresent();
 
         // Remove all components in modsListPanel
         Gui.modsListPanel.removeAll();
 
         // Get supported mods list and panels for each mod
-        double version = CurrentProfile.getCurrentProfileVersion();
-        List<String> modsList = SupportedMods.getSupportedModsListFor1_17();
-
-        if (Double.compare(version, 1.17) == 0)
-            modsList = SupportedMods.getSupportedModsListFor1_17();
-        else if (Double.compare(version, 1.16) == 0)
-            modsList = SupportedMods.getSupportedModsListFor1_16();
+        double minecraftVersion = CurrentProfile.getCurrentProfileVersion();
+        List<String> modsList = ModsJSON.getSupportedModsList(minecraftVersion);
 
         for (String modName : modsList) {
             JPanel panel = new JPanel();
@@ -49,7 +44,7 @@ public class ModsListPanel extends Thread {
             panel.add(modNameLabel);
 
             InstallOrUninstallButton installOrUninstall = new InstallOrUninstallButton(
-                    isInstalled ? "Uninstall" : "Install", isInstalled, modName);
+                    isInstalled ? "Uninstall" : "Install", isInstalled, modName, minecraftVersion);
             panel.add(installOrUninstall);
 
             Gui.modsListPanel.add(panel);

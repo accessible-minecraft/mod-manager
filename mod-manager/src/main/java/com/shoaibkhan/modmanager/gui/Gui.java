@@ -4,7 +4,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.shoaibkhan.modmanager.configs.SupportedMods;
+import com.shoaibkhan.modmanager.configs.ModsJSON;
 import com.shoaibkhan.modmanager.gui.panels.ModsListPanel;
 import com.shoaibkhan.modmanager.gui.panels.ProfilesPanel;
 
@@ -20,7 +20,7 @@ public class Gui {
         mainFrame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                SupportedMods.DeleteTemporaryFile();
+                ModsJSON.DeleteTempFolder();
             }
         });
 
