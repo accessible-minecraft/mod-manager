@@ -22,26 +22,26 @@ public class ModConfigJSON {
 
         try {
             File configFile = new File(filePath);
-            if (configFile.exists()) {
-                JsonNode root = null;
-                mapper.enable(DeserializationFeature.FAIL_ON_TRAILING_TOKENS);
-                root = mapper.readTree(configFile);
+            // TODO Check if exist and download if not
 
-                // Get node for the correct minecraft version
-                JsonNode versionContainer = root.path(Double.toString(minecraftVersion));
+            JsonNode root = null;
+            mapper.enable(DeserializationFeature.FAIL_ON_TRAILING_TOKENS);
+            root = mapper.readTree(configFile);
 
-                Iterator<Entry<String, JsonNode>> versions = versionContainer.fields();
-                List<String> versionsList = new ArrayList<>();
+            // Get node for the correct minecraft version
+            JsonNode versionContainer = root.path(Double.toString(minecraftVersion));
 
-                // Iterate through all versions
-                while (versions.hasNext()) {
-                    JsonNode entry = versions.next().getValue();
-                    versionsList.add(entry.get("version").asText());
-                }
-                Collections.reverse(versionsList);
+            Iterator<Entry<String, JsonNode>> versions = versionContainer.fields();
+            List<String> versionsList = new ArrayList<>();
 
-                return versionsList;
+            // Iterate through all versions
+            while (versions.hasNext()) {
+                JsonNode entry = versions.next().getValue();
+                versionsList.add(entry.get("version").asText());
             }
+            Collections.reverse(versionsList);
+
+            return versionsList;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,26 +55,25 @@ public class ModConfigJSON {
 
         try {
             File configFile = new File(filePath);
-            if (configFile.exists()) {
-                JsonNode root = null;
-                mapper.enable(DeserializationFeature.FAIL_ON_TRAILING_TOKENS);
-                root = mapper.readTree(configFile);
 
-                // Get node for the correct minecraft version
-                JsonNode versionContainer = root.path(Double.toString(minecraftVersion));
+            JsonNode root = null;
+            mapper.enable(DeserializationFeature.FAIL_ON_TRAILING_TOKENS);
+            root = mapper.readTree(configFile);
 
-                Iterator<Entry<String, JsonNode>> versions = versionContainer.fields();
-                List<String> fileNameList = new ArrayList<>();
+            // Get node for the correct minecraft version
+            JsonNode versionContainer = root.path(Double.toString(minecraftVersion));
 
-                // Iterate through all versions
-                while (versions.hasNext()) {
-                    JsonNode entry = versions.next().getValue();
-                    fileNameList.add(entry.get("file-name").asText());
-                }
-                Collections.reverse(fileNameList);
+            Iterator<Entry<String, JsonNode>> versions = versionContainer.fields();
+            List<String> fileNameList = new ArrayList<>();
 
-                return fileNameList;
+            // Iterate through all versions
+            while (versions.hasNext()) {
+                JsonNode entry = versions.next().getValue();
+                fileNameList.add(entry.get("file-name").asText());
             }
+            Collections.reverse(fileNameList);
+
+            return fileNameList;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -88,9 +87,6 @@ public class ModConfigJSON {
 
         try {
             File configFile = new File(filePath);
-            // Download if not exist
-            if (!configFile.exists()) {
-            }
 
             JsonNode root = null;
             mapper.enable(DeserializationFeature.FAIL_ON_TRAILING_TOKENS);

@@ -41,7 +41,7 @@ public class utils {
             return homeDirectory;
     }
 
-    public static OS getOS() {
+    private static OS getOS() {
         String osName = System.getProperty("os.name").toLowerCase();
 
         if (osName.contains("win")) {

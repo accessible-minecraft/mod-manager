@@ -5,15 +5,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import com.shoaibkhan.modmanager.profiles.CurrentProfile;
-import com.shoaibkhan.modmanager.profiles.utils;
 
 public class CheckIfInstalled {
     public static boolean checkIfInstalled(String modName) {
         try {
             // Check mods folder is present
-            String modFolderPath = CurrentProfile.getCurrentProfileDirectory() + "/mods";
-            if (utils.getOS() == utils.OS.WINDOWS)
-                modFolderPath = CurrentProfile.getCurrentProfileDirectory() + "\\mods";
+            String modFolderPath = Paths.get(CurrentProfile.getCurrentProfileDirectory(), "mods").toString();
 
             // Create mods folder if not present
             if (!Files.exists(Paths.get(modFolderPath)))

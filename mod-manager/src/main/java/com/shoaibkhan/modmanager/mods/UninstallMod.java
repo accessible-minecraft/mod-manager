@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import com.shoaibkhan.modmanager.profiles.CurrentProfile;
-import com.shoaibkhan.modmanager.profiles.utils;
 import com.shoaibkhan.modmanager.utils.ActionResult;
 
 public class UninstallMod {
@@ -16,9 +15,7 @@ public class UninstallMod {
 
         try {
             // Check mods folder is present
-            String modFolderPath = CurrentProfile.getCurrentProfileDirectory() + "/mods";
-            if (utils.getOS() == utils.OS.WINDOWS)
-                modFolderPath = CurrentProfile.getCurrentProfileDirectory() + "\\mods";
+            String modFolderPath = Paths.get(CurrentProfile.getCurrentProfileDirectory(), "mods").toString();
 
             // Create mods folder if not present
             if (!Files.exists(Paths.get(modFolderPath)))
@@ -31,10 +28,7 @@ public class UninstallMod {
             for (String name : modsList) {
                 if (name.toLowerCase().contains(modName)) {
                     // Delete the mod file
-                    if (utils.getOS() == utils.OS.WINDOWS)
-                        new File(modsFolder + "\\" + name).delete();
-                    else
-                        new File(modsFolder + "/" + name).delete();
+                    new File(Paths.get(modFolderPath, name).toString()).delete();
 
                     return ActionResult.PASS;
                 }
