@@ -1,17 +1,17 @@
-package com.shoaibkhan.modmanager.gui.widgets;
+package com.shoaibkhan.modmanager.gui.widgets.profile;
 
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import com.shoaibkhan.modmanager.gui.panels.ModsListPanel;
+import com.shoaibkhan.modmanager.gui.widgets.base.BaseButton;
+import com.shoaibkhan.modmanager.gui.widgets.common.ButtonLabel;
 import com.shoaibkhan.modmanager.profiles.CurrentProfile;
 import com.shoaibkhan.modmanager.profiles.SelectNextProfile;
 import com.shoaibkhan.modmanager.utils.ActionResult;
 
-public class NextProfileButton extends JButton {
-    public NextProfileButton(String text, FocusableLabel forLabel) {
+public class NextProfileButton extends BaseButton {
+    public NextProfileButton(String text, ButtonLabel forLabel) {
         super(text);
-        this.setToolTipText("Select next profile button");
 
         this.addActionListener(e -> {
             ActionResult response = SelectNextProfile.selectNextProfiResult();

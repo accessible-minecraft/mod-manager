@@ -1,19 +1,18 @@
-package com.shoaibkhan.modmanager.gui.widgets;
+package com.shoaibkhan.modmanager.gui.widgets.mods;
 
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.DimensionUIResource;
 
 import com.shoaibkhan.modmanager.gui.panels.ModsListPanel;
+import com.shoaibkhan.modmanager.gui.widgets.base.BaseButton;
 import com.shoaibkhan.modmanager.mods.InstallMod;
 import com.shoaibkhan.modmanager.mods.UninstallMod;
 import com.shoaibkhan.modmanager.utils.ActionResult;
 
-public class InstallOrUninstallButton extends JButton {
+public class InstallOrUninstallButton extends BaseButton {
     public InstallOrUninstallButton(String text, boolean isInstalled, String forMod, double minecraftVersion) {
         super(text);
         this.setPreferredSize(new DimensionUIResource(150, 50));
-        this.setToolTipText(text + " Button");
 
         this.addActionListener(e -> {
             if (isInstalled) {

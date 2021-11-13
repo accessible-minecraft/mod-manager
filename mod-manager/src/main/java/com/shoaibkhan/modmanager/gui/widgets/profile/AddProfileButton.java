@@ -1,16 +1,15 @@
-package com.shoaibkhan.modmanager.gui.widgets;
+package com.shoaibkhan.modmanager.gui.widgets.profile;
 
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import com.shoaibkhan.modmanager.gui.widgets.base.BaseButton;
 import com.shoaibkhan.modmanager.profiles.AddNewProfile;
 import com.shoaibkhan.modmanager.profiles.utils;
 import com.shoaibkhan.modmanager.utils.ActionResult;
 
-public class AddProfileButton extends JButton {
+public class AddProfileButton extends BaseButton {
     public AddProfileButton(String text) {
         super(text);
-        this.setToolTipText("Add Profile Button");
         this.addActionListener(e -> {
             String name = JOptionPane.showInputDialog("Enter name of the profile");
             if (name == null)

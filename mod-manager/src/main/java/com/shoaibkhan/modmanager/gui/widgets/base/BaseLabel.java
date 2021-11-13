@@ -1,35 +1,33 @@
-package com.shoaibkhan.modmanager.gui.widgets;
+package com.shoaibkhan.modmanager.gui.widgets.base;
 
+import javax.swing.JLabel;
+import javax.swing.plaf.DimensionUIResource;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.plaf.DimensionUIResource;
-
-public class FocusableLabel extends JLabel {
-    public FocusableLabel(String text) {
+public class BaseLabel extends JLabel {
+    public BaseLabel(String text) {
         super(text);
         this.setFocusable(true);
-        this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.setToolTipText(text);
         refreshSize();
+
+        setForeground(Color.BLACK);
 
         this.addFocusListener(new FocusListener() {
 
             @Override
             public void focusGained(FocusEvent e) {
-                setBorder(BorderFactory.createLineBorder(Color.RED));
+                setForeground(Color.RED);
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                setBorder(BorderFactory.createLineBorder(Color.BLACK));
+                setForeground(Color.BLACK);
             }
 
         });
-
     }
 
     @Override
@@ -43,5 +41,4 @@ public class FocusableLabel extends JLabel {
                 this.getFontMetrics(this.getFont()).stringWidth(this.getText()), 50);
         this.setPreferredSize(new DimensionUIResource(dimensionUIResource.width + 20, 50));
     }
-
 }
