@@ -13,6 +13,11 @@ public class RemoveProfileButton extends BaseButton {
     public RemoveProfileButton(String text, ButtonLabel forLabel) {
         super(text);
         this.addActionListener(e -> {
+            // Confirm again
+            int res = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this profile??");
+            if (res != 0)
+                return;
+
             ActionResult removeCurrentProfileResponse = RemoveCurrentProfile.removeCurrentProfile();
             if (removeCurrentProfileResponse != ActionResult.PASS) {
                 JOptionPane.showMessageDialog(this, removeCurrentProfileResponse.getDescription());
