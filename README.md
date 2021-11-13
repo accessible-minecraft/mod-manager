@@ -3,6 +3,14 @@
 Mod Manager is the new way to install and manage minecraft java accessibility mods. You can also navigate through the app using only keyboard, more about that in the [Keyboard Only Navigation](#keyboard-only-navigation) section.
 If you like my work and want to support me, you can do so via patreon - [shoaibkhan](https://www.patreon.com/shoaibkhan).
 
+## Quick Links
+
+- [Download Latest Release Zip FIle](https://github.com/accessible-minecraft/mod-manager/releases/latest/download/Mod.Manager.zip)
+- [Install Java](https://www.java.com/en/download/)
+- [Install Fabric](https://fabricmc.net/wiki/install)
+- [Discord Sever](https://discord.gg/yQjjsDqWQX)
+- [Report Issues](https://github.com/accessible-minecraft/mod-manager/issues)
+- 
 ## Table of Contents
 
 1. [Requirements](#requirements)
@@ -19,15 +27,7 @@ If you like my work and want to support me, you can do so via patreon - [shoaibk
 	- [Changing a version of the mod](#changing-a-version-of-the-mod)
 7. [Installing NVDA Controller DLL](#installing-nvda-controller-dll)
 8. [Contact](#contact)
-
-## Quick Links
-
-- [Download Latest Release Zip FIle](https://github.com/accessible-minecraft/mod-manager/releases/latest/download/Mod.Manager.zip)
-- [Install Java](https://www.java.com/en/download/)
-- [Install Fabric](https://fabricmc.net/wiki/install)
-- [Discord Sever](https://discord.gg/yQjjsDqWQX)
-- [Report Issues](https://github.com/accessible-minecraft/mod-manager/issues)
-
+9. 
 ## Requirements 
 
 Only java is required for the app. The minimum version of java required is java 8 (or 1.8). The link to download and install java is in [quick links](#quick-links) section.
