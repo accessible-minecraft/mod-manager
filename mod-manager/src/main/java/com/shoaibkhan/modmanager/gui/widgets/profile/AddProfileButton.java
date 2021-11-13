@@ -11,12 +11,12 @@ public class AddProfileButton extends BaseButton {
     public AddProfileButton(String text) {
         super(text);
         this.addActionListener(e -> {
-            String name = JOptionPane.showInputDialog("Enter name of the profile");
+            String name = JOptionPane.showInputDialog("Enter name of the profile", "Enter profile name");
             if (name == null)
                 return;
             double version = 0.0;
             try {
-                version = Double.parseDouble(JOptionPane.showInputDialog("Enter minecraft version of the profile"));
+                version = Double.parseDouble(JOptionPane.showInputDialog("Enter minecraft version of the profile", "Enter minecraft version"));
                 if (!(version == 1.16 || version == 1.17)) {
                     JOptionPane.showMessageDialog(this,
                             "Please enter correct version(only 1.16 and 1.17 are supported).");
