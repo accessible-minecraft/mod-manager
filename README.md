@@ -11,7 +11,7 @@ If you like my work and want to support me, you can do so via patreon - [shoaibk
 - [Install Fabric](https://fabricmc.net/wiki/install)
 - [Discord Sever](https://discord.gg/yQjjsDqWQX)
 - [Report Issues](https://github.com/accessible-minecraft/mod-manager/issues)
-- 
+
 ## Table of Contents
 
 1. [Requirements](#requirements)
@@ -28,7 +28,7 @@ If you like my work and want to support me, you can do so via patreon - [shoaibk
 	- [Changing a version of the mod](#changing-a-version-of-the-mod)
 7. [Installing NVDA Controller DLL](#installing-nvda-controller-dll)
 8. [Contact](#contact)
-9. 
+ 
 ## Requirements 
 
 Only java is required for the app. The minimum version of java required is java 8 (or 1.8). The link to download and install java is in [quick links](#quick-links) section.
