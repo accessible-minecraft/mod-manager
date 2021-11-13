@@ -1,6 +1,6 @@
 # Mod Manager
 
-Mod Manager is the new way to install and manage minecraft java acessibility mods. You can also navigate through the app using only keyboard, more about that in the [Keyboard Only Navigation](#keyboard-only-navigation) section.
+Mod Manager is the new way to install and manage minecraft java accessibility mods. You can also navigate through the app using only keyboard, more about that in the [Keyboard Only Navigation](#keyboard-only-navigation) section.
 If you like my work and want to support me, you can do so via patreon - [shoaibkhan](https://www.patreon.com/shoaibkhan).
 
 ## Table of Contents
