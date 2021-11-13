@@ -58,7 +58,7 @@ Yup, you can use this app without using mouse natively. The app only uses two ke
 
 ## Features
 
-- [Multiple profiles](#multiple-profiles)
+- [Multiple profiles support](#multiple-profiles)
 - [Manage Mods](#managing-mods)
 - [Install nvda controller dll for Windows](#installing-nvda-controller-dll)
 
