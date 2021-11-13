@@ -12,8 +12,10 @@ import com.shoaibkhan.modmanager.gui.widgets.common.ButtonLabel;
 import com.shoaibkhan.modmanager.gui.widgets.common.HeadingLabel;
 import com.shoaibkhan.modmanager.gui.widgets.mods.ChangeVersionButton;
 import com.shoaibkhan.modmanager.gui.widgets.mods.InstallOrUninstallButton;
+import com.shoaibkhan.modmanager.gui.widgets.mods.NvdaDllButton;
 import com.shoaibkhan.modmanager.mods.CheckIfInstalled;
 import com.shoaibkhan.modmanager.profiles.CurrentProfile;
+import com.shoaibkhan.modmanager.profiles.utils;
 
 public class ModsListPanel extends Thread {
     public void run() {
@@ -67,6 +69,16 @@ public class ModsListPanel extends Thread {
             panel.add(changeVersionButton);
 
             Gui.modsListPanel.add(panel);
+        }
+
+        // Add Nvda download button
+        if (utils.getOS() == utils.OS.WINDOWS) {
+            NvdaDllButton nvdaDllButton = new NvdaDllButton("Install NVDA Controller DLL");
+            JPanel nvdaDllPanel = new JPanel();
+            nvdaDllPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+            nvdaDllPanel.add(nvdaDllButton);
+
+            Gui.modsListPanel.add(nvdaDllPanel);
         }
 
         Gui.modsListPanel.setMinimumSize(Gui.modsListPanel.getMinimumSize());

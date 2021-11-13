@@ -1,6 +1,7 @@
 package com.shoaibkhan.modmanager.gui.widgets.profile;
 
 import javax.swing.JOptionPane;
+import javax.swing.plaf.DimensionUIResource;
 
 import com.shoaibkhan.modmanager.gui.panels.ModsListPanel;
 import com.shoaibkhan.modmanager.gui.widgets.base.BaseButton;
@@ -12,6 +13,7 @@ import com.shoaibkhan.modmanager.utils.ActionResult;
 public class NextProfileButton extends BaseButton {
     public NextProfileButton(String text, ButtonLabel forLabel) {
         super(text);
+        this.setPreferredSize(new DimensionUIResource(150, 50));
 
         this.addActionListener(e -> {
             ActionResult response = SelectNextProfile.selectNextProfiResult();
