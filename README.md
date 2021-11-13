@@ -6,6 +6,7 @@ If you like my work and want to support me, you can do so via patreon - [shoaibk
 ## Quick Links
 
 - [Download Latest Release Zip FIle](https://github.com/accessible-minecraft/mod-manager/releases/latest/download/Mod.Manager.zip)
+- [About the Latest Release](https://github.com/accessible-minecraft/mod-manager/releases/latest/)
 - [Install Java](https://www.java.com/en/download/)
 - [Install Fabric](https://fabricmc.net/wiki/install)
 - [Discord Sever](https://discord.gg/yQjjsDqWQX)
