@@ -1,1 +1,1 @@
-java -jar mod-manager.jar >>log.txt
+java -jar mod-manager.jar > log.txt 2>&1
