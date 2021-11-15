@@ -47,9 +47,9 @@ public class ModsListPanel extends Thread {
             boolean isInstalled = CheckIfInstalled.checkIfInstalled(modName);
 
             // Remove (-) from mod name
-            String modifiedName = "";
+            String modifiedName = modName;
             if (modName.contains("-"))
-                modifiedName = modName.replaceAll("-", " ");
+                modifiedName = modifiedName.replaceAll("-", " ");
 
             ButtonLabel modNameLabel = new ButtonLabel(
                     modifiedName + (isInstalled ? " (installed)" : " (not installed)"));

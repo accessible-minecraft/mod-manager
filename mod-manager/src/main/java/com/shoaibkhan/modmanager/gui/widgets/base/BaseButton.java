@@ -10,7 +10,7 @@ import javax.swing.BorderFactory;
 public class BaseButton extends JButton {
     public BaseButton(String text){
         super(text);
-        this.setToolTipText(text + " Button");
+        // this.setToolTipText(text + " Button");
 
         this.addFocusListener(new FocusListener() {
 

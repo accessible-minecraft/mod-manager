@@ -55,7 +55,10 @@ public class utils {
     }
 
     public static boolean checkValidity(String path) {
-        if (!Files.exists(Paths.get(path)))
+        System.out.println("String path:\n"+path);
+        System.out.println("Absolute Path:");
+        System.out.println(Paths.get(path).toAbsolutePath());
+        if (!Files.exists(Paths.get(path).toAbsolutePath()))
             return false;
 
         File folder = new File(path);

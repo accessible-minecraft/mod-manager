@@ -10,7 +10,8 @@ public class BaseLabel extends JLabel {
     public BaseLabel(String text) {
         super(text);
         this.setFocusable(true);
-        this.setToolTipText(text);
+        // this.setToolTipText(text);
+
         refreshSize();
 
         setForeground(Color.BLACK);
@@ -33,7 +34,6 @@ public class BaseLabel extends JLabel {
     @Override
     public void setText(String text) {
         super.setText(text);
-        this.setToolTipText(text);
     }
 
     public void refreshSize() {

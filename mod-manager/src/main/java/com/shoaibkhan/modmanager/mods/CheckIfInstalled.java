@@ -22,7 +22,6 @@ public class CheckIfInstalled {
                 String[] modsList = modsFolder.list();
 
                 for (String name : modsList) {
-                    name = name.toLowerCase();
                     if (name.contains(modName))
                         return true;
                 }
