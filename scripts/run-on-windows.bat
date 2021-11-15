@@ -1,0 +1,1 @@
+java -jar mod-manager.jar >>log.txt

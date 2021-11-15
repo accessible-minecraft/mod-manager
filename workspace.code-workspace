@@ -6,6 +6,9 @@
 		},{
 			"name": "Project Root",
 			"path": "."
+		},{
+			"name": "Scripts",
+			"path": "./scripts"
 		}
 	],
 	"settings": {
