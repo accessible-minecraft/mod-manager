@@ -26,7 +26,7 @@ public class UninstallMod {
             String[] modsList = modsFolder.list();
 
             for (String name : modsList) {
-                if (name.toLowerCase().contains(modName)) {
+                if (name.contains(modName)) {
                     // Delete the mod file
                     new File(Paths.get(modFolderPath, name).toString()).delete();
 
