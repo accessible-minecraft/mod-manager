@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import com.shoaibkhan.modmanager.configs.ModsJSON;
+import com.shoaibkhan.modmanager.gui.menu.FileMenu;
 import com.shoaibkhan.modmanager.gui.panels.ModsListPanel;
 import com.shoaibkhan.modmanager.gui.panels.ProfilesPanel;
 
@@ -24,6 +25,9 @@ public class Gui {
             }
         });
 
+        // Add the file menu
+        FileMenu fileMenu = new FileMenu();
+        mainFrame.setJMenuBar(fileMenu);
         // main container
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
