@@ -6,7 +6,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.plaf.DimensionUIResource;
 
-import com.shoaibkhan.modmanager.gui.widgets.common.ButtonLabel;
+import com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel;
 import com.shoaibkhan.modmanager.gui.widgets.common.HeadingLabel;
 import com.shoaibkhan.modmanager.gui.widgets.profile.AddProfileButton;
 import com.shoaibkhan.modmanager.gui.widgets.profile.NextProfileButton;
@@ -27,7 +27,7 @@ public class ProfilesPanel extends JPanel {
 
         JPanel profilePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-        ButtonLabel curProfile = new ButtonLabel("Selected Profile: " + CurrentProfile.getCurrentProfileName());
+        BaseLabel curProfile = new BaseLabel("Selected Profile: " + CurrentProfile.getCurrentProfileName());
         profilePanel.add(curProfile);
 
         NextProfileButton nextProfileButton = new NextProfileButton("Next Profile", curProfile);

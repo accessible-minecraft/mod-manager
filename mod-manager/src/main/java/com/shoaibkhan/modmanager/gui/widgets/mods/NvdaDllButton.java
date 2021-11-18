@@ -17,7 +17,7 @@ import org.apache.commons.io.FileUtils;
 public class NvdaDllButton extends BaseButton {
     public NvdaDllButton(String text) {
         super(text);
-        this.setPreferredSize(new DimensionUIResource(250, 50));
+        this.setPreferredSize(new DimensionUIResource(150, 50));
 
         this.addActionListener(e -> {
             if (utils.getOS() != utils.OS.WINDOWS)

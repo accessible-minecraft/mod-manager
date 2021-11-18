@@ -5,13 +5,13 @@ import javax.swing.plaf.DimensionUIResource;
 
 import com.shoaibkhan.modmanager.gui.panels.ModsListPanel;
 import com.shoaibkhan.modmanager.gui.widgets.base.BaseButton;
-import com.shoaibkhan.modmanager.gui.widgets.common.ButtonLabel;
+import com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel;
 import com.shoaibkhan.modmanager.profiles.CurrentProfile;
 import com.shoaibkhan.modmanager.profiles.RemoveCurrentProfile;
 import com.shoaibkhan.modmanager.utils.ActionResult;
 
 public class RemoveProfileButton extends BaseButton {
-    public RemoveProfileButton(String text, ButtonLabel forLabel) {
+    public RemoveProfileButton(String text, BaseLabel forLabel) {
         super(text);
         this.setPreferredSize(new DimensionUIResource(150, 50));
 

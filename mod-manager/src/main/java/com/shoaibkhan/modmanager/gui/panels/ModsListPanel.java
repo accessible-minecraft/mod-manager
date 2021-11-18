@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 import com.shoaibkhan.modmanager.configs.ModsJSON;
 import com.shoaibkhan.modmanager.gui.Gui;
-import com.shoaibkhan.modmanager.gui.widgets.common.ButtonLabel;
+import com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel;
 import com.shoaibkhan.modmanager.gui.widgets.common.HeadingLabel;
 import com.shoaibkhan.modmanager.gui.widgets.mods.ChangeVersionButton;
 import com.shoaibkhan.modmanager.gui.widgets.mods.InstallOrUninstallButton;
@@ -51,7 +51,7 @@ public class ModsListPanel extends Thread {
             if (modName.contains("-"))
                 modifiedName = modifiedName.replaceAll("-", " ");
 
-            ButtonLabel modNameLabel = new ButtonLabel(
+            BaseLabel modNameLabel = new BaseLabel(
                     modifiedName + (isInstalled ? " (installed)" : " (not installed)"));
             panel.add(modNameLabel);
 

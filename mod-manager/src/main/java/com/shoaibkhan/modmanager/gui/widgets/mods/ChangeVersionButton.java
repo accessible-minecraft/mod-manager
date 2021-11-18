@@ -11,7 +11,7 @@ import com.shoaibkhan.modmanager.utils.ActionResult;
 public class ChangeVersionButton extends BaseButton {
     public ChangeVersionButton(String text, String forMod, double minecraftVersion) {
         super(text);
-        this.setPreferredSize(new DimensionUIResource(150, 50));
+        this.setPreferredSize(new DimensionUIResource(180, 50));
 
         this.addActionListener(e -> {
             ActionResult response = ChangeVersion.changeVersion(forMod, minecraftVersion);

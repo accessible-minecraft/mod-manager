@@ -3,29 +3,31 @@ package com.shoaibkhan.modmanager.gui.widgets.base;
 import javax.swing.JLabel;
 import javax.swing.plaf.DimensionUIResource;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 public class BaseLabel extends JLabel {
     public BaseLabel(String text) {
         super(text);
+        this.setFont(new Font ("Arial", Font.PLAIN, 18));
         this.setFocusable(true);
         // this.setToolTipText(text);
 
         refreshSize();
 
-        setForeground(Color.BLACK);
+        setForeground(new Color(200, 200, 200));
 
         this.addFocusListener(new FocusListener() {
 
             @Override
             public void focusGained(FocusEvent e) {
-                setForeground(Color.RED);
+                setForeground(new Color(23, 2, 12));
             }
 
             @Override
             public void focusLost(FocusEvent e) {
-                setForeground(Color.BLACK);
+                setForeground(new Color(200, 200, 200));
             }
 
         });

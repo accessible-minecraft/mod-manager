@@ -14,6 +14,7 @@ public class Gui {
     public static JFrame mainFrame;
 
     public static void init() {
+    	
 
         mainFrame = new JFrame("Mod Manager");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,6 +44,10 @@ public class Gui {
         modsListPanel.start();
 
         mainFrame.add(mainPanel);
+        
+
+    	// Set theme and make it visible
+    	new Theme(mainFrame);
         mainFrame.pack();
         mainFrame.setVisible(true);
     }

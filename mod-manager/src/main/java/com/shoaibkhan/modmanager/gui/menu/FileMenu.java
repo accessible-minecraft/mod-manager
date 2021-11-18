@@ -1,5 +1,6 @@
 package com.shoaibkhan.modmanager.gui.menu;
 
+import java.awt.Font;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileReader;
@@ -24,9 +25,11 @@ import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 public class FileMenu extends JMenuBar {
     public FileMenu() {
         JMenu fileMenu = new JMenu("File");
+        fileMenu.setFont(new Font ("Arial", Font.PLAIN, 16));
 
         // Menu Items
         JMenuItem checkForUpdateItem = new JMenuItem("Check for Updates");
+        checkForUpdateItem.setFont(new Font ("Arial", Font.PLAIN, 16));
         checkForUpdateItem.addActionListener(e -> {
             try {
                 // Get the current manager version
@@ -64,6 +67,8 @@ public class FileMenu extends JMenuBar {
                         // Close 
                         System.exit(ABORT);
                     }
+                } else {
+                	JOptionPane.showMessageDialog(null, "Already on the latest release!");
                 }
             } catch (IOException | XmlPullParserException e1) {
                 JOptionPane.showMessageDialog(null, "An error occured!", "Error", JOptionPane.ERROR_MESSAGE);
