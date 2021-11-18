@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="mod-manager/src/main/java"/>
+	<classpathentry kind="src" path="mod-manager/src/test/java"/>
+	<classpathentry kind="lib" path="mod-manager/mod-manager.jar"/>
+	<classpathentry kind="lib" path="mod-manager/target/mod-manager-1.006.jar"/>
+	<classpathentry kind="lib" path="mod-manager/target/original-mod-manager-1.006.jar"/>
+	<classpathentry kind="output" path="mod-manager/target/classes"/>
+</classpath>

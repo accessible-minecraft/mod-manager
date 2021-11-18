@@ -34,6 +34,12 @@ public class LatestFiles {
         ActionResult moveResult = moveExtractedFiles();
         if (moveResult != ActionResult.PASS)
             return moveResult;
+        
+        // Give run permissions to run-on-unix file
+        final File runOnUnixFile = new File(Paths.get(APP_FOLDER, "run-on-unix").toString());
+        runOnUnixFile.setReadable(true, false);
+        runOnUnixFile.setExecutable(true, false);
+        runOnUnixFile.setWritable(true, false);
 
         return ActionResult.PASS;
     }

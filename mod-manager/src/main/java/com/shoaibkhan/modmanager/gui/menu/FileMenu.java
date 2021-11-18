@@ -12,6 +12,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
 import com.shoaibkhan.modmanager.Main;
+import com.shoaibkhan.modmanager.configs.ModsJSON;
 import com.shoaibkhan.modmanager.configs.PropertiesJSON;
 import com.shoaibkhan.modmanager.manager.LatestFiles;
 import com.shoaibkhan.modmanager.utils.ActionResult;
@@ -54,9 +55,14 @@ public class FileMenu extends JMenuBar {
                     // Install the latest update
                     ActionResult result = LatestFiles.updateFiles();
                     if (result == ActionResult.PASS) {
-                        JOptionPane.showMessageDialog(null, "Mod Manager updated successfully", "Update Succcessful",
+                        JOptionPane.showMessageDialog(null, "Mod Manager updated successfully! Closing the app now.", "Update Succcessful!",
                                 JOptionPane.DEFAULT_OPTION);
-                        // TODO close application and give chmod 777 to run-on-unix file
+                        
+                        // Delete temporary files before closing
+                        ModsJSON.DeleteTempFolder();
+                        
+                        // Close 
+                        System.exit(ABORT);
                     }
                 }
             } catch (IOException | XmlPullParserException e1) {
