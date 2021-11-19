@@ -25,7 +25,8 @@ If you like my work and want to support me, you can do so via patreon - [shoaibk
 	- [Installing or Uninstalling a mod](#installing-or-uninstalling-a-mod)
 	- [Changing a version of the mod](#changing-a-version-of-the-mod)
 7. [Installing NVDA Controller DLL](#installing-nvda-controller-dll)
-8. [Contact](#contact)
+8. [Updating the Manager](#updating-the-manager)
+9. [Contact](#contact)
  
 ## Requirements 
 
@@ -51,8 +52,9 @@ If that file is not running too, then you can open the terminal in the mod manag
 ## Keyboard Only Navigation
 
 Yup, you can use this app without using mouse natively. The app only uses two keybindings as of now:-
-- **Tab** = to cycle through the buttons and labels
+- **Tab** = to cycle through the buttons and labels.
 - **Spacebar** = to use a button.
+- **Left Alt** = to access the Menu bar.
 
 ## Features
 
@@ -100,6 +102,11 @@ It's similar to installing a mod, just use/click the `Change Version` Button and
 ## Installing Nvda Controller Dll
 
 It's the easiest, just use/click the Install `Nvda Controller Dll` Button and it will download and install it for ya.
+
+## Updating the Manager
+
+The manager has a `File` menu, which can be accessed by `left alt key`, in this menu there is a `check for updates` item which updates the manager automatically.
+When updating it manually, copy the `Config` folder to the new manager location to import all the profiles to the new manager version.
 
 ## Contact
 
