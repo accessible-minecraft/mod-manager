@@ -6,43 +6,46 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.plaf.DimensionUIResource;
 
-import com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel;
 import com.shoaibkhan.modmanager.gui.widgets.common.HeadingLabel;
 import com.shoaibkhan.modmanager.gui.widgets.profile.AddProfileButton;
-import com.shoaibkhan.modmanager.gui.widgets.profile.NextProfileButton;
+import com.shoaibkhan.modmanager.gui.widgets.profile.ProfilesComboBox;
 import com.shoaibkhan.modmanager.gui.widgets.profile.RemoveProfileButton;
-import com.shoaibkhan.modmanager.profiles.CurrentProfile;
 
 public class ProfilesPanel extends JPanel {
-    public ProfilesPanel() {
-        BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
-        this.setLayout(layout);
+	public static ProfilesComboBox profilesComboBox;
 
-        // Add Heading Before Profile panel list
-        HeadingLabel headingLabel = new HeadingLabel("Profiles:-");
-        JPanel headingPanel = new JPanel();
-        headingPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        headingPanel.add(headingLabel);
-        this.add(headingPanel);
+	public ProfilesPanel() {
+		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
+		this.setLayout(layout);
 
-        JPanel profilePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		// Add Heading Before Profile panel list
+		HeadingLabel headingLabel = new HeadingLabel("Profiles:-");
+		JPanel headingPanel = new JPanel();
+		headingPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		headingPanel.add(headingLabel);
+		this.add(headingPanel);
 
-        BaseLabel curProfile = new BaseLabel("Selected Profile: " + CurrentProfile.getCurrentProfileName());
-        profilePanel.add(curProfile);
+		JPanel profilePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
-        NextProfileButton nextProfileButton = new NextProfileButton("Next Profile", curProfile);
-        nextProfileButton.setPreferredSize(new DimensionUIResource(150, 50));
-        profilePanel.add(nextProfileButton);
+//		BaseLabel curProfile = new BaseLabel("Selected Profile: " + CurrentProfile.getCurrentProfileName());
+//		profilePanel.add(curProfile);
 
-        AddProfileButton addProfileButton = new AddProfileButton("Add Profile");
-        addProfileButton.setPreferredSize(new DimensionUIResource(150, 50));
-        profilePanel.add(addProfileButton);
+//        NextProfileButton nextProfileButton = new NextProfileButton("Next Profile", curProfile);
+//        nextProfileButton.setPreferredSize(new DimensionUIResource(150, 50));
+//        profilePanel.add(nextProfileButton);
 
-        RemoveProfileButton removeProfileButton = new RemoveProfileButton("Remove Profile", curProfile);
-        removeProfileButton.setPreferredSize(new DimensionUIResource(150, 50));
-        profilePanel.add(removeProfileButton);
+		profilesComboBox = new ProfilesComboBox();
+		profilePanel.add(profilesComboBox);
 
-        this.add(profilePanel);
-        layout.minimumLayoutSize(this);
-    }
+		AddProfileButton addProfileButton = new AddProfileButton("Add Profile");
+		addProfileButton.setPreferredSize(new DimensionUIResource(150, 50));
+		profilePanel.add(addProfileButton);
+
+		RemoveProfileButton removeProfileButton = new RemoveProfileButton("Remove Profile");
+		removeProfileButton.setPreferredSize(new DimensionUIResource(150, 50));
+		profilePanel.add(removeProfileButton);
+
+		this.add(profilePanel);
+		layout.minimumLayoutSize(this);
+	}
 }

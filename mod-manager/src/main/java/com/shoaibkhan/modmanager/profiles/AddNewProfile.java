@@ -38,7 +38,7 @@ public class AddNewProfile {
 				return ActionResult.DIRECTORY_ALREADY_PRESENT;
 		}
 
-		// Get current selected profile index and total profile
+		// Get total profile
 		int total = 0;
 		try {
 			total = data.path("profiles").get("total").asInt();

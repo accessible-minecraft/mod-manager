@@ -3,6 +3,7 @@ package com.shoaibkhan.modmanager.gui.widgets.profile;
 import javax.swing.JOptionPane;
 import javax.swing.plaf.DimensionUIResource;
 
+import com.shoaibkhan.modmanager.gui.panels.ProfilesPanel;
 import com.shoaibkhan.modmanager.gui.widgets.base.BaseButton;
 import com.shoaibkhan.modmanager.profiles.AddNewProfile;
 import com.shoaibkhan.modmanager.profiles.utils;
@@ -26,6 +27,8 @@ public class AddProfileButton extends BaseButton {
 			if (response != ActionResult.PASS) {
 				JOptionPane.showMessageDialog(this, response.getDescription());
 			}
+
+			ProfilesPanel.profilesComboBox.refresh();
 		});
 	}
 }

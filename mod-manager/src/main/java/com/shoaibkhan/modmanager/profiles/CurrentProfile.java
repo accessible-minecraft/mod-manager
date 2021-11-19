@@ -6,6 +6,7 @@ import java.nio.file.Paths;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.shoaibkhan.modmanager.configs.Config;
+import com.shoaibkhan.modmanager.gui.panels.ProfilesPanel;
 
 public class CurrentProfile {
 
@@ -37,7 +38,12 @@ public class CurrentProfile {
 			JsonNode profiles = Config.getData().path("profiles");
 
 			if (!profiles.isMissingNode()) {
-				String current = profiles.get("current").asText();
+				String current;
+				try {
+					current = ProfilesPanel.profilesComboBox.getSelectedIndex() + "";
+				} catch (Exception e) {
+					current = "0";
+				}
 				String directory = profiles.path(current).get("location").asText();
 				if (!directory.equalsIgnoreCase("0")) {
 					if (!utils.checkValidity(directory)) {
