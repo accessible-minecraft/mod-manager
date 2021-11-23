@@ -31,16 +31,17 @@ public class ModsListPanel extends Thread {
 		// Remove all components in modsListPanel
 		Gui.modsListPanel.removeAll();
 
+		// Get supported mods list and panels for each mod
+		double minecraftVersion = CurrentProfile.getCurrentProfileVersion();
+
 		// Add Heading Before mods list
-		HeadingLabel headingLabel = new HeadingLabel("Supported Mods:-");
+		HeadingLabel headingLabel = new HeadingLabel("Supported Mods for " + minecraftVersion + ":-");
 		JPanel headingPanel = new JPanel();
 		headingPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		headingPanel.add(headingLabel);
 
 		Gui.modsListPanel.add(headingPanel);
 
-		// Get supported mods list and panels for each mod
-		double minecraftVersion = CurrentProfile.getCurrentProfileVersion();
 		List<String> modsList = ModsJSON.getSupportedModsList(minecraftVersion);
 
 		for (String modName : modsList) {
