@@ -18,73 +18,76 @@ import com.shoaibkhan.modmanager.profiles.CurrentProfile;
 import com.shoaibkhan.modmanager.profiles.utils;
 
 public class ModsListPanel extends Thread {
-    public void run() {
+	public Boolean isRunning = null;
 
-        BoxLayout layout = new BoxLayout(Gui.modsListPanel, BoxLayout.Y_AXIS);
+	public void run() {
+		isRunning = true;
 
-        Gui.modsListPanel.setLayout(layout);
-        ModsJSON.loadIfNotPresent();
+		BoxLayout layout = new BoxLayout(Gui.modsListPanel, BoxLayout.Y_AXIS);
 
-        // Remove all components in modsListPanel
-        Gui.modsListPanel.removeAll();
+		Gui.modsListPanel.setLayout(layout);
+		ModsJSON.loadIfNotPresent();
 
-        // Add Heading Before mods list
-        HeadingLabel headingLabel = new HeadingLabel("Supported Mods:-");
-        JPanel headingPanel = new JPanel();
-        headingPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        headingPanel.add(headingLabel);
+		// Remove all components in modsListPanel
+		Gui.modsListPanel.removeAll();
 
-        Gui.modsListPanel.add(headingPanel);
+		// Add Heading Before mods list
+		HeadingLabel headingLabel = new HeadingLabel("Supported Mods:-");
+		JPanel headingPanel = new JPanel();
+		headingPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		headingPanel.add(headingLabel);
 
-        // Get supported mods list and panels for each mod
-        double minecraftVersion = CurrentProfile.getCurrentProfileVersion();
-        List<String> modsList = ModsJSON.getSupportedModsList(minecraftVersion);
+		Gui.modsListPanel.add(headingPanel);
 
-        for (String modName : modsList) {
-            JPanel panel = new JPanel();
-            panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		// Get supported mods list and panels for each mod
+		double minecraftVersion = CurrentProfile.getCurrentProfileVersion();
+		List<String> modsList = ModsJSON.getSupportedModsList(minecraftVersion);
 
-            boolean isInstalled = CheckIfInstalled.checkIfInstalled(modName);
+		for (String modName : modsList) {
+			JPanel panel = new JPanel();
+			panel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-            // Remove (-) from mod name
-            String modifiedName = modName;
-            if (modName.contains("-"))
-                modifiedName = modifiedName.replaceAll("-", " ");
+			boolean isInstalled = CheckIfInstalled.checkIfInstalled(modName);
 
-            BaseLabel modNameLabel = new BaseLabel(
-                    modifiedName + (isInstalled ? " (installed)" : " (not installed)"));
-            panel.add(modNameLabel);
+			// Remove (-) from mod name
+			String modifiedName = modName;
+			if (modName.contains("-"))
+				modifiedName = modifiedName.replaceAll("-", " ");
 
-            InstallOrUninstallButton installOrUninstall = new InstallOrUninstallButton(
-                    isInstalled ? "Uninstall" : "Install", isInstalled, modName, minecraftVersion);
-            panel.add(installOrUninstall);
+			BaseLabel modNameLabel = new BaseLabel(modifiedName + (isInstalled ? " (installed)" : " (not installed)"));
+			panel.add(modNameLabel);
 
-            ChangeVersionButton changeVersionButton = new ChangeVersionButton("Change Version", modName,
-                    minecraftVersion);
-            // Disable if the mod is not installed
-            changeVersionButton.setEnabled(true);
-            if (!isInstalled) {
-                changeVersionButton.setEnabled(false);
-            }
-            panel.add(changeVersionButton);
+			InstallOrUninstallButton installOrUninstall = new InstallOrUninstallButton(
+					isInstalled ? "Uninstall" : "Install", isInstalled, modName, minecraftVersion);
+			panel.add(installOrUninstall);
 
-            Gui.modsListPanel.add(panel);
-        }
+			ChangeVersionButton changeVersionButton = new ChangeVersionButton("Change Version", modName,
+					minecraftVersion);
+			// Disable if the mod is not installed
+			changeVersionButton.setEnabled(true);
+			if (!isInstalled) {
+				changeVersionButton.setEnabled(false);
+			}
+			panel.add(changeVersionButton);
 
-        // Add Nvda download button
-        if (utils.getOS() == utils.OS.WINDOWS) {
-            NvdaDllButton nvdaDllButton = new NvdaDllButton("Install NVDA Controller DLL");
-            JPanel nvdaDllPanel = new JPanel();
-            nvdaDllPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-            nvdaDllPanel.add(nvdaDllButton);
+			Gui.modsListPanel.add(panel);
+		}
 
-            Gui.modsListPanel.add(nvdaDllPanel);
-        }
+		// Add Nvda download button
+		if (utils.getOS() == utils.OS.WINDOWS) {
+			NvdaDllButton nvdaDllButton = new NvdaDllButton("Install NVDA Controller DLL");
+			JPanel nvdaDllPanel = new JPanel();
+			nvdaDllPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+			nvdaDllPanel.add(nvdaDllButton);
 
-        Gui.modsListPanel.setMinimumSize(Gui.modsListPanel.getMinimumSize());
+			Gui.modsListPanel.add(nvdaDllPanel);
+		}
 
-        Gui.mainFrame.pack();
-        Gui.mainFrame.revalidate();
-    }
+		Gui.modsListPanel.setMinimumSize(Gui.modsListPanel.getMinimumSize());
+
+		Gui.mainFrame.pack();
+		Gui.mainFrame.revalidate();
+		isRunning = false;
+	}
 
 }
