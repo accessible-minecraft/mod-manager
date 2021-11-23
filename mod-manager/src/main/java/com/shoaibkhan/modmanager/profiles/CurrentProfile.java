@@ -64,6 +64,10 @@ public class CurrentProfile {
 	}
 
 	public static double getCurrentProfileVersion() {
+		// Check if options.txt is present and then proceed
+		if (!utils.isOptionsTxtPresent(getCurrentProfileDirectory()))
+			return 1.17;
+
 		try (BufferedReader optionsFileReader = new BufferedReader(
 				new FileReader(Paths.get(getCurrentProfileDirectory(), "options.txt").toFile()))) {
 			String lineText = null;
