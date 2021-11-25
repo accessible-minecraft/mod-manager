@@ -1,32 +1,38 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.shoaibkhan.modmanager.gui.widgets.profile;
 
-import javax.swing.JOptionPane;
-import javax.swing.plaf.DimensionUIResource;
-
 import com.shoaibkhan.modmanager.gui.panels.ModsListPanel;
-import com.shoaibkhan.modmanager.gui.widgets.base.BaseButton;
 import com.shoaibkhan.modmanager.profiles.RemoveCurrentProfile;
 import com.shoaibkhan.modmanager.utils.ActionResult;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
-public class RemoveProfileButton extends BaseButton {
-	public RemoveProfileButton(String text) {
-		super(text);
-		this.setPreferredSize(new DimensionUIResource(150, 50));
+/**
+ *
+ * @author shoaib
+ */
+public class RemoveProfileButton extends JButton {
 
-		this.addActionListener(e -> {
-			// Confirm again
-			int res = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this profile??");
-			if (res != 0)
-				return;
+    public RemoveProfileButton() {
+        this.addActionListener(e -> {
+            // Confirm again
+            int res = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this profile??");
+            if (res != 0) {
+                return;
+            }
 
-			ActionResult removeCurrentProfileResponse = RemoveCurrentProfile.removeCurrentProfile();
-			if (removeCurrentProfileResponse != ActionResult.PASS) {
-				JOptionPane.showMessageDialog(this, removeCurrentProfileResponse.getDescription());
-			}
+            ActionResult removeCurrentProfileResponse = RemoveCurrentProfile.removeCurrentProfile();
+            if (removeCurrentProfileResponse != ActionResult.PASS) {
+                JOptionPane.showMessageDialog(this, removeCurrentProfileResponse.getDescription());
+            }
 
-			// Update modsList panel
-			ModsListPanel modsListPanel = new ModsListPanel();
-			modsListPanel.start();
-		});
-	}
+            // Update modsList panel
+            ModsListPanel modsListPanel = new ModsListPanel();
+            modsListPanel.start();
+        });
+    }
 }

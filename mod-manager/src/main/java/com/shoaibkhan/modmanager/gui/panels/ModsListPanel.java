@@ -3,13 +3,12 @@ package com.shoaibkhan.modmanager.gui.panels;
 import java.awt.FlowLayout;
 import java.util.List;
 
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import com.shoaibkhan.modmanager.configs.ModsJSON;
 import com.shoaibkhan.modmanager.gui.Gui;
+import com.shoaibkhan.modmanager.gui.MainFrame;
 import com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel;
-import com.shoaibkhan.modmanager.gui.widgets.common.HeadingLabel;
 import com.shoaibkhan.modmanager.gui.widgets.mods.ChangeVersionButton;
 import com.shoaibkhan.modmanager.gui.widgets.mods.InstallOrUninstallButton;
 import com.shoaibkhan.modmanager.gui.widgets.mods.NvdaDllButton;
@@ -23,24 +22,25 @@ public class ModsListPanel extends Thread {
 	public void run() {
 		isRunning = true;
 
-		BoxLayout layout = new BoxLayout(Gui.modsListPanel, BoxLayout.Y_AXIS);
 
-		Gui.modsListPanel.setLayout(layout);
 		ModsJSON.loadIfNotPresent();
 
 		// Remove all components in modsListPanel
-		Gui.modsListPanel.removeAll();
+		MainFrame.modsPanel.removeAll();
+                
+                System.err.println("Here");
 
 		// Get supported mods list and panels for each mod
 		double minecraftVersion = CurrentProfile.getCurrentProfileVersion();
 
 		// Add Heading Before mods list
-		HeadingLabel headingLabel = new HeadingLabel("Supported Mods for " + minecraftVersion + ":-");
+		BaseLabel headingLabel = new BaseLabel();
+                headingLabel.setText("Supported Mods for " + minecraftVersion + ":-");
 		JPanel headingPanel = new JPanel();
 		headingPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		headingPanel.add(headingLabel);
 
-		Gui.modsListPanel.add(headingPanel);
+		MainFrame.modsPanel.add(headingPanel);
 
 		List<String> modsList = ModsJSON.getSupportedModsList(minecraftVersion);
 
@@ -55,7 +55,8 @@ public class ModsListPanel extends Thread {
 			if (modName.contains("-"))
 				modifiedName = modifiedName.replaceAll("-", " ");
 
-			BaseLabel modNameLabel = new BaseLabel(modifiedName + (isInstalled ? " (installed)" : " (not installed)"));
+			BaseLabel modNameLabel = new BaseLabel();
+                        modNameLabel.setText(modifiedName + (isInstalled ? " (installed)" : " (not installed)"));
 			panel.add(modNameLabel);
 
 			InstallOrUninstallButton installOrUninstall = new InstallOrUninstallButton(
@@ -71,7 +72,7 @@ public class ModsListPanel extends Thread {
 			}
 			panel.add(changeVersionButton);
 
-			Gui.modsListPanel.add(panel);
+			MainFrame.modsPanel.add(panel);
 		}
 
 		// Add Nvda download button
@@ -81,10 +82,10 @@ public class ModsListPanel extends Thread {
 			nvdaDllPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 			nvdaDllPanel.add(nvdaDllButton);
 
-			Gui.modsListPanel.add(nvdaDllPanel);
+			MainFrame.modsPanel.add(nvdaDllPanel);
 		}
 
-		Gui.modsListPanel.setMinimumSize(Gui.modsListPanel.getMinimumSize());
+		MainFrame.modsPanel.setMinimumSize(MainFrame.modsPanel.getMinimumSize());
 
 		Gui.mainFrame.pack();
 		Gui.mainFrame.revalidate();

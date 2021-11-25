@@ -6,7 +6,6 @@ import java.awt.Font;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-import javax.swing.BorderFactory;
 
 public class BaseButton extends JButton {
     public BaseButton(String text){
