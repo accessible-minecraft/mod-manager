@@ -31,7 +31,7 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
     </Component>
-    <Component class="com.shoaibkhan.modmanager.gui.widgets.mods.cvButton" name="cvButton1">
+    <Component class="com.shoaibkhan.modmanager.gui.widgets.mods.ChangeVersionButton" name="changeVersionButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Change Version"/>
       </Properties>

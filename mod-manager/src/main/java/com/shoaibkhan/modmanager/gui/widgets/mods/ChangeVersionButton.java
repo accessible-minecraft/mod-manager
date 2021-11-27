@@ -23,21 +23,25 @@
  */
 package com.shoaibkhan.modmanager.gui.widgets.mods;
 
-import javax.swing.JOptionPane;
-import javax.swing.plaf.DimensionUIResource;
-
 import com.shoaibkhan.modmanager.gui.panels.ModsPanel;
 import com.shoaibkhan.modmanager.gui.widgets.base.BaseButton;
 import com.shoaibkhan.modmanager.mods.ChangeVersion;
+import com.shoaibkhan.modmanager.profiles.CurrentProfile;
 import com.shoaibkhan.modmanager.utils.ActionResult;
+import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author shoaib
+ */
 public class ChangeVersionButton extends BaseButton {
 
-    public ChangeVersionButton(String forMod, double minecraftVersion) {
-        this.setPreferredSize(new DimensionUIResource(180, 50));
-
+    public ChangeVersionButton() {
         this.addActionListener(e -> {
-            ActionResult response = ChangeVersion.changeVersion(forMod, minecraftVersion);
+            String modName = (String) ModsPanel.modsComboBox.getSelectedItem();
+            double minecraftVersion = CurrentProfile.getCurrentProfileVersion();
+
+            ActionResult response = ChangeVersion.changeVersion(modName, minecraftVersion);
             if (response != ActionResult.PASS) {
                 if (response != ActionResult.CLOSE) // Skip if user closed the option dialogue
                 {
@@ -46,7 +50,7 @@ public class ChangeVersionButton extends BaseButton {
                 return;
             }
 
-            JOptionPane.showMessageDialog(this, forMod + " updated", "Mod Version Changed Successfully",
+            JOptionPane.showMessageDialog(this, modName + " updated", "Mod Version Changed Successfully",
                     JOptionPane.INFORMATION_MESSAGE);
 
             // Update mods panel

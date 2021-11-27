@@ -23,10 +23,6 @@
  */
 package com.shoaibkhan.modmanager.gui.panels;
 
-import com.shoaibkhan.modmanager.configs.ModsJSON;
-import com.shoaibkhan.modmanager.profiles.CurrentProfile;
-import java.util.List;
-
 /**
  *
  * @author shoaib
@@ -52,15 +48,15 @@ public class ModsPanel extends javax.swing.JPanel {
         headingLabel = new com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel();
         modsComboBox = new com.shoaibkhan.modmanager.gui.widgets.mods.ModsComboBox();
         installUnistallButton = new com.shoaibkhan.modmanager.gui.widgets.mods.InstallOrUninstallButton();
-        cvButton1 = new com.shoaibkhan.modmanager.gui.widgets.mods.cvButton();
+        changeVersionButton = new com.shoaibkhan.modmanager.gui.widgets.mods.ChangeVersionButton();
 
         headingLabel.setText("Select Mod:-  ");
         add(headingLabel);
         add(modsComboBox);
         add(installUnistallButton);
 
-        cvButton1.setText("Change Version");
-        add(cvButton1);
+        changeVersionButton.setText("Change Version");
+        add(changeVersionButton);
     }// </editor-fold>//GEN-END:initComponents
 
     private void iouButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iouButton1ActionPerformed
@@ -69,7 +65,7 @@ public class ModsPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.shoaibkhan.modmanager.gui.widgets.mods.cvButton cvButton1;
+    private com.shoaibkhan.modmanager.gui.widgets.mods.ChangeVersionButton changeVersionButton;
     private com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel headingLabel;
     public static com.shoaibkhan.modmanager.gui.widgets.mods.InstallOrUninstallButton installUnistallButton;
     public static com.shoaibkhan.modmanager.gui.widgets.mods.ModsComboBox modsComboBox;
