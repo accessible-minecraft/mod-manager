@@ -69,7 +69,6 @@ public class ProfilesPanel extends javax.swing.JPanel {
 
         addProfileButton.setText("Add Profile");
         addProfileButton.setToolTipText("");
-        addProfileButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         addProfileButton.setNextFocusableComponent(removeProfileButton);
         addProfileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,7 +78,6 @@ public class ProfilesPanel extends javax.swing.JPanel {
         add(addProfileButton);
 
         removeProfileButton.setText("Remove Profile");
-        removeProfileButton.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         add(removeProfileButton);
     }// </editor-fold>//GEN-END:initComponents
 

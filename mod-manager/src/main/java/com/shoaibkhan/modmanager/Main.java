@@ -25,15 +25,17 @@ package com.shoaibkhan.modmanager;
 
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.shoaibkhan.modmanager.gui.Gui;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
-/**
- * Hello world!
- *
- */
 public class Main {
 
     public static void main(String[] args) {
-        FlatDarculaLaf.setup();
+        try {
+            UIManager.setLookAndFeel(new FlatDarculaLaf());
+        } catch (UnsupportedLookAndFeelException ex) {
+            System.err.println("Failed to initialize LaF");
+        }
 
         Gui.init();
     }

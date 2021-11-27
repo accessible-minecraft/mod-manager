@@ -70,6 +70,7 @@ public class MainFrame extends javax.swing.JFrame {
         profilesPanel = new com.shoaibkhan.modmanager.gui.panels.ProfilesPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Mod Manager");
 
         tabbedPane.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         tabbedPane.setForeground(new Color(187,187,187));

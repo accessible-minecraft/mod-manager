@@ -5,7 +5,7 @@
 
     <groupId>com.shoaibkhan.modmanager</groupId>
     <artifactId>mod-manager</artifactId>
-    <version>1.09</version>
+    <version>1.10</version>
 
     <name>mod-manager</name>
     <url>https://github.com/accessible-minecraft/mod-manager</url>

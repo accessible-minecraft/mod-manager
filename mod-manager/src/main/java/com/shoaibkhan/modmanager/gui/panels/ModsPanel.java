@@ -50,9 +50,17 @@ public class ModsPanel extends javax.swing.JPanel {
         installUnistallButton = new com.shoaibkhan.modmanager.gui.widgets.mods.InstallOrUninstallButton();
         changeVersionButton = new com.shoaibkhan.modmanager.gui.widgets.mods.ChangeVersionButton();
 
+        setNextFocusableComponent(headingLabel);
+
         headingLabel.setText("Select Mod:-  ");
+        headingLabel.setNextFocusableComponent(modsComboBox);
         add(headingLabel);
+
+        modsComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        modsComboBox.setNextFocusableComponent(installUnistallButton);
         add(modsComboBox);
+
+        installUnistallButton.setNextFocusableComponent(changeVersionButton);
         add(installUnistallButton);
 
         changeVersionButton.setText("Change Version");
