@@ -23,7 +23,7 @@
  */
 package com.shoaibkhan.modmanager.mods;
 
-import java.io.File;
+import com.shoaibkhan.modmanager.gui.dialog.DownloadDialog;
 import java.net.URL;
 import java.nio.file.Paths;
 
@@ -31,11 +31,15 @@ import javax.swing.JOptionPane;
 
 import com.shoaibkhan.modmanager.profiles.CurrentProfile;
 import com.shoaibkhan.modmanager.utils.ActionResult;
+import java.awt.HeadlessException;
+import java.net.MalformedURLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-import org.apache.commons.io.FileUtils;
 
 public class ChangeVersion {
-    public static ActionResult changeVersion(String modName, double minecraftVersion){
+
+    public static ActionResult changeVersion(String modName, double minecraftVersion) {
         try {
 
             // Get mod's versions, file name, download urls for the current minecraft
@@ -58,23 +62,28 @@ public class ChangeVersion {
 
             // Confirm again
             int res = JOptionPane.showConfirmDialog(null, "Are you sure you want to change the version of the mod??");
-            if (res != 0)
+            if (res != 0) {
                 return ActionResult.CLOSE;
+            }
 
             // Delete the previous version of the mod
             ActionResult uninstallResponse = UninstallMod.uninstallMod(modName);
-            if(uninstallResponse!=ActionResult.PASS)
+            if (uninstallResponse != ActionResult.PASS) {
                 return ActionResult.CLOSE;
+            }
 
             // Download new version of the mod
             String filePath = Paths.get(CurrentProfile.getCurrentProfileDirectory(), "mods", fileNameToInstall)
                     .toString();
-            File modFile = new File(filePath);
-            FileUtils.copyURLToFile(new URL(downloadUrlToInstall), modFile);
+            try {
+                new DownloadDialog(null, true).startDownloading(new URL(downloadUrlToInstall), filePath);
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(InstallMod.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
             return ActionResult.PASS;
 
-        } catch (Exception e) {
+        } catch (HeadlessException e) {
             e.printStackTrace();
         }
         return ActionResult.FAILED;

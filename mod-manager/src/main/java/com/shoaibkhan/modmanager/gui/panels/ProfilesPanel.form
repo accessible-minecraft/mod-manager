@@ -23,6 +23,9 @@
   <SubComponents>
     <Component class="com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel" name="hLabel">
       <Properties>
+        <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="profilesComboBox"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Select Profile:-   "/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="profilesComboBox"/>

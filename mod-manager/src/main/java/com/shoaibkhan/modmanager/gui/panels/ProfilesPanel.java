@@ -58,6 +58,7 @@ public class ProfilesPanel extends javax.swing.JPanel {
 
         setNextFocusableComponent(hLabel);
 
+        hLabel.setLabelFor(profilesComboBox);
         hLabel.setText("Select Profile:-   ");
         hLabel.setNextFocusableComponent(profilesComboBox);
         add(hLabel);

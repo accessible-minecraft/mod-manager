@@ -52,12 +52,18 @@ public class ModsPanel extends javax.swing.JPanel {
 
         setNextFocusableComponent(headingLabel);
 
+        headingLabel.setLabelFor(modsComboBox);
         headingLabel.setText("Select Mod:-  ");
         headingLabel.setNextFocusableComponent(modsComboBox);
         add(headingLabel);
 
         modsComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         modsComboBox.setNextFocusableComponent(installUnistallButton);
+        modsComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modsComboBoxActionPerformed(evt);
+            }
+        });
         add(modsComboBox);
 
         installUnistallButton.setNextFocusableComponent(changeVersionButton);
@@ -70,6 +76,10 @@ public class ModsPanel extends javax.swing.JPanel {
     private void iouButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iouButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_iouButton1ActionPerformed
+
+    private void modsComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modsComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modsComboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
