@@ -8,8 +8,7 @@ import java.awt.event.FocusListener;
 
 
 public class BaseButton extends JButton {
-    public BaseButton(String text){
-        super(text);
+    public BaseButton(){
         this.setFont(new Font ("Arial", Font.PLAIN, 18));
         // this.setToolTipText(text + " Button");
 
@@ -17,7 +16,7 @@ public class BaseButton extends JButton {
 
             @Override
             public void focusGained(FocusEvent e) {
-                setForeground(new Color(23, 2, 12));
+                setForeground(Color.decode("#38ABFF"));
             }
 
             @Override

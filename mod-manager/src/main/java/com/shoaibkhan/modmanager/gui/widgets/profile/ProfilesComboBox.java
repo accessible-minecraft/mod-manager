@@ -9,7 +9,9 @@ import com.shoaibkhan.modmanager.gui.panels.ModsListPanel;
 import com.shoaibkhan.modmanager.profiles.CurrentProfile;
 import com.shoaibkhan.modmanager.profiles.ProfilesArrayList;
 import com.shoaibkhan.modmanager.profiles.utils;
-import java.awt.Font;
+import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -27,7 +29,23 @@ public class ProfilesComboBox extends JComboBox<Object> {
         refresh();
         
         this.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
-        this.setFont(new Font("Arial", Font.PLAIN, 16));
+        this.setFont(new java.awt.Font("Arial", 1, 18));
+
+        setForeground(new Color(187,187,187));
+
+        this.addFocusListener(new FocusListener() {
+
+            @Override
+            public void focusGained(FocusEvent e) {
+                setForeground(Color.decode("#38ABFF"));
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                setForeground(new Color(187,187,187));
+            }
+
+        });
 
         this.addItemListener(event -> {
             // Skips this method when removing a profile

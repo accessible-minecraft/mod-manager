@@ -10,8 +10,7 @@ import com.shoaibkhan.modmanager.mods.UninstallMod;
 import com.shoaibkhan.modmanager.utils.ActionResult;
 
 public class InstallOrUninstallButton extends BaseButton {
-    public InstallOrUninstallButton(String text, boolean isInstalled, String forMod, double minecraftVersion) {
-        super(text);
+    public InstallOrUninstallButton(boolean isInstalled, String forMod, double minecraftVersion) {
         this.setPreferredSize(new DimensionUIResource(150, 50));
 
         this.addActionListener(e -> {

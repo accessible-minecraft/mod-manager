@@ -26,7 +26,7 @@ public class BaseLabel extends JLabel {
 
             @Override
             public void focusGained(FocusEvent e) {
-                setForeground(new Color(23, 2, 12));
+                setForeground(Color.decode("#38ABFF"));
             }
 
             @Override

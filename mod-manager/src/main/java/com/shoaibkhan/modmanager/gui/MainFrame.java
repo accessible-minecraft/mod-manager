@@ -7,9 +7,10 @@ package com.shoaibkhan.modmanager.gui;
 
 import com.shoaibkhan.modmanager.configs.ModsJSON;
 import com.shoaibkhan.modmanager.gui.panels.ModsListPanel;
-import com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel;
+import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 /**
  *
@@ -53,8 +54,8 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        mainPanel = new javax.swing.JPanel();
-        tabbedPane = new javax.swing.JTabbedPane();
+        javax.swing.JPanel mainPanel = new javax.swing.JPanel();
+        javax.swing.JTabbedPane tabbedPane = new javax.swing.JTabbedPane();
         modsPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         loadingLabel = new javax.swing.JLabel();
@@ -63,6 +64,21 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         tabbedPane.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
+        tabbedPane.setForeground(new Color(187,187,187));
+
+        tabbedPane.addFocusListener(new FocusListener() {
+
+            @Override
+            public void focusGained(FocusEvent e) {
+                tabbedPane.setForeground(Color.decode("#38ABFF"));
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                tabbedPane.setForeground(new Color(187,187,187));
+            }
+
+        });
 
         modsPanel.setLayout(new javax.swing.BoxLayout(modsPanel, javax.swing.BoxLayout.Y_AXIS));
 
@@ -116,9 +132,7 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel loadingLabel;
-    private javax.swing.JPanel mainPanel;
     public static javax.swing.JPanel modsPanel;
     private com.shoaibkhan.modmanager.gui.panels.ProfilesPanel profilesPanel;
-    private javax.swing.JTabbedPane tabbedPane;
     // End of variables declaration//GEN-END:variables
 }

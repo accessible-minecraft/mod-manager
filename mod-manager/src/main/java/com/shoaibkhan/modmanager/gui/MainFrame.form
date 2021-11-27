@@ -75,6 +75,7 @@
             </Property>
           </Properties>
           <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tabbedPane.setForeground(new Color(187,187,187));&#xa;&#xa;        tabbedPane.addFocusListener(new FocusListener() {&#xa;&#xa;            @Override&#xa;            public void focusGained(FocusEvent e) {&#xa;                tabbedPane.setForeground(Color.decode(&quot;#38ABFF&quot;));&#xa;            }&#xa;&#xa;            @Override&#xa;            public void focusLost(FocusEvent e) {&#xa;                tabbedPane.setForeground(new Color(187,187,187));&#xa;            }&#xa;&#xa;        });"/>
             <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
           </AuxValues>

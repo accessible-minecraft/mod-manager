@@ -6,16 +6,16 @@
 package com.shoaibkhan.modmanager.gui.widgets.profile;
 
 import com.shoaibkhan.modmanager.gui.panels.ModsListPanel;
+import com.shoaibkhan.modmanager.gui.widgets.base.BaseButton;
 import com.shoaibkhan.modmanager.profiles.RemoveCurrentProfile;
 import com.shoaibkhan.modmanager.utils.ActionResult;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author shoaib
  */
-public class RemoveProfileButton extends JButton {
+public class RemoveProfileButton extends BaseButton {
 
     public RemoveProfileButton() {
         this.addActionListener(e -> {

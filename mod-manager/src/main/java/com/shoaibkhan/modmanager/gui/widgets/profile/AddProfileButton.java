@@ -6,17 +6,17 @@
 package com.shoaibkhan.modmanager.gui.widgets.profile;
 
 import com.shoaibkhan.modmanager.gui.panels.ProfilesPanel;
+import com.shoaibkhan.modmanager.gui.widgets.base.BaseButton;
 import com.shoaibkhan.modmanager.profiles.AddNewProfile;
 import com.shoaibkhan.modmanager.profiles.utils;
 import com.shoaibkhan.modmanager.utils.ActionResult;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author shoaib
  */
-public class AddProfileButton extends JButton {
+public class AddProfileButton extends BaseButton {
 
     public AddProfileButton() {
         this.addActionListener(e -> {

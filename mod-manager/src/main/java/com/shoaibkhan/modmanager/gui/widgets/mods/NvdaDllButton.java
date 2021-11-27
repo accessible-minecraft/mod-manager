@@ -15,8 +15,7 @@ import com.shoaibkhan.modmanager.profiles.utils;
 import org.apache.commons.io.FileUtils;
 
 public class NvdaDllButton extends BaseButton {
-    public NvdaDllButton(String text) {
-        super(text);
+    public NvdaDllButton() {
         this.setPreferredSize(new DimensionUIResource(150, 50));
 
         this.addActionListener(e -> {

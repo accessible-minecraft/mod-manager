@@ -9,8 +9,7 @@ import com.shoaibkhan.modmanager.mods.ChangeVersion;
 import com.shoaibkhan.modmanager.utils.ActionResult;
 
 public class ChangeVersionButton extends BaseButton {
-    public ChangeVersionButton(String text, String forMod, double minecraftVersion) {
-        super(text);
+    public ChangeVersionButton(String forMod, double minecraftVersion) {
         this.setPreferredSize(new DimensionUIResource(180, 50));
 
         this.addActionListener(e -> {
