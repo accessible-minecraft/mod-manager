@@ -21,15 +21,16 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.shoaibkhan.modmanager.gui.widgets.profile;
+package com.shoaibkhan.modmanager.gui.widgets.mods;
 
+import com.shoaibkhan.modmanager.configs.ModsJSON;
 import com.shoaibkhan.modmanager.gui.panels.ModsPanel;
 import com.shoaibkhan.modmanager.profiles.CurrentProfile;
-import com.shoaibkhan.modmanager.profiles.ProfilesArrayList;
 import com.shoaibkhan.modmanager.profiles.utils;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -38,18 +39,18 @@ import javax.swing.JOptionPane;
  *
  * @author shoaib
  */
-public class ProfilesComboBox extends JComboBox<Object> {
+public class ModsComboBox extends JComboBox<Object> {
 
     int filterer = 0;
     boolean isRemovingItems = false;
 
-    public ProfilesComboBox() {
+    public ModsComboBox() {
         refresh();
-        
+
         this.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         this.setFont(new java.awt.Font("Arial", 1, 18));
 
-        setForeground(new Color(187,187,187));
+        setForeground(new Color(187, 187, 187));
 
         this.addFocusListener(new FocusListener() {
 
@@ -60,7 +61,7 @@ public class ProfilesComboBox extends JComboBox<Object> {
 
             @Override
             public void focusLost(FocusEvent e) {
-                setForeground(new Color(187,187,187));
+                setForeground(new Color(187, 187, 187));
             }
 
         });
@@ -96,13 +97,23 @@ public class ProfilesComboBox extends JComboBox<Object> {
         });
     }
 
-    public void refresh() {
+    public final void refresh() {
         isRemovingItems = true;
-        this.removeAllItems();
-        Object[] list = ProfilesArrayList.profilesArrayList();
-        for (Object object : list) {
+        this.removeAllItems(); // Remove current items from the combo box
+
+        // Get supported mods list for the current profile
+        double minecraftVersion = CurrentProfile.getCurrentProfileVersion();
+        List<String> list = ModsJSON.getSupportedModsList(minecraftVersion);
+
+        // Add mods to the combo box
+        list.forEach(object -> {
             this.addItem(object);
+        });
+
+        // Update modsList panel
+        if (ModsPanel.installUnistallButton != null) {
+            ModsPanel.installUnistallButton.refresh();
         }
         isRemovingItems = false;
-    }    
+    }
 }

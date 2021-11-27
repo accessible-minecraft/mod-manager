@@ -13,3 +13,5 @@ buildNumber.properties
 config/
 .vscode/
 l4j.xml
+license-regex.txt
+nb-configuration.xml

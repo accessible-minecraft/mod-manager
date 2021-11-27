@@ -1,12 +1,29 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * The MIT License
+ *
+ * Copyright 2021 shoaib.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 package com.shoaibkhan.modmanager.gui;
 
 import com.shoaibkhan.modmanager.configs.ModsJSON;
-import com.shoaibkhan.modmanager.gui.panels.ModsListPanel;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -35,13 +52,6 @@ public class MainFrame extends javax.swing.JFrame {
         // Add the file menu
 //        FileMenu fileMenu = new FileMenu();
 //        this.setJMenuBar(fileMenu);
-
-
-
-        // Load mods list panel
-        ModsListPanel modsListPanel = new ModsListPanel();
-        modsListPanel.start();
-
         initComponents();
     }
 
@@ -56,9 +66,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         javax.swing.JPanel mainPanel = new javax.swing.JPanel();
         javax.swing.JTabbedPane tabbedPane = new javax.swing.JTabbedPane();
-        modsPanel = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        loadingLabel = new javax.swing.JLabel();
+        modsPanel = new com.shoaibkhan.modmanager.gui.panels.ModsPanel();
         profilesPanel = new com.shoaibkhan.modmanager.gui.panels.ProfilesPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,15 +87,6 @@ public class MainFrame extends javax.swing.JFrame {
             }
 
         });
-
-        modsPanel.setLayout(new javax.swing.BoxLayout(modsPanel, javax.swing.BoxLayout.Y_AXIS));
-
-        loadingLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        loadingLabel.setText("Loading...");
-        jPanel1.add(loadingLabel);
-
-        modsPanel.add(jPanel1);
-
         tabbedPane.addTab("Mods Tab", modsPanel);
         tabbedPane.addTab("Profiles Tab", profilesPanel);
 
@@ -130,9 +129,7 @@ public class MainFrame extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel loadingLabel;
-    public static javax.swing.JPanel modsPanel;
+    private com.shoaibkhan.modmanager.gui.panels.ModsPanel modsPanel;
     private com.shoaibkhan.modmanager.gui.panels.ProfilesPanel profilesPanel;
     // End of variables declaration//GEN-END:variables
 }
