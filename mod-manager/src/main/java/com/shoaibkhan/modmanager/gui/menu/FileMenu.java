@@ -23,30 +23,32 @@
  */
 package com.shoaibkhan.modmanager.gui.menu;
 
-import java.awt.Font;
-import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-
 import com.shoaibkhan.modmanager.Main;
 import com.shoaibkhan.modmanager.configs.ModsJSON;
 import com.shoaibkhan.modmanager.configs.PropertiesJSON;
 import com.shoaibkhan.modmanager.manager.LatestFiles;
 import com.shoaibkhan.modmanager.utils.ActionResult;
-
+import java.awt.Font;
+import java.awt.event.KeyEvent;
+import static java.awt.image.ImageObserver.ABORT;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import org.apache.maven.model.Model;
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 
-public class FileMenu extends JMenuBar {
-    public FileMenu() {
+/**
+ *
+ * @author shoaib
+ */
+public class FileMenu extends JMenuBar{
+    public FileMenu(){
         JMenu fileMenu = new JMenu("File");
         fileMenu.setFont(new Font ("Arial", Font.PLAIN, 16));
 

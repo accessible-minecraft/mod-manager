@@ -23,11 +23,11 @@
  */
 package com.shoaibkhan.modmanager.mods;
 
+import com.shoaibkhan.modmanager.gui.dialog.ChooseVersionDialog;
 import com.shoaibkhan.modmanager.gui.dialog.DownloadDialog;
 import java.net.URL;
 import java.nio.file.Paths;
 
-import javax.swing.JOptionPane;
 
 import com.shoaibkhan.modmanager.profiles.CurrentProfile;
 import com.shoaibkhan.modmanager.utils.ActionResult;
@@ -35,7 +35,6 @@ import java.awt.HeadlessException;
 import java.net.MalformedURLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 
 public class ChangeVersion {
 
@@ -49,22 +48,15 @@ public class ChangeVersion {
             Object[] downloadUrls = (ModConfigJSON.getDownloadUrlList(modName, minecraftVersion)).toArray();
 
             // Get version to install from user
-            int response = JOptionPane.showOptionDialog(null, "Choose a version to install", "Version selection",
-                    JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, versions, null);
+            int response = new ChooseVersionDialog(null, false).choose(versions);
 
             if (response < 0) {
-                // Didn't chose anything, closed the option dialogue
+                // An error occured || Didn't chose anything, closed the option dialogue
                 return ActionResult.CLOSE;
             }
 
             String fileNameToInstall = (String) fileNames[response];
             String downloadUrlToInstall = (String) downloadUrls[response];
-
-            // Confirm again
-            int res = JOptionPane.showConfirmDialog(null, "Are you sure you want to change the version of the mod??");
-            if (res != 0) {
-                return ActionResult.CLOSE;
-            }
 
             // Delete the previous version of the mod
             ActionResult uninstallResponse = UninstallMod.uninstallMod(modName);

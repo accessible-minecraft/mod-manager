@@ -79,6 +79,7 @@ public class InstallOrUninstallButton extends BaseButton {
             // Update mods panel
             if (ModsPanel.installUnistallButton != null) {
                 ModsPanel.installUnistallButton.refresh();
+                ModsPanel.changeVersionButton.refresh();
             }
         });
     }

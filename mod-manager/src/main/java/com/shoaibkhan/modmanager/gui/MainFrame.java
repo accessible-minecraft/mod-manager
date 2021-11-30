@@ -68,9 +68,11 @@ public class MainFrame extends javax.swing.JFrame {
         javax.swing.JTabbedPane tabbedPane = new javax.swing.JTabbedPane();
         modsPanel = new com.shoaibkhan.modmanager.gui.panels.ModsPanel();
         profilesPanel = new com.shoaibkhan.modmanager.gui.panels.ProfilesPanel();
+        fileMenu = new com.shoaibkhan.modmanager.gui.menu.FileMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mod Manager");
+        setResizable(false);
 
         tabbedPane.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         tabbedPane.setForeground(new Color(187,187,187));
@@ -108,6 +110,8 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(20, 20, 20))
         );
 
+        setJMenuBar(fileMenu);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,6 +134,7 @@ public class MainFrame extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.shoaibkhan.modmanager.gui.menu.FileMenu fileMenu;
     private com.shoaibkhan.modmanager.gui.panels.ModsPanel modsPanel;
     private com.shoaibkhan.modmanager.gui.panels.ProfilesPanel profilesPanel;
     // End of variables declaration//GEN-END:variables

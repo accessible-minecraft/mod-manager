@@ -57,7 +57,6 @@ public class ModsPanel extends javax.swing.JPanel {
         headingLabel.setNextFocusableComponent(modsComboBox);
         add(headingLabel);
 
-        modsComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         modsComboBox.setNextFocusableComponent(installUnistallButton);
         modsComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,7 +82,7 @@ public class ModsPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.shoaibkhan.modmanager.gui.widgets.mods.ChangeVersionButton changeVersionButton;
+    public static com.shoaibkhan.modmanager.gui.widgets.mods.ChangeVersionButton changeVersionButton;
     private com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel headingLabel;
     public static com.shoaibkhan.modmanager.gui.widgets.mods.InstallOrUninstallButton installUnistallButton;
     public static com.shoaibkhan.modmanager.gui.widgets.mods.ModsComboBox modsComboBox;

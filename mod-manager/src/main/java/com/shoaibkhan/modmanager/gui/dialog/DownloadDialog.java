@@ -111,6 +111,8 @@ public class DownloadDialog extends javax.swing.JDialog {
         downloadSizeLabel = new com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Download File");
+        setResizable(false);
         getContentPane().setLayout(new java.awt.FlowLayout());
 
         container.setLayout(new java.awt.BorderLayout());

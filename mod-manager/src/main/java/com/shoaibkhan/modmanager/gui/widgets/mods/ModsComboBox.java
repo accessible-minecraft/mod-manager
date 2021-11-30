@@ -47,7 +47,6 @@ public class ModsComboBox extends JComboBox<Object> {
     public ModsComboBox() {
         refresh();
 
-        this.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         this.setFont(new java.awt.Font("Arial", 1, 18));
 
         setForeground(new Color(187, 187, 187));
@@ -90,6 +89,7 @@ public class ModsComboBox extends JComboBox<Object> {
                 // Update mods panel
                 if (ModsPanel.installUnistallButton != null) {
                     ModsPanel.installUnistallButton.refresh();
+                    ModsPanel.changeVersionButton.refresh();
                 }
             } else {
                 filterer = 0;
@@ -113,6 +113,7 @@ public class ModsComboBox extends JComboBox<Object> {
         // Update modsList panel
         if (ModsPanel.installUnistallButton != null) {
             ModsPanel.installUnistallButton.refresh();
+            ModsPanel.changeVersionButton.refresh();
         }
         isRemovingItems = false;
     }

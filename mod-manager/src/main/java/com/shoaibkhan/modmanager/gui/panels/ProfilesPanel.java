@@ -23,9 +23,7 @@
  */
 package com.shoaibkhan.modmanager.gui.panels;
 
-import java.awt.Color;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
+import com.formdev.flatlaf.ui.FlatRoundBorder;
 
 /**
  *
@@ -63,7 +61,6 @@ public class ProfilesPanel extends javax.swing.JPanel {
         hLabel.setNextFocusableComponent(profilesComboBox);
         add(hLabel);
 
-        profilesComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         profilesComboBox.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         profilesComboBox.setNextFocusableComponent(addProfileButton);
         add(profilesComboBox);

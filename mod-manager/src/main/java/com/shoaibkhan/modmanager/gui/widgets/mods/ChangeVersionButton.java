@@ -26,6 +26,7 @@ package com.shoaibkhan.modmanager.gui.widgets.mods;
 import com.shoaibkhan.modmanager.gui.panels.ModsPanel;
 import com.shoaibkhan.modmanager.gui.widgets.base.BaseButton;
 import com.shoaibkhan.modmanager.mods.ChangeVersion;
+import com.shoaibkhan.modmanager.mods.CheckIfInstalled;
 import com.shoaibkhan.modmanager.profiles.CurrentProfile;
 import com.shoaibkhan.modmanager.utils.ActionResult;
 import javax.swing.JOptionPane;
@@ -37,6 +38,8 @@ import javax.swing.JOptionPane;
 public class ChangeVersionButton extends BaseButton {
 
     public ChangeVersionButton() {
+        refresh();
+        
         this.addActionListener(e -> {
             String modName = (String) ModsPanel.modsComboBox.getSelectedItem();
             double minecraftVersion = CurrentProfile.getCurrentProfileVersion();
@@ -56,7 +59,20 @@ public class ChangeVersionButton extends BaseButton {
             // Update mods panel
             if (ModsPanel.installUnistallButton != null) {
                 ModsPanel.installUnistallButton.refresh();
+                ModsPanel.changeVersionButton.refresh();
             }
         });
+    }
+
+    public final void refresh() {
+        String modName;
+        try {
+            modName = (String) ModsPanel.modsComboBox.getSelectedItem();
+        } catch (Exception error) {
+            modName = "fabric-api";
+        }
+        boolean isInstalled = CheckIfInstalled.checkIfInstalled(modName);
+
+        this.setEnabled(isInstalled);
     }
 }

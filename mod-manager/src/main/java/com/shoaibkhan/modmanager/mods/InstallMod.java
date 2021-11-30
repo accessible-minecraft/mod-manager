@@ -23,8 +23,8 @@
  */
 package com.shoaibkhan.modmanager.mods;
 
+import com.shoaibkhan.modmanager.gui.dialog.ChooseVersionDialog;
 import com.shoaibkhan.modmanager.gui.dialog.DownloadDialog;
-import java.io.File;
 import java.nio.file.Paths;
 
 import javax.swing.JOptionPane;
@@ -39,14 +39,13 @@ import java.util.logging.Logger;
 public class InstallMod {
 
     public static ActionResult installMod(String modName, double minecraftVersion) {
-        // Get mod's versions, file name, download urls for the current minecraft
-        // version
+        // Get mod's versions, file name, download urls for the current minecraft version
         Object[] versions = (ModConfigJSON.getVersionsList(modName, minecraftVersion)).toArray();
         Object[] fileNames = (ModConfigJSON.getFileNameList(modName, minecraftVersion)).toArray();
         Object[] downloadUrls = (ModConfigJSON.getDownloadUrlList(modName, minecraftVersion)).toArray();
+
         // Get version to install from user
-        int response = JOptionPane.showOptionDialog(null, "Choose a version to install", "Version selection",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, versions, null);
+        int response = new ChooseVersionDialog(null, false).choose(versions);
         if (response < 0) {
             // Didn't chose anything, closed the option dialogue
             return ActionResult.CLOSE;
