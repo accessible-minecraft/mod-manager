@@ -23,6 +23,7 @@
  */
 package com.shoaibkhan.modmanager.gui.dialog;
 
+import java.awt.Color;
 import java.io.BufferedOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -44,6 +45,7 @@ public class DownloadDialog extends javax.swing.JDialog {
      */
     public DownloadDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        setTitle("Downloading...");
         initComponents();
     }
 
@@ -52,6 +54,17 @@ public class DownloadDialog extends javax.swing.JDialog {
             try {
                 HttpURLConnection httpConnection = (HttpURLConnection) (source.openConnection());
                 long completeFileSize = httpConnection.getContentLength();
+                
+                // Focus progress bar
+                downloadProgressBar.requestFocus();
+                
+                // Change label text and revalidate dialog
+                double sizeInMB = ((double)completeFileSize) / (1024*1024);
+                sizeInMB = (double) Math.round(sizeInMB*100)/100;
+                downloadSizeLabel.setText("Download Size: "+sizeInMB+"mb");
+                this.pack();
+                this.revalidate();
+                
                 try (java.io.BufferedInputStream in = new java.io.BufferedInputStream(httpConnection.getInputStream());
                         java.io.FileOutputStream fos = new java.io.FileOutputStream(destination);
                         java.io.BufferedOutputStream bout = new BufferedOutputStream(
@@ -66,8 +79,8 @@ public class DownloadDialog extends javax.swing.JDialog {
                         final int percentageDownloaded = (int) ((downloadedFileSize * 100) / completeFileSize);
                         // update progress bar
                         SwingUtilities.invokeLater(() -> {
-                            jProgressBar1.setValue(percentageDownloaded);
-                            jProgressBar1.setString(percentageDownloaded + "%");
+                            downloadProgressBar.setValue(percentageDownloaded);
+                            downloadProgressBar.setString(percentageDownloaded + "%");
                         });
                         bout.write(data, 0, x1);
                     }
@@ -93,20 +106,48 @@ public class DownloadDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jProgressBar1 = new javax.swing.JProgressBar();
+        container = new javax.swing.JPanel();
+        downloadProgressBar = new javax.swing.JProgressBar();
+        downloadSizeLabel = new com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new java.awt.FlowLayout());
 
-        jProgressBar1.setValue(0);
-        jProgressBar1.setPreferredSize(new java.awt.Dimension(200, 50));
-        jProgressBar1.setStringPainted(true);
-        getContentPane().add(jProgressBar1);
+        container.setLayout(new java.awt.BorderLayout());
+
+        downloadProgressBar.setNextFocusableComponent(downloadSizeLabel);
+        downloadProgressBar.setPreferredSize(new java.awt.Dimension(200, 50));
+        downloadProgressBar.setStringPainted(true);
+        downloadProgressBar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                downloadProgressBarFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                downloadProgressBarFocusLost(evt);
+            }
+        });
+        container.add(downloadProgressBar, java.awt.BorderLayout.NORTH);
+
+        downloadSizeLabel.setText("Download Size : xxmb");
+        downloadSizeLabel.setNextFocusableComponent(downloadProgressBar);
+        container.add(downloadSizeLabel, java.awt.BorderLayout.SOUTH);
+
+        getContentPane().add(container);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void downloadProgressBarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_downloadProgressBarFocusGained
+        evt.getComponent().setForeground(Color.decode("#38ABFF"));
+    }//GEN-LAST:event_downloadProgressBarFocusGained
+
+    private void downloadProgressBarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_downloadProgressBarFocusLost
+        evt.getComponent().setForeground(new Color(187,187,187));
+    }//GEN-LAST:event_downloadProgressBarFocusLost
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JPanel container;
+    public javax.swing.JProgressBar downloadProgressBar;
+    private com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel downloadSizeLabel;
     // End of variables declaration//GEN-END:variables
 }
