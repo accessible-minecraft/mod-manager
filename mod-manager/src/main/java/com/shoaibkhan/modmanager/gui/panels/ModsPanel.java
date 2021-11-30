@@ -45,17 +45,21 @@ public class ModsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        row1 = new javax.swing.JPanel();
         headingLabel = new com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel();
         modsComboBox = new com.shoaibkhan.modmanager.gui.widgets.mods.ModsComboBox();
+        row2 = new javax.swing.JPanel();
         installUnistallButton = new com.shoaibkhan.modmanager.gui.widgets.mods.InstallOrUninstallButton();
         changeVersionButton = new com.shoaibkhan.modmanager.gui.widgets.mods.ChangeVersionButton();
+        installNVDAButton = new com.shoaibkhan.modmanager.gui.widgets.mods.NvdaDllButton();
 
         setNextFocusableComponent(headingLabel);
+        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
 
         headingLabel.setLabelFor(modsComboBox);
         headingLabel.setText("Select Mod:-  ");
         headingLabel.setNextFocusableComponent(modsComboBox);
-        add(headingLabel);
+        row1.add(headingLabel);
 
         modsComboBox.setNextFocusableComponent(installUnistallButton);
         modsComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -63,13 +67,20 @@ public class ModsPanel extends javax.swing.JPanel {
                 modsComboBoxActionPerformed(evt);
             }
         });
-        add(modsComboBox);
+        row1.add(modsComboBox);
+
+        add(row1);
 
         installUnistallButton.setNextFocusableComponent(changeVersionButton);
-        add(installUnistallButton);
+        row2.add(installUnistallButton);
 
         changeVersionButton.setText("Change Version");
-        add(changeVersionButton);
+        row2.add(changeVersionButton);
+
+        installNVDAButton.setText("Install Nvda Dll");
+        row2.add(installNVDAButton);
+
+        add(row2);
     }// </editor-fold>//GEN-END:initComponents
 
     private void iouButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iouButton1ActionPerformed
@@ -84,7 +95,10 @@ public class ModsPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static com.shoaibkhan.modmanager.gui.widgets.mods.ChangeVersionButton changeVersionButton;
     private com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel headingLabel;
+    private com.shoaibkhan.modmanager.gui.widgets.mods.NvdaDllButton installNVDAButton;
     public static com.shoaibkhan.modmanager.gui.widgets.mods.InstallOrUninstallButton installUnistallButton;
     public static com.shoaibkhan.modmanager.gui.widgets.mods.ModsComboBox modsComboBox;
+    private javax.swing.JPanel row1;
+    private javax.swing.JPanel row2;
     // End of variables declaration//GEN-END:variables
 }

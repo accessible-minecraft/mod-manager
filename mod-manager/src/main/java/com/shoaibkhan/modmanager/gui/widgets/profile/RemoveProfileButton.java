@@ -46,6 +46,7 @@ public class RemoveProfileButton extends BaseButton {
             ActionResult removeCurrentProfileResponse = RemoveCurrentProfile.removeCurrentProfile();
             if (removeCurrentProfileResponse != ActionResult.PASS) {
                 JOptionPane.showMessageDialog(this, removeCurrentProfileResponse.getDescription());
+                return;
             }
 
             // Update mods panel

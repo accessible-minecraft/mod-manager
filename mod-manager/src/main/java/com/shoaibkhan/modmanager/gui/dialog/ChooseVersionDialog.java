@@ -91,6 +91,7 @@ public class ChooseVersionDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Select Version");
+        setResizable(false);
         getContentPane().setLayout(new java.awt.FlowLayout());
 
         container.setLayout(new javax.swing.BoxLayout(container, javax.swing.BoxLayout.Y_AXIS));

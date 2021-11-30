@@ -29,7 +29,6 @@ import java.net.URL;
 import java.nio.file.Paths;
 
 import javax.swing.JOptionPane;
-import javax.swing.plaf.DimensionUIResource;
 
 import com.shoaibkhan.modmanager.gui.widgets.base.BaseButton;
 import com.shoaibkhan.modmanager.profiles.CurrentProfile;
@@ -38,12 +37,13 @@ import com.shoaibkhan.modmanager.profiles.utils;
 import org.apache.commons.io.FileUtils;
 
 public class NvdaDllButton extends BaseButton {
+
     public NvdaDllButton() {
-        this.setPreferredSize(new DimensionUIResource(150, 50));
 
         this.addActionListener(e -> {
-            if (utils.getOS() != utils.OS.WINDOWS)
+            if (utils.getOS() != utils.OS.WINDOWS) {
                 return;
+            }
 
             try {
                 // Get file url for the correct architecture
@@ -61,7 +61,6 @@ public class NvdaDllButton extends BaseButton {
 
                 JOptionPane.showMessageDialog(this, "Nvda Controller DLL installed", "Nvda DLL Installed Successfully",
                         JOptionPane.INFORMATION_MESSAGE);
-                return;
             } catch (IOException error) {
                 error.printStackTrace();
             }
@@ -70,11 +69,11 @@ public class NvdaDllButton extends BaseButton {
 
     private boolean is64Bit() {
         // From https://stackoverflow.com/questions/1856565/how-do-you-determine-32-or-64-bit-architecture-of-windows-using-java
-        boolean is64bit = false;
+        boolean is64bit;
         if (System.getProperty("os.name").contains("Windows")) {
             is64bit = (System.getenv("ProgramFiles(x86)") != null);
         } else {
-            is64bit = (System.getProperty("os.arch").indexOf("64") != -1);
+            is64bit = (System.getProperty("os.arch").contains("64"));
         }
 
         return is64bit;

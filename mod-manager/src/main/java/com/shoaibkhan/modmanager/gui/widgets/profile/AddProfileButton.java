@@ -23,6 +23,7 @@
  */
 package com.shoaibkhan.modmanager.gui.widgets.profile;
 
+import com.shoaibkhan.modmanager.gui.dialog.FolderChooserDialog;
 import com.shoaibkhan.modmanager.gui.panels.ProfilesPanel;
 import com.shoaibkhan.modmanager.gui.widgets.base.BaseButton;
 import com.shoaibkhan.modmanager.profiles.AddNewProfile;
@@ -43,7 +44,7 @@ public class AddProfileButton extends BaseButton {
                 return;
             }
 
-            String directory = JOptionPane.showInputDialog("Enter directory path", utils.getMinecraftDirectory());
+            String directory = new FolderChooserDialog(null, false).choose();
             if (directory == null) {
                 return;
             }
@@ -51,6 +52,7 @@ public class AddProfileButton extends BaseButton {
             ActionResult response = AddNewProfile.addNewProfile(name, directory);
             if (response != ActionResult.PASS) {
                 JOptionPane.showMessageDialog(this, response.getDescription());
+                return;
             }
 
             // Check if options.txt is present in the profile
