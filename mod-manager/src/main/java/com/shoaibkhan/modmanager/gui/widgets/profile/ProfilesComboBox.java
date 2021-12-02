@@ -86,8 +86,7 @@ public class ProfilesComboBox extends JComboBox<Object> {
 
                 // Update mods panel
                 if (ModsPanel.installUnistallButton != null) {
-                    ModsPanel.installUnistallButton.refresh();
-                    ModsPanel.changeVersionButton.refresh();
+                    ModsPanel.modsComboBox.refresh();
                 }
             } else {
                 filterer = 0;

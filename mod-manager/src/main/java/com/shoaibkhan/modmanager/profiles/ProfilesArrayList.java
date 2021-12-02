@@ -32,36 +32,38 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.shoaibkhan.modmanager.configs.Config;
 
 public class ProfilesArrayList {
-	public static Object[] profilesArrayList() {
-		try {
-			JsonNode profilesRoot = Config.getData().path("profiles");
 
-			if (!profilesRoot.isMissingNode()) {
-				List<String> profilesList = new ArrayList<>();
+    public static Object[] profilesArrayList() {
+        try {
+            JsonNode profilesRoot = Config.getData().path("profiles");
 
-				Iterator<Entry<String, JsonNode>> profile = profilesRoot.fields();
+            if (!profilesRoot.isMissingNode()) {
+                List<String> profilesList = new ArrayList<>();
 
-				// Store all profile names in profiles list
-				while (profile.hasNext()) {
-					Entry<String, JsonNode> entry = profile.next();
+                Iterator<Entry<String, JsonNode>> profile = profilesRoot.fields();
 
-					// Check if the json node is `current` or `total`
-					if (entry.getKey().equalsIgnoreCase("current") || entry.getKey().equalsIgnoreCase("total"))
-						continue;
+                // Store all profile names in profiles list
+                while (profile.hasNext()) {
+                    Entry<String, JsonNode> entry = profile.next();
 
-					String name = entry.getValue().get("name").asText();
+                    // Check if the json node is `current` or `total`
+                    if (entry.getKey().equalsIgnoreCase("current") || entry.getKey().equalsIgnoreCase("total")) {
+                        continue;
+                    }
 
-					profilesList.add(name);
-				}
+                    String name = entry.getValue().get("name").asText();
 
-				return profilesList.toArray();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+                    profilesList.add(name);
+                }
 
-		// Currupted json file | Reset the json to default and run the method again
-		Config.setDataToDefault();
-		return profilesArrayList();
-	}
+                return profilesList.toArray();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Currupted json file | Reset the json to default and run the method again
+        Config.setDataToDefault();
+        return profilesArrayList();
+    }
 }

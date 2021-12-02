@@ -23,8 +23,11 @@
  */
 package com.shoaibkhan.modmanager.gui.dialog;
 
+import com.shoaibkhan.modmanager.profiles.CurrentProfile;
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -75,6 +78,18 @@ public class FolderChooserDialog extends javax.swing.JDialog {
 
         folderPathInput.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         folderPathInput.setText("Enter profile folder manually or use the browse button.");
+        // Listen for changes in the text
+        folderPathInput.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                directory = folderPathInput.getText();
+            }
+            public void removeUpdate(DocumentEvent e) {
+                directory = folderPathInput.getText();
+            }
+            public void insertUpdate(DocumentEvent e) {
+                directory = folderPathInput.getText();
+            }
+        });
         row1.add(folderPathInput);
 
         showDialogButton.setText("Browse");
@@ -124,7 +139,11 @@ public class FolderChooserDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void showDialogButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showDialogButtonActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
+        JFileChooser fileChooser;
+        if(directory==null)
+            fileChooser = new JFileChooser(CurrentProfile.getCurrentProfileDirectory());
+        else
+            fileChooser = new JFileChooser(directory);
 //        fileChooser.
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int option = fileChooser.showOpenDialog(this);
@@ -135,47 +154,6 @@ public class FolderChooserDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_showDialogButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FolderChooserDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FolderChooserDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FolderChooserDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FolderChooserDialog.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                FolderChooserDialog dialog = new FolderChooserDialog(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.shoaibkhan.modmanager.gui.widgets.base.BaseButton cancelButton;

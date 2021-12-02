@@ -51,8 +51,7 @@ public class RemoveProfileButton extends BaseButton {
 
             // Update mods panel
             if (ModsPanel.installUnistallButton != null) {
-                ModsPanel.installUnistallButton.refresh();
-                ModsPanel.changeVersionButton.refresh();
+                ModsPanel.modsComboBox.refresh();
             }
         });
     }

@@ -39,7 +39,7 @@ public class ChangeVersionButton extends BaseButton {
 
     public ChangeVersionButton() {
         refresh();
-        
+
         this.addActionListener(e -> {
             String modName = (String) ModsPanel.modsComboBox.getSelectedItem();
             double minecraftVersion = CurrentProfile.getCurrentProfileVersion();

@@ -40,6 +40,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Enter profile folder manually or use the browse button."/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="// Listen for changes in the text&#xa;folderPathInput.getDocument().addDocumentListener(new DocumentListener() {&#xa;  public void changedUpdate(DocumentEvent e) {&#xa;    directory = folderPathInput.getText();&#xa;  }&#xa;  public void removeUpdate(DocumentEvent e) {&#xa;    directory = folderPathInput.getText();&#xa;  }&#xa;  public void insertUpdate(DocumentEvent e) {&#xa;    directory = folderPathInput.getText();&#xa;  }&#xa;});"/>
+              </AuxValues>
             </Component>
             <Component class="com.shoaibkhan.modmanager.gui.widgets.base.BaseButton" name="showDialogButton">
               <Properties>

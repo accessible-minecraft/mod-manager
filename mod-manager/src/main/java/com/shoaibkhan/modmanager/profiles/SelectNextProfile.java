@@ -29,6 +29,7 @@ import com.shoaibkhan.modmanager.configs.Config;
 import com.shoaibkhan.modmanager.utils.ActionResult;
 
 public class SelectNextProfile {
+
     public static ActionResult selectNextProfiResult() {
         try {
             JsonNode data = Config.getData();
@@ -39,9 +40,11 @@ public class SelectNextProfile {
                 int total = data.path("profiles").get("total").asInt();
 
                 current++;
-                if(current>total) current = 0;
+                if (current > total) {
+                    current = 0;
+                }
 
-                ((ObjectNode)data.path("profiles")).put("current", Integer.toString(current));
+                ((ObjectNode) data.path("profiles")).put("current", Integer.toString(current));
                 Config.setData(data);
                 return ActionResult.PASS;
             }

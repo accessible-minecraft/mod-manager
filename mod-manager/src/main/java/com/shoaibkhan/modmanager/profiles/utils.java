@@ -30,90 +30,94 @@ import java.util.Arrays;
 import java.util.List;
 
 public class utils {
-	public static enum OS {
-		WINDOWS, MACOS, LINUX;
-	}
 
-	public static String getMinecraftDirectory() {
-		OS currentOs = getOS();
-		String homeDirectory = "";
-		StringBuilder minecraftDirectory = new StringBuilder("");
+    public static enum OS {
+        WINDOWS, MACOS, LINUX;
+    }
 
-		switch (currentOs) {
-		case WINDOWS: {
-			homeDirectory = System.getenv("APPDATA");
-			minecraftDirectory = new StringBuilder(homeDirectory);
-			minecraftDirectory.append("\\.minecraft");
-			break;
-		}
-		case LINUX: {
-			homeDirectory = System.getProperty("user.home");
-			minecraftDirectory = new StringBuilder(homeDirectory);
-			minecraftDirectory.append("/.minecraft");
-			break;
-		}
-		case MACOS: {
-			homeDirectory = System.getProperty("user.home");
-			minecraftDirectory = new StringBuilder(homeDirectory);
-			minecraftDirectory.append("/Library/Application Support/minecraft");
-			break;
-		}
-		}
+    public static String getMinecraftDirectory() {
+        OS currentOs = getOS();
+        String homeDirectory = "";
+        StringBuilder minecraftDirectory = new StringBuilder("");
 
-		if (Files.exists(Paths.get(minecraftDirectory.toString())))
-			return minecraftDirectory.toString();
-		else
-			return homeDirectory;
-	}
+        switch (currentOs) {
+            case WINDOWS: {
+                homeDirectory = System.getenv("APPDATA");
+                minecraftDirectory = new StringBuilder(homeDirectory);
+                minecraftDirectory.append("\\.minecraft");
+                break;
+            }
+            case LINUX: {
+                homeDirectory = System.getProperty("user.home");
+                minecraftDirectory = new StringBuilder(homeDirectory);
+                minecraftDirectory.append("/.minecraft");
+                break;
+            }
+            case MACOS: {
+                homeDirectory = System.getProperty("user.home");
+                minecraftDirectory = new StringBuilder(homeDirectory);
+                minecraftDirectory.append("/Library/Application Support/minecraft");
+                break;
+            }
+        }
 
-	public static OS getOS() {
-		String osName = System.getProperty("os.name").toLowerCase();
+        if (Files.exists(Paths.get(minecraftDirectory.toString()))) {
+            return minecraftDirectory.toString();
+        } else {
+            return homeDirectory;
+        }
+    }
 
-		if (osName.contains("win")) {
-			return OS.WINDOWS;
-		} else if (osName.contains("mac")) {
-			return OS.MACOS;
-		} else if (osName.contains("nix") || osName.contains("nux") || osName.indexOf("aix") > 0) {
-			return OS.LINUX;
-		}
-		return OS.LINUX;
-	}
+    public static OS getOS() {
+        String osName = System.getProperty("os.name").toLowerCase();
 
-	public static boolean checkValidity(String path) {
-		if (!Files.exists(Paths.get(path).toAbsolutePath()))
-			return false;
+        if (osName.contains("win")) {
+            return OS.WINDOWS;
+        } else if (osName.contains("mac")) {
+            return OS.MACOS;
+        } else if (osName.contains("nix") || osName.contains("nux") || osName.indexOf("aix") > 0) {
+            return OS.LINUX;
+        }
+        return OS.LINUX;
+    }
 
-		File folder = new File(path);
+    public static boolean checkValidity(String path) {
+        if (!Files.exists(Paths.get(path).toAbsolutePath())) {
+            return false;
+        }
 
-		try {
-			List<String> listOfItemsInFolder = Arrays.asList(folder.list());
+        File folder = new File(path);
 
-			boolean hasSaves = listOfItemsInFolder.contains("saves");
+        try {
+            List<String> listOfItemsInFolder = Arrays.asList(folder.list());
 
-			return hasSaves;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+            boolean hasSaves = listOfItemsInFolder.contains("saves");
 
-		return false;
-	}
+            return hasSaves;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-	public static boolean isOptionsTxtPresent(String path) {
-		if (!Files.exists(Paths.get(path).toAbsolutePath()))
-			return false;
+        return false;
+    }
 
-		File folder = new File(path);
+    public static boolean isOptionsTxtPresent(String path) {
+        if (!Files.exists(Paths.get(path).toAbsolutePath())) {
+            return false;
+        }
 
-		try {
-			List<String> listOfItemsInFolder = Arrays.asList(folder.list());
+        File folder = new File(path);
 
-			boolean hasOptionsTXT = listOfItemsInFolder.contains("options.txt");
+        try {
+            List<String> listOfItemsInFolder = Arrays.asList(folder.list());
 
-			return hasOptionsTXT;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+            boolean hasOptionsTXT = listOfItemsInFolder.contains("options.txt");
 
-		return false;
-	}
+            return hasOptionsTXT;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
 }

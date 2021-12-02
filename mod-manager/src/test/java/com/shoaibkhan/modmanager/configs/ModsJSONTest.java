@@ -28,6 +28,11 @@ import org.junit.Test;
 public class ModsJSONTest {
 
     @Test
+    public void testGetSupportedModsListFor1_18() {
+        System.out.println(ModsJSON.getSupportedModsList(1.18));
+    }
+    
+    @Test
     public void testGetSupportedModsListFor1_17() {
         System.out.println(ModsJSON.getSupportedModsList(1.17));
     }
