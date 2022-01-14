@@ -89,7 +89,7 @@ public class CurrentProfile {
     public static double getCurrentProfileVersion() {
         // Check if options.txt is present and then proceed
         if (!utils.isOptionsTxtPresent(getCurrentProfileDirectory())) {
-            return 1.17;
+            return 1.18;
         }
 
         try (BufferedReader optionsFileReader = new BufferedReader(
@@ -122,12 +122,12 @@ public class CurrentProfile {
             e.printStackTrace();
         }
 
-        return 1.17;
+        return 1.18;
     }
 
     private static double dataVersionToMinecraftVersion(int dataVersion) {
         // For 1.18.x
-        if (dataVersion == 2860) {
+        if (dataVersion == 2860 || dataVersion == 2865) {
             return 1.18;
         }
 
