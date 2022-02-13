@@ -1,6 +1,6 @@
 @REM @REM Delete temperory files
 del "Temp.Mod.Manager.zip"
-rmdir /s /q "temp
+rmdir /s /q "temp"
 
 @REM Download the latest release file
 curl -L https://github.com/accessible-minecraft/mod-manager/releases/latest/download/Mod.Manager.zip --output Temp.Mod.Manager.zip
