@@ -35,18 +35,14 @@ public class CurrentProfile {
 
             if (!profiles.isMissingNode()) {
                 // Get name from the config.json
-                String current = "0";
+                String current;
                 try {
-                    current  = profiles.get("current").asText();
+                    current = ProfilesPanel.profilesComboBox.getSelectedIndex() + "";
+                } catch (Exception e) {
+                    current = "0";
                 }
-                catch (Exception ignored){}
 
-                String name = profiles.path(current).get("name").asText();
-
-                // Add version to name
-                name += " (" + getCurrentProfileVersion() + ")";
-
-                return name;
+                return profiles.path(current).get("name").asText();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -81,7 +77,25 @@ public class CurrentProfile {
     }
 
     public static double getCurrentProfileVersion() {
-        // TODO Add new method
-        return 1.18;
+        try {
+            JsonNode profiles = Config.getData().path("profiles");
+
+            if (!profiles.isMissingNode()) {
+                String current;
+                try {
+                    current = ProfilesPanel.profilesComboBox.getSelectedIndex() + "";
+                } catch (Exception e) {
+                    current = "0";
+                }
+
+                return profiles.path(current).get("version").asDouble();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Currupted json file | Reset the json to default
+        Config.setDataToDefault();
+        return utils.getLatestMinecraftVersion();
     }
 }

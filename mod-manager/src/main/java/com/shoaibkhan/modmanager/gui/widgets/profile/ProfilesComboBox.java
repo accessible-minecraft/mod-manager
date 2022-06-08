@@ -24,17 +24,14 @@
 package com.shoaibkhan.modmanager.gui.widgets.profile;
 
 import com.shoaibkhan.modmanager.gui.panels.ModsPanel;
-import com.shoaibkhan.modmanager.profiles.CurrentProfile;
 import com.shoaibkhan.modmanager.profiles.ProfilesArrayList;
-import com.shoaibkhan.modmanager.profiles.utils;
-import java.awt.Color;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 
 /**
- *
  * @author shoaib
  */
 public class ProfilesComboBox extends JComboBox<Object> {
@@ -74,6 +71,7 @@ public class ProfilesComboBox extends JComboBox<Object> {
             filterer++;
 
             if (filterer == 1) {
+
                 // Update mods panel
                 if (ModsPanel.installUnistallButton != null) {
                     ModsPanel.modsComboBox.refresh();

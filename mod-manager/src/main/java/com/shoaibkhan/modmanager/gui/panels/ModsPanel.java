@@ -23,8 +23,9 @@
  */
 package com.shoaibkhan.modmanager.gui.panels;
 
+import com.shoaibkhan.modmanager.profiles.CurrentProfile;
+
 /**
- *
  * @author shoaib
  */
 public class ModsPanel extends javax.swing.JPanel {
@@ -44,20 +45,28 @@ public class ModsPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        javax.swing.JPanel row0 = new javax.swing.JPanel();
 
-        row1 = new javax.swing.JPanel();
-        headingLabel = new com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel();
+        javax.swing.JPanel row1 = new javax.swing.JPanel();
+        com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel headingLabel = new com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel();
+        profileLabel = new com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel();
         modsComboBox = new com.shoaibkhan.modmanager.gui.widgets.mods.ModsComboBox();
-        row2 = new javax.swing.JPanel();
+        javax.swing.JPanel row2 = new javax.swing.JPanel();
         installUnistallButton = new com.shoaibkhan.modmanager.gui.widgets.mods.InstallOrUninstallButton();
         changeVersionButton = new com.shoaibkhan.modmanager.gui.widgets.mods.ChangeVersionButton();
-        installNVDAButton = new com.shoaibkhan.modmanager.gui.widgets.mods.NvdaDllButton();
+        com.shoaibkhan.modmanager.gui.widgets.mods.NvdaDllButton installNVDAButton = new com.shoaibkhan.modmanager.gui.widgets.mods.NvdaDllButton();
 
-        setNextFocusableComponent(headingLabel);
+        setNextFocusableComponent(profileLabel);
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
 
+        headingLabel.setText("Selected Profile: " + CurrentProfile.getCurrentProfileName() + " for version " + CurrentProfile.getCurrentProfileVersion());
+        headingLabel.setNextFocusableComponent(headingLabel);
+        row0.add(profileLabel);
+
+        add(row0);
+
         headingLabel.setLabelFor(modsComboBox);
-        headingLabel.setText("Select Mod:-  ");
+        headingLabel.setText("Select Mod :-");
         headingLabel.setNextFocusableComponent(modsComboBox);
         row1.add(headingLabel);
 
@@ -94,11 +103,8 @@ public class ModsPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static com.shoaibkhan.modmanager.gui.widgets.mods.ChangeVersionButton changeVersionButton;
-    private com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel headingLabel;
-    private com.shoaibkhan.modmanager.gui.widgets.mods.NvdaDllButton installNVDAButton;
+    public static com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel profileLabel;
     public static com.shoaibkhan.modmanager.gui.widgets.mods.InstallOrUninstallButton installUnistallButton;
     public static com.shoaibkhan.modmanager.gui.widgets.mods.ModsComboBox modsComboBox;
-    private javax.swing.JPanel row1;
-    private javax.swing.JPanel row2;
     // End of variables declaration//GEN-END:variables
 }

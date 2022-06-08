@@ -27,19 +27,19 @@ import org.junit.Test;
 
 public class CurrentProfileTest {
 
-	@Test
-	public void testGetCurrentProfileVersion() {
-		System.out.println(CurrentProfile.getCurrentProfileVersion());
-	}
+    @Test
+    public void testGetCurrentProfileVersion() {
+        System.out.println(CurrentProfile.getCurrentProfileVersion());
+    }
 
-	@Test
-	public void testGetCurrentProfileName() {
-		System.out.println(CurrentProfile.getCurrentProfileName());
-	}
-        
-        @Test
-	public void testGetCurrentProfileDirectory() {
-		System.out.println(CurrentProfile.getCurrentProfileDirectory());
-	}
+    @Test
+    public void testGetCurrentProfileName() {
+        System.out.println(CurrentProfile.getCurrentProfileName());
+    }
+
+    @Test
+    public void testGetCurrentProfileDirectory() {
+        System.out.println(CurrentProfile.getCurrentProfileDirectory());
+    }
 
 }

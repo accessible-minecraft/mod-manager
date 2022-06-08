@@ -26,16 +26,14 @@ package com.shoaibkhan.modmanager.gui.widgets.mods;
 import com.shoaibkhan.modmanager.configs.ModsJSON;
 import com.shoaibkhan.modmanager.gui.panels.ModsPanel;
 import com.shoaibkhan.modmanager.profiles.CurrentProfile;
-import com.shoaibkhan.modmanager.profiles.utils;
-import java.awt.Color;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.List;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 
 /**
- *
  * @author shoaib
  */
 public class ModsComboBox extends JComboBox<Object> {
@@ -95,15 +93,17 @@ public class ModsComboBox extends JComboBox<Object> {
         List<String> list = ModsJSON.getSupportedModsList(minecraftVersion);
 
         // Add mods to the combo box
-        list.forEach(object -> {
-            this.addItem(object);
-        });
+        assert list != null;
+        list.forEach(this::addItem);
 
         // Update modsList panel
         if (ModsPanel.installUnistallButton != null) {
             ModsPanel.installUnistallButton.refresh();
             ModsPanel.changeVersionButton.refresh();
         }
+
+        // Refresh label
+        ModsPanel.profileLabel.setText("Selected Profile: " + CurrentProfile.getCurrentProfileName() + " for version " + CurrentProfile.getCurrentProfileVersion());
         isRemovingItems = false;
     }
 }

@@ -23,15 +23,12 @@
  */
 package com.shoaibkhan.modmanager.profiles;
 
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.List;
 
 public class utils {
 
-    public static enum OS {
+    public enum OS {
         WINDOWS, MACOS, LINUX;
     }
 
@@ -83,5 +80,10 @@ public class utils {
 
     public static boolean checkValidity(String path) {
         return Files.exists(Paths.get(path).toAbsolutePath());
+    }
+
+    public static double getLatestMinecraftVersion() {
+        // TODO Implement dynamic method using json
+        return 1.18;
     }
 }

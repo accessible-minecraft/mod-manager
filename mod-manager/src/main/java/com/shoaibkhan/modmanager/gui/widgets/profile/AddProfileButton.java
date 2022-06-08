@@ -27,12 +27,11 @@ import com.shoaibkhan.modmanager.gui.dialog.FolderChooserDialog;
 import com.shoaibkhan.modmanager.gui.panels.ProfilesPanel;
 import com.shoaibkhan.modmanager.gui.widgets.base.BaseButton;
 import com.shoaibkhan.modmanager.profiles.AddNewProfile;
-import com.shoaibkhan.modmanager.profiles.utils;
 import com.shoaibkhan.modmanager.utils.ActionResult;
-import javax.swing.JOptionPane;
+
+import javax.swing.*;
 
 /**
- *
  * @author shoaib
  */
 public class AddProfileButton extends BaseButton {
@@ -49,13 +48,24 @@ public class AddProfileButton extends BaseButton {
                 return;
             }
 
-            ActionResult response = AddNewProfile.addNewProfile(name, directory);
+            String versionInString = JOptionPane.showInputDialog("Enter minecraft version for the profile", "Enter version");
+            if (versionInString == null) {
+                return;
+            }
+            double version;
+            try {
+                version = Double.parseDouble(versionInString);
+            } catch (Exception ignored) {
+                return;
+            }
+
+            ActionResult response = AddNewProfile.addNewProfile(name, directory, version);
             if (response != ActionResult.PASS) {
                 JOptionPane.showMessageDialog(this, response.getDescription());
                 return;
             }
 
-            JOptionPane.showMessageDialog(null, "Profile added", "Success", JOptionPane.DEFAULT_OPTION);
+            JOptionPane.showMessageDialog(null, "Profile added", "Success", JOptionPane.PLAIN_MESSAGE);
 
             ProfilesPanel.profilesComboBox.refresh();
         });

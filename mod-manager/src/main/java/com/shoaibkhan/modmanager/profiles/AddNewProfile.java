@@ -23,17 +23,17 @@
  */
 package com.shoaibkhan.modmanager.profiles;
 
-import java.util.List;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.shoaibkhan.modmanager.configs.Config;
 import com.shoaibkhan.modmanager.utils.ActionResult;
 
+import java.util.List;
+
 public class AddNewProfile {
 
-    public static ActionResult addNewProfile(String name, String directory) {
+    public static ActionResult addNewProfile(String name, String directory, double version) {
 
         if (!utils.checkValidity(directory)) {
             return ActionResult.INVALID_DIRECORY;
@@ -76,6 +76,7 @@ public class AddNewProfile {
         ObjectNode newProfileNode = mapper.createObjectNode();
         newProfileNode.put("name", name);
         newProfileNode.put("location", directory);
+        newProfileNode.put("version", version);
 
         // Add the new profile node to the profiles node and reset the data
         total++;

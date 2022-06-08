@@ -133,9 +133,8 @@ public class ModsJSON {
             }
 
             String fileName = modNode.get("file-name").asText();
-            String filePath = Paths.get(MOD_CONFIG_PATH, fileName).toString();
 
-            return filePath;
+            return Paths.get(MOD_CONFIG_PATH, fileName).toString();
         } catch (Exception e) {
             e.printStackTrace();
         }

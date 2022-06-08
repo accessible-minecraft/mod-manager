@@ -23,10 +23,7 @@
  */
 package com.shoaibkhan.modmanager.gui.panels;
 
-import com.formdev.flatlaf.ui.FlatRoundBorder;
-
 /**
- *
  * @author shoaib
  */
 public class ProfilesPanel extends javax.swing.JPanel {
@@ -86,7 +83,7 @@ public class ProfilesPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.shoaibkhan.modmanager.gui.widgets.profile.AddProfileButton addProfileButton;
-    private com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel hLabel;
+    public static com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel hLabel;
     public static com.shoaibkhan.modmanager.gui.widgets.profile.ProfilesComboBox profilesComboBox;
     private com.shoaibkhan.modmanager.gui.widgets.profile.RemoveProfileButton removeProfileButton;
     // End of variables declaration//GEN-END:variables
