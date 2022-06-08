@@ -86,6 +86,7 @@ public class Config {
 		defaultProfileNode.put("location", utils.getMinecraftDirectory());
 
 		profileNode.put("total", "0");
+		profileNode.put("current", "0");
 		profileNode.set("0", defaultProfileNode);
 
 		root.set("profiles", profileNode);

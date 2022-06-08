@@ -31,6 +31,11 @@ public class CurrentProfileTest {
 	public void testGetCurrentProfileVersion() {
 		System.out.println(CurrentProfile.getCurrentProfileVersion());
 	}
+
+	@Test
+	public void testGetCurrentProfileName() {
+		System.out.println(CurrentProfile.getCurrentProfileName());
+	}
         
         @Test
 	public void testGetCurrentProfileDirectory() {

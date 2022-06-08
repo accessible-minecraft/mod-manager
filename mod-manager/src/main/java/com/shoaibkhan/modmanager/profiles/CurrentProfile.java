@@ -39,7 +39,12 @@ public class CurrentProfile {
 
             if (!profiles.isMissingNode()) {
                 // Get name from the config.json
-                String current = profiles.get("current").asText();
+                String current = "0";
+                try {
+                    current  = profiles.get("current").asText();
+                }
+                catch (Exception ignored){}
+
                 String name = profiles.path(current).get("name").asText();
 
                 // Add version to name
@@ -68,13 +73,14 @@ public class CurrentProfile {
                     current = "0";
                 }
                 String directory = profiles.path(current).get("location").asText();
-                if (!directory.equalsIgnoreCase("0")) {
-                    if (!utils.checkValidity(directory)) {
-                        // Invalid Directory
-                        RemoveCurrentProfile.removeCurrentProfile();
-                        getCurrentProfileDirectory();
-                    }
-                }
+//                if (!directory.equalsIgnoreCase("0")) {
+//                    if (!utils.checkValidity(directory)) {
+//                        // Invalid Directory
+//                        RemoveCurrentProfile.removeCurrentProfile();
+//                        getCurrentProfileDirectory();
+//                    }
+//                }
+
                 return directory;
             }
         } catch (Exception e) {
