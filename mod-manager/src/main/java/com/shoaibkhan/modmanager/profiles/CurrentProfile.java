@@ -23,10 +23,6 @@
  */
 package com.shoaibkhan.modmanager.profiles;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.nio.file.Paths;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.shoaibkhan.modmanager.configs.Config;
 import com.shoaibkhan.modmanager.gui.panels.ProfilesPanel;
@@ -72,16 +68,8 @@ public class CurrentProfile {
                 } catch (Exception e) {
                     current = "0";
                 }
-                String directory = profiles.path(current).get("location").asText();
-//                if (!directory.equalsIgnoreCase("0")) {
-//                    if (!utils.checkValidity(directory)) {
-//                        // Invalid Directory
-//                        RemoveCurrentProfile.removeCurrentProfile();
-//                        getCurrentProfileDirectory();
-//                    }
-//                }
 
-                return directory;
+                return profiles.path(current).get("location").asText();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,62 +81,7 @@ public class CurrentProfile {
     }
 
     public static double getCurrentProfileVersion() {
-        // Check if options.txt is present and then proceed
-        if (!utils.isOptionsTxtPresent(getCurrentProfileDirectory())) {
-            return 1.18;
-        }
-
-        try (BufferedReader optionsFileReader = new BufferedReader(
-                new FileReader(Paths.get(getCurrentProfileDirectory(), "options.txt").toFile()))) {
-            String lineText = null;
-            while ((lineText = optionsFileReader.readLine()) != null) {
-                // Get key
-                String key = lineText.substring(0, lineText.indexOf(":"));
-
-                // Check if current line is the versions line
-                if (key.equalsIgnoreCase("version")) {
-                    // Get value
-                    String stringVal = lineText.substring(lineText.indexOf(":") + 1);
-
-                    int dataVersion = 2730;
-
-                    // Convert value to double
-                    try {
-                        dataVersion = Integer.parseInt(stringVal);
-                    } catch (Exception e) {
-                        // Corrupted options.txt file, don't change value's value
-                        e.printStackTrace();
-                    }
-
-                    // Convert and return the minecraft version
-                    return dataVersionToMinecraftVersion(dataVersion);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+        // TODO Add new method
         return 1.18;
     }
-
-    private static double dataVersionToMinecraftVersion(int dataVersion) {
-        // For 1.18.x
-        if (dataVersion == 2860 || dataVersion == 2865) {
-            return 1.18;
-        }
-
-        // For 1.17.x
-        if (dataVersion == 2730 || dataVersion == 2724) {
-            return 1.17;
-        }
-
-        // For 1.16.x
-        if (dataVersion == 2586 || dataVersion == 2584 || dataVersion == 2580 || dataVersion == 2578
-                || dataVersion == 2567 || dataVersion == 2566) {
-            return 1.16;
-        }
-
-        return 1.18;
-    }
-
 }

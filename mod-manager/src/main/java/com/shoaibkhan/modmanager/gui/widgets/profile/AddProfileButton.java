@@ -55,14 +55,7 @@ public class AddProfileButton extends BaseButton {
                 return;
             }
 
-            // Check if options.txt is present in the profile
-            if (!utils.isOptionsTxtPresent(directory)) {
-                JOptionPane.showMessageDialog(null,
-                        "Profile added but there was no options.txt file found!\n You can generate it by changing a setting from inside minecraft,\n like the render distance, graphics, remapping a key.",
-                        "Important", JOptionPane.WARNING_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Profile added", "Success", JOptionPane.DEFAULT_OPTION);
-            }
+            JOptionPane.showMessageDialog(null, "Profile added", "Success", JOptionPane.DEFAULT_OPTION);
 
             ProfilesPanel.profilesComboBox.refresh();
         });

@@ -75,16 +75,6 @@ public class ModsComboBox extends JComboBox<Object> {
             filterer++;
 
             if (filterer == 1) {
-                // Check if options.txt is present in the profile
-                if (!utils.isOptionsTxtPresent(CurrentProfile.getCurrentProfileDirectory())) {
-                    JOptionPane.showMessageDialog(null,
-                            "No options.txt file found!\n You can generate it by changing a setting from inside minecraft,\n like the render distance, graphics, remapping a key.",
-                            "Important", JOptionPane.ERROR_MESSAGE);
-
-                    // Select default profile
-                    refresh();
-                }
-
                 // Update mods panel
                 if (ModsPanel.installUnistallButton != null) {
                     ModsPanel.installUnistallButton.refresh();

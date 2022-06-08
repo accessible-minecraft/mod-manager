@@ -82,42 +82,6 @@ public class utils {
     }
 
     public static boolean checkValidity(String path) {
-        if (!Files.exists(Paths.get(path).toAbsolutePath())) {
-            return false;
-        }
-
-        File folder = new File(path);
-
-        try {
-            List<String> listOfItemsInFolder = Arrays.asList(folder.list());
-
-            boolean hasSaves = listOfItemsInFolder.contains("saves");
-
-            return hasSaves;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return false;
-    }
-
-    public static boolean isOptionsTxtPresent(String path) {
-        if (!Files.exists(Paths.get(path).toAbsolutePath())) {
-            return false;
-        }
-
-        File folder = new File(path);
-
-        try {
-            List<String> listOfItemsInFolder = Arrays.asList(folder.list());
-
-            boolean hasOptionsTXT = listOfItemsInFolder.contains("options.txt");
-
-            return hasOptionsTXT;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return false;
+        return Files.exists(Paths.get(path).toAbsolutePath());
     }
 }
