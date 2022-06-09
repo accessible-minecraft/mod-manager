@@ -8,7 +8,7 @@ import com.shoaibkhan.modmanager.utils.ActionResult;
 
 public class EditCurrentProfile {
     public static ActionResult editCurrentProfile(String name, String directory, double version) {
-        if (!utils.checkValidity(directory)) {
+        if (utils.checkInvalidity(directory)) {
             return ActionResult.INVALID_DIRECORY;
         }
 

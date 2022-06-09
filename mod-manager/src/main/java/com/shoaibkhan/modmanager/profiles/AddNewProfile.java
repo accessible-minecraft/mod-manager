@@ -35,7 +35,7 @@ public class AddNewProfile {
 
     public static ActionResult addNewProfile(String name, String directory, double version) {
 
-        if (!utils.checkValidity(directory)) {
+        if (utils.checkInvalidity(directory)) {
             return ActionResult.INVALID_DIRECORY;
         }
 

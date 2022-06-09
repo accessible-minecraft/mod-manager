@@ -23,8 +23,11 @@
  */
 package com.shoaibkhan.modmanager.profiles;
 
+import com.shoaibkhan.modmanager.configs.PropertiesJSON;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Objects;
 
 public class utils {
 
@@ -78,12 +81,11 @@ public class utils {
         return OS.LINUX;
     }
 
-    public static boolean checkValidity(String path) {
-        return Files.exists(Paths.get(path).toAbsolutePath());
+    public static boolean checkInvalidity(String path) {
+        return !Files.exists(Paths.get(path).toAbsolutePath());
     }
 
     public static double getLatestMinecraftVersion() {
-        // TODO Implement dynamic method using json
-        return 1.18;
+        return Objects.requireNonNull(PropertiesJSON.getSupportedVersionList()).get(0);
     }
 }
