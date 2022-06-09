@@ -23,13 +23,13 @@
  */
 package com.shoaibkhan.modmanager.profiles;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.shoaibkhan.modmanager.configs.Config;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.shoaibkhan.modmanager.configs.Config;
 
 public class ProfilesArrayList {
 
@@ -46,12 +46,12 @@ public class ProfilesArrayList {
                 while (profile.hasNext()) {
                     Entry<String, JsonNode> entry = profile.next();
 
-                    // Check if the json node is `current` or `total`
-                    if (entry.getKey().equalsIgnoreCase("current") || entry.getKey().equalsIgnoreCase("total")) {
+                    // Check if the json node is `total`
+                    if (entry.getKey().equalsIgnoreCase("total")) {
                         continue;
                     }
 
-                    String name = entry.getValue().get("name").asText();
+                    String name = entry.getValue().get("name").asText() + " (" + entry.getValue().get("version").asText() + ")";
 
                     profilesList.add(name);
                 }

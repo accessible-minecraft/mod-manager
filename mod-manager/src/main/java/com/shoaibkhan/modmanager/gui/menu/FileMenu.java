@@ -28,33 +28,30 @@ import com.shoaibkhan.modmanager.configs.ModsJSON;
 import com.shoaibkhan.modmanager.configs.PropertiesJSON;
 import com.shoaibkhan.modmanager.manager.LatestFiles;
 import com.shoaibkhan.modmanager.utils.ActionResult;
-import java.awt.Font;
-import java.awt.event.KeyEvent;
-import static java.awt.image.ImageObserver.ABORT;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import org.apache.maven.model.Model;
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Objects;
+
 /**
- *
  * @author shoaib
  */
-public class FileMenu extends JMenuBar{
-    public FileMenu(){
+public class FileMenu extends JMenuBar {
+    public FileMenu() {
         JMenu fileMenu = new JMenu("File");
-        fileMenu.setFont(new Font ("Arial", Font.PLAIN, 16));
+        fileMenu.setFont(new Font("Arial", Font.PLAIN, 16));
 
         // Menu Items
         JMenuItem checkForUpdateItem = new JMenuItem("Check for Updates");
-        checkForUpdateItem.setFont(new Font ("Arial", Font.PLAIN, 16));
+        checkForUpdateItem.setFont(new Font("Arial", Font.PLAIN, 16));
         checkForUpdateItem.addActionListener(e -> {
             try {
                 // Get the current manager version
@@ -63,10 +60,10 @@ public class FileMenu extends JMenuBar{
                 if ((new File("pom.xml")).exists())
                     model = reader.read(new FileReader("pom.xml"));
                 else
-                    model = reader.read(new InputStreamReader(Main.class.getResourceAsStream(
-                            "/META-INF/maven/com.shoaibkhan.modmanager/mod-manager/pom.xml")));
+                    model = reader.read(new InputStreamReader(Objects.requireNonNull(Main.class.getResourceAsStream(
+                            "/META-INF/maven/com.shoaibkhan.modmanager/mod-manager/pom.xml"))));
 
-                Float currentVersion = Float.parseFloat(model.getVersion());
+                float currentVersion = Float.parseFloat(model.getVersion());
 
                 // Get version from the mod-manager-config
                 Float latestVersion = PropertiesJSON.getLatestVersion();
@@ -84,16 +81,16 @@ public class FileMenu extends JMenuBar{
                     ActionResult result = LatestFiles.updateFiles();
                     if (result == ActionResult.PASS) {
                         JOptionPane.showMessageDialog(null, "Mod Manager updated successfully! Closing the app now.", "Update Succcessful!",
-                                JOptionPane.DEFAULT_OPTION);
-                        
+                                JOptionPane.PLAIN_MESSAGE);
+
                         // Delete temporary files before closing
                         ModsJSON.DeleteTempFolder();
-                        
+
                         // Close 
                         System.exit(ABORT);
                     }
                 } else {
-                	JOptionPane.showMessageDialog(null, "Already on the latest release!");
+                    JOptionPane.showMessageDialog(null, "Already on the latest release!");
                 }
             } catch (IOException | XmlPullParserException e1) {
                 JOptionPane.showMessageDialog(null, "An error occured!", "Error", JOptionPane.ERROR_MESSAGE);

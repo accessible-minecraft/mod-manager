@@ -24,12 +24,10 @@
 package com.shoaibkhan.modmanager.gui.panels;
 
 import com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel;
-import com.shoaibkhan.modmanager.gui.widgets.profile.AddProfileButton;
-import com.shoaibkhan.modmanager.gui.widgets.profile.EditProfileButton;
-import com.shoaibkhan.modmanager.gui.widgets.profile.ProfilesComboBox;
-import com.shoaibkhan.modmanager.gui.widgets.profile.RemoveProfileButton;
+import com.shoaibkhan.modmanager.gui.widgets.profile.*;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class ProfilesPanel extends javax.swing.JPanel {
     public static BaseLabel hLabel;
@@ -46,6 +44,7 @@ public class ProfilesPanel extends javax.swing.JPanel {
         hLabel = new BaseLabel();
         profilesComboBox = new ProfilesComboBox();
         AddProfileButton addProfileButton = new AddProfileButton();
+        OpenDirectoryButton openDirectoryButton = new OpenDirectoryButton();
         EditProfileButton editProfileButton = new EditProfileButton();
         RemoveProfileButton removeProfileButton = new RemoveProfileButton();
 
@@ -57,16 +56,21 @@ public class ProfilesPanel extends javax.swing.JPanel {
         hLabel.setNextFocusableComponent(profilesComboBox);
         row0.add(hLabel);
 
-        profilesComboBox.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        profilesComboBox.setFont(new java.awt.Font("Arial", Font.PLAIN, 18)); // NOI18N
         profilesComboBox.setNextFocusableComponent(editProfileButton);
         row0.add(profilesComboBox);
 
         editProfileButton.setText("Edit Current Profile");
         editProfileButton.setToolTipText("");
-        editProfileButton.setNextFocusableComponent(addProfileButton);
+        editProfileButton.setNextFocusableComponent(openDirectoryButton);
         row0.add(editProfileButton);
 
         add(row0);
+
+        openDirectoryButton.setText("Open Directory");
+        openDirectoryButton.setToolTipText("");
+        openDirectoryButton.setNextFocusableComponent(addProfileButton);
+        row1.add(openDirectoryButton);
 
         addProfileButton.setText("Add New Profile");
         addProfileButton.setToolTipText("");

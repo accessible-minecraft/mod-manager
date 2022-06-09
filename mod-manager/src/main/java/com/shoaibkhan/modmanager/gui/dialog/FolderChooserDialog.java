@@ -145,6 +145,4 @@ public class FolderChooserDialog extends JDialog {
             directory = file.getAbsolutePath();
         }
     }
-
-
 }
