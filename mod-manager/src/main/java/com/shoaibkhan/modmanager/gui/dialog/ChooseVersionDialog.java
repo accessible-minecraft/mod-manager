@@ -23,8 +23,12 @@
  */
 package com.shoaibkhan.modmanager.gui.dialog;
 
+import com.shoaibkhan.modmanager.gui.widgets.base.BaseButton;
+import com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel;
+
+import javax.swing.*;
+
 /**
- *
  * @author shoaib
  */
 public class ChooseVersionDialog extends javax.swing.JDialog {
@@ -34,7 +38,6 @@ public class ChooseVersionDialog extends javax.swing.JDialog {
     /**
      * Creates new form ChooseVersionDialog
      *
-     * @param parent
      * @param modal
      */
     public ChooseVersionDialog(java.awt.Frame parent, boolean modal) {
@@ -51,12 +54,12 @@ public class ChooseVersionDialog extends javax.swing.JDialog {
         for (int i = 0; i < versions.length; i++) {
             Object version = versions[i];
             if (i == 0) {
-                versionComboBox.addItem((String) version + " (latest)");
+                versionComboBox.addItem(version.toString() + " (latest)");
             } else {
-                versionComboBox.addItem((String) version);
+                versionComboBox.addItem(version.toString());
             }
         }
-        
+
         // Resize after adding
         pack();
         revalidate();
@@ -66,8 +69,7 @@ public class ChooseVersionDialog extends javax.swing.JDialog {
 
         if (hasChoosen) {
             // Get and return the choice
-            int choice = versionComboBox.getSelectedIndex();
-            return choice;
+            return versionComboBox.getSelectedIndex();
         }
         return -1;
     }
@@ -81,13 +83,14 @@ public class ChooseVersionDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        container = new javax.swing.JPanel();
-        row1 = new javax.swing.JPanel();
-        headingLabel = new com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel();
+        JPanel container = new JPanel();
+        JPanel row1 = new JPanel();
+        BaseLabel headingLabel = new BaseLabel();
         versionComboBox = new javax.swing.JComboBox<>();
-        row2 = new javax.swing.JPanel();
-        confirmButton = new com.shoaibkhan.modmanager.gui.widgets.base.BaseButton();
-        cancelButton = new com.shoaibkhan.modmanager.gui.widgets.base.BaseButton();
+        JPanel row2 = new JPanel();
+        BaseButton confirmButton = new BaseButton();
+        // Variables declaration - do not modify//GEN-BEGIN:variables
+        BaseButton cancelButton = new BaseButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Select Version");
@@ -96,11 +99,11 @@ public class ChooseVersionDialog extends javax.swing.JDialog {
 
         container.setLayout(new javax.swing.BoxLayout(container, javax.swing.BoxLayout.Y_AXIS));
 
-        headingLabel.setText("Select Mod Version:-  ");
+        headingLabel.setText("Select Version:-  ");
         headingLabel.setName(""); // NOI18N
         row1.add(headingLabel);
 
-        versionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Default", "Default" }));
+        versionComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Default", "Default"}));
         row1.add(versionComboBox);
 
         container.add(row1);
@@ -142,14 +145,6 @@ public class ChooseVersionDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.shoaibkhan.modmanager.gui.widgets.base.BaseButton cancelButton;
-    private com.shoaibkhan.modmanager.gui.widgets.base.BaseButton confirmButton;
-    private javax.swing.JPanel container;
-    private com.shoaibkhan.modmanager.gui.widgets.base.BaseLabel headingLabel;
-    private javax.swing.JPanel row1;
-    private javax.swing.JPanel row2;
-    private javax.swing.JComboBox<String> versionComboBox;
-    // End of variables declaration//GEN-END:variables
+    private JComboBox<String> versionComboBox;
 
 }

@@ -23,16 +23,17 @@
  */
 package com.shoaibkhan.modmanager.configs;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
-
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.apache.commons.io.FileUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PropertiesJSON {
     private static final String TEMP_FOLDER = Paths.get("config", "temp").toString();
@@ -64,14 +65,42 @@ public class PropertiesJSON {
                 loadIfNotPresent();
 
             // Get json data
-            JsonNode root = null;
+            JsonNode root;
             mapper.enable(DeserializationFeature.FAIL_ON_TRAILING_TOKENS);
             root = mapper.readTree(modsJsonFile);
 
             // Get the version
             String version = root.get("latest-version").asText();
-            Float versionInFloat = Float.parseFloat(version);
-            return versionInFloat;
+            return Float.parseFloat(version);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static List<Double> getSupportedVersionList() {
+        try {
+            // Load the file
+            File modsJsonFile = new File(FILE_NAME);
+
+            if (!modsJsonFile.exists())
+                loadIfNotPresent();
+
+            // Get json data
+            JsonNode root;
+            mapper.enable(DeserializationFeature.FAIL_ON_TRAILING_TOKENS);
+            root = mapper.readTree(modsJsonFile);
+
+            // Get the versions list
+            JsonNode versions = root.get("supported-versions");
+            List<Double> modsList = new ArrayList<>();
+
+            if (versions.isArray()) {
+                for (final JsonNode objNode : versions) {
+                    modsList.add(objNode.asDouble());
+                }
+            }
+            return modsList;
         } catch (IOException e) {
             e.printStackTrace();
         }

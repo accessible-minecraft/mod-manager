@@ -23,6 +23,8 @@
  */
 package com.shoaibkhan.modmanager.gui.widgets.profile;
 
+import com.shoaibkhan.modmanager.configs.PropertiesJSON;
+import com.shoaibkhan.modmanager.gui.dialog.ChooseVersionDialog;
 import com.shoaibkhan.modmanager.gui.dialog.FolderChooserDialog;
 import com.shoaibkhan.modmanager.gui.panels.ProfilesPanel;
 import com.shoaibkhan.modmanager.gui.widgets.base.BaseButton;
@@ -30,6 +32,7 @@ import com.shoaibkhan.modmanager.profiles.AddNewProfile;
 import com.shoaibkhan.modmanager.utils.ActionResult;
 
 import javax.swing.*;
+import java.util.Objects;
 
 /**
  * @author shoaib
@@ -48,18 +51,16 @@ public class AddProfileButton extends BaseButton {
                 return;
             }
 
-            String versionInString = JOptionPane.showInputDialog("Enter minecraft version for the profile", "Enter version");
-            if (versionInString == null) {
-                return;
-            }
-            double version;
-            try {
-                version = Double.parseDouble(versionInString);
-            } catch (Exception ignored) {
+            // Get version to install from user
+            Object[] supportedVersions = Objects.requireNonNull(PropertiesJSON.getSupportedVersionList()).toArray();
+            int re = new ChooseVersionDialog(null, false).choose(supportedVersions);
+            if (re < 0) {
+                // Didn't chose anything, closed the option dialogue
                 return;
             }
 
-            ActionResult response = AddNewProfile.addNewProfile(name, directory, version);
+
+            ActionResult response = AddNewProfile.addNewProfile(name, directory, Double.parseDouble(supportedVersions[re].toString()));
             if (response != ActionResult.PASS) {
                 JOptionPane.showMessageDialog(this, response.getDescription());
                 return;
