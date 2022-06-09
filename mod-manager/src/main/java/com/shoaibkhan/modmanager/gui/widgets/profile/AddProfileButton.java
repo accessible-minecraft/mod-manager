@@ -46,7 +46,7 @@ public class AddProfileButton extends BaseButton {
                 return;
             }
 
-            String directory = new FolderChooserDialog(null, false).choose();
+            String directory = new FolderChooserDialog(null, false, false).choose();
             if (directory == null) {
                 return;
             }
